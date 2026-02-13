@@ -16,7 +16,10 @@ DESTROOT=$(SRCROOT)
 PROJCLEAN=DefaultClean
 !ENDIF
 
+# Allow FEDSRC to be overridden for non-standard directory layouts
+!IFNDEF FEDSRC
 FEDSRC=$(FEDROOT)\src
+!ENDIF
 SRCDIR=$(FEDSRC)\$(SRCROOT)
 DESTDIR=$(FEDROOT)\Objs\$(FLAVOR)\$(DESTROOT)
 
@@ -197,7 +200,7 @@ LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /nodefaultlib /OPT:REF /OPT
 FLAVOR=SDebug
 STATICFLAVOR=SDebug
 
-CARGSFLAVOR = $(COMPILE_DEV_REGKEY) /D "_DEBUG" /D "DEBUG" /MTd /Od /GR /GZ
+CARGSFLAVOR = $(COMPILE_DEV_REGKEY) /D "_DEBUG" /D "DEBUG" /MTd /Od /GR /RTC1
 RARGSFLAVOR= /d "_DEBUG" /d "DEBUG" $(RARGSVERSION)
 LIBSFLAVOR=libcmtd.lib libcpmtd.lib libcimtd.lib
 MFCLIBSFLAVOR=nafxcwd.lib ctl3d32s.lib comctl32.lib
@@ -245,7 +248,7 @@ LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /nodefaultlib /OPT:REF /OPT
 #############################################################################
 FLAVOR=Debug
 
-CARGSFLAVOR = $(COMPILE_DEV_REGKEY) /D "_DEBUG_TRAINING" /D "_DEBUG" /D "DEBUG" /D"_AFXDLL" /MDd /Od /GR /GZ
+CARGSFLAVOR = $(COMPILE_DEV_REGKEY) /D "_DEBUG_TRAINING" /D "_DEBUG" /D "DEBUG" /D"_AFXDLL" /MDd /Od /GR /RTC1
 RARGSFLAVOR= /d "_DEBUG" /d "DEBUG" /D"_AFXDLL" $(RARGSVERSION)
 LIBSFLAVOR=msvcrtd.lib msvcprtd.lib
 MFCLIBSFLAVOR=mfc42d.lib mfcs42d.lib mfco42d.lib ctl3d32.lib
@@ -278,7 +281,7 @@ LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /RELEASE /nodefaultlib /fix
 
 FLAVOR=Debug
 
-CARGSFLAVOR = $(COMPILE_DEV_REGKEY) /D "_DEBUG" /D "DEBUG" /D"_AFXDLL" /MDd /Od /GR /GZ
+CARGSFLAVOR = $(COMPILE_DEV_REGKEY) /D "_DEBUG" /D "DEBUG" /D"_AFXDLL" /MDd /Od /GR /RTC1
 RARGSFLAVOR= /d "_DEBUG" /d "DEBUG" /D"_AFXDLL" $(RARGSVERSION)
 LIBSFLAVOR=msvcrtd.lib msvcprtd.lib
 MFCLIBSFLAVOR=mfc42d.lib mfcs42d.lib mfco42d.lib ctl3d32.lib
@@ -401,7 +404,7 @@ BSCTARG=
 !else
 
 !IFNDEF NOBSC
-BSCARG=/Fr$* /Zn
+BSCARG=/FR$*
 BSCTARG=$(BSC)
 !ELSE
 BSCARG=
@@ -421,7 +424,7 @@ PDB=$(DESTDIR)\$(MAINTARGROOT).pdb
 CARGSINC=  $(CARGSFLAVOR) \
            $(BSCARG) \
            $(NOLOGO) /W3 /WX /Zi /c \
-           /Gi- /Gm- /EHsc \
+           /Gm- /EHsc \
            /D "WIN32" /D "_WINDOWS" /D "STRICT" \
            /Fo$(DESTDIR)\ /FD /Fd$(PDB)
 CARGS=$(CARGSLOCAL) $(CARGSINC)

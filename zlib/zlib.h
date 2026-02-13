@@ -25,12 +25,12 @@
 // Required CRT headers
 //
 
-#include "stdio.h"
-#include "string.h"
-#include "stdlib.h"
-#include "math.h"
-#include "time.h"
-#include "malloc.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <malloc.h>
 
 #ifdef DREAMCAST
 #include "dreamcast.h"
