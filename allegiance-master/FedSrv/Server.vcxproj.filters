@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ShareMem">
+      <UniqueIdentifier>{bf9d874f-3032-4248-9623-73dcf43bbb4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FedPerf">
+      <UniqueIdentifier>{473ddf8d-4995-4670-b254-0f8dc71dec64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sentinal">
+      <UniqueIdentifier>{6e54c9e1-545c-4009-b9ca-75fffe79e748}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sharemem\pch.cpp">
+      <Filter>ShareMem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sharemem\sharemem.cpp">
+      <Filter>ShareMem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fedperf\cntrmap.cpp">
+      <Filter>FedPerf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fedperf\collect.cpp">
+      <Filter>FedPerf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fedperf\pch.cpp">
+      <Filter>FedPerf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fedperf\perfdll.cpp">
+      <Filter>FedPerf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fedperf\perfutil.cpp">
+      <Filter>FedPerf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sentinal\config.cpp">
+      <Filter>Sentinal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sentinal\dplaychk.cpp">
+      <Filter>Sentinal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sentinal\sentinal.cpp">
+      <Filter>Sentinal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sentinal\srvdbg.cpp">
+      <Filter>Sentinal</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminEventLoggerHook.cpp" />
+    <ClCompile Include="AdminGame.cpp" />
+    <ClCompile Include="AdminGames.cpp" />
+    <ClCompile Include="AdminServer.cpp" />
+    <ClCompile Include="AdminSession.cpp" />
+    <ClCompile Include="AdminSessionClass.cpp" />
+    <ClCompile Include="AdminSessionEventSink.cpp" />
+    <ClCompile Include="AdminShip.cpp" />
+    <ClCompile Include="AdminUser.cpp" />
+    <ClCompile Include="AdminUsers.cpp" />
+    <ClCompile Include="allsrvmodule.cpp" />
+    <ClCompile Include="BitArray.cpp" />
+    <ClCompile Include="config.cpp" />
+    <ClCompile Include="DIALOGS.CPP" />
+    <ClCompile Include="dirmon.cpp" />
+    <ClCompile Include="FedSrv.CPP" />
+    <ClCompile Include="fscluster.cpp" />
+    <ClCompile Include="fslobby.cpp" />
+    <ClCompile Include="fsmission.cpp" />
+    <ClCompile Include="fsship.cpp" />
+    <ClCompile Include="fsside.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="sqlhelp.cpp" />
+    <ClCompile Include="srvdbg.cpp" />
+    <ClCompile Include="srvqguids.cpp" />
+    <ClCompile Include="SWMRG.CPP" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sharemem\pch.h">
+      <Filter>ShareMem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fedperf\cntrmap.h">
+      <Filter>FedPerf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fedperf\util\fedperf.h">
+      <Filter>FedPerf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fedperf\pch.h">
+      <Filter>FedPerf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\fedperf\perfutil.h">
+      <Filter>FedPerf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sentinal\config.h">
+      <Filter>Sentinal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sentinal\dbgutil.h">
+      <Filter>Sentinal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sentinal\dplaychk.h">
+      <Filter>Sentinal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sentinal\resource.h">
+      <Filter>Sentinal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sentinal\sentinal.h">
+      <Filter>Sentinal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sentinal\srvdbg.h">
+      <Filter>Sentinal</Filter>
+    </ClInclude>
+    <ClInclude Include="_fedsrv.h" />
+    <ClInclude Include="AdminEventLoggerHook.h" />
+    <ClInclude Include="AdminGame.h" />
+    <ClInclude Include="AdminGames.h" />
+    <ClInclude Include="AdminServer.h" />
+    <ClInclude Include="AdminSession.h" />
+    <ClInclude Include="AdminSessionClass.h" />
+    <ClInclude Include="AdminSessionEventSink.h" />
+    <ClInclude Include="AdminSessionSecure.h" />
+    <ClInclude Include="AdminSessionSecureHost.h" />
+    <ClInclude Include="AdminShip.h" />
+    <ClInclude Include="AdminUser.h" />
+    <ClInclude Include="AdminUsers.h" />
+    <ClInclude Include="AdminUtil.h" />
+    <ClInclude Include="allsrvmodule.h" />
+    <ClInclude Include="BitArray.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="counters.h" />
+    <ClInclude Include="dbgutil.h" />
+    <ClInclude Include="dirmon.h" />
+    <ClInclude Include="FedSrv.H" />
+    <ClInclude Include="FedSrvApp.h" />
+    <ClInclude Include="fedsrvsql.h" />
+    <ClInclude Include="fscluster.h" />
+    <ClInclude Include="fsmission.h" />
+    <ClInclude Include="fsship.h" />
+    <ClInclude Include="fsside.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="queries.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="srvdbg.h" />
+    <ClInclude Include="srvqueries.h" />
+    <ClInclude Include="SWMRG.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\sentinal\makefile">
+      <Filter>Sentinal</Filter>
+    </None>
+    <None Include="..\sentinal\sentinal.def">
+      <Filter>Sentinal</Filter>
+    </None>
+    <None Include="..\sentinal\sentinal.ini">
+      <Filter>Sentinal</Filter>
+    </None>
+    <None Include="..\sentinal\sentinal.reg">
+      <Filter>Sentinal</Filter>
+    </None>
+    <None Include="..\sentinal\sentmsg.msg">
+      <Filter>Sentinal</Filter>
+    </None>
+    <None Include="AdminGame.rgs" />
+    <None Include="AdminGames.rgs" />
+    <None Include="AdminServer.rgs" />
+    <None Include="AdminSession.rgs" />
+    <None Include="AdminShip.rgs" />
+    <None Include="AdminUser.rgs" />
+    <None Include="AdminUsers.rgs" />
+    <None Include="allsrv.rgs" />
+    <None Include="AllSrv32.rgs" />
+    <None Include="DPMono.rgs" />
+    <None Include="fedsrv.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\sentinal\sentinal.ico">
+      <Filter>Sentinal</Filter>
+    </Image>
+    <Image Include="fedsrv.ico" />
+    <Image Include="..\srvconfig\srvconfig.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\sentinal\sentinal.rc">
+      <Filter>Sentinal</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="FedSrv.RC" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="AllSrvModuleIDL.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="regini.txt" />
+  </ItemGroup>
+</Project>
