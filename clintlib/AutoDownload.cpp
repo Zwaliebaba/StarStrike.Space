@@ -884,7 +884,8 @@ private:
         int nBaseLen = strlen(m_szURL);
         strcpy(szURL, m_szURL);
 
-        for (unsigned i = 0; i < m_cFiles; i++)
+        unsigned i;
+        for (i = 0; i < m_cFiles; i++)
         {
             strcpy(szURL + nBaseLen, m_pszFileList[i]);
             pszURLs[i*2] =   _strdup(szURL);

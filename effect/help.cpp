@@ -101,7 +101,7 @@ public:
         //
 
         CastTo(m_pbuttonBack, m_pns->FindMember("backButton"   ));
-        AddEventTarget(OnButtonBack, m_pbuttonBack->GetEventSource());
+        AddEventTarget(&HelpPaneImpl::OnButtonBack, m_pbuttonBack->GetEventSource());
 
         CastTo(m_pbuttonClose, m_pns->FindMember("closeButton"));
 

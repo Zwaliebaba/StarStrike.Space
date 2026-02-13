@@ -11,5 +11,6 @@
 
 #include "effect.h"
 #include "efart.h"
+#include "soundengine.h"
 
 #endif

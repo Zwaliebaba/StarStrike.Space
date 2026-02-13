@@ -11,6 +11,7 @@
 
 #include "pch.h"
 #include <dplobby.h>
+#include "NetworkGame.h"
 
 #define CURRENT_DPLAY_VER 318
 

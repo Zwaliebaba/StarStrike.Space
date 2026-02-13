@@ -25,7 +25,7 @@ GaugePane::GaugePane(Surface*         psurface,
     assert(m_psurface);
     assert(m_minValue < m_maxValue);
 
-    InternalSetSize(m_psurface->GetRect().Size());
+    InternalSetSize(m_psurface->GetSize());
 }
 
 void GaugePane::Paint(Surface* psurface)

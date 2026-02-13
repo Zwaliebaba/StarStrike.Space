@@ -1,4 +1,5 @@
 #include "pch.h"
+#include <utility>  // for std::swap
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -2583,8 +2584,8 @@ public:
 
             m_pixels -= area;
 
-            swap(pvbDraw, pvcDraw);
-            swap(iyb, iyc);
+            std::swap(pvbDraw, pvcDraw);
+            std::swap(iyb, iyc);
         }
 
         //
@@ -3013,19 +3014,19 @@ public:
             // Primitives
             //
 
-            m_pfnDrawTriangle = DrawTriangle;
-            m_pfnDrawLine     = DrawLine;
-            m_pfnDrawPoint    = DrawPoint;
+            m_pfnDrawTriangle = &SoftwareRasterizer::DrawTriangle;
+            m_pfnDrawLine     = &SoftwareRasterizer::DrawLine;
+            m_pfnDrawPoint    = &SoftwareRasterizer::DrawPoint;
 
             switch (m_shadeMode) {
                 case ShadeModeFlat:    
-                    m_pfnDrawTriangle = DrawFlatTriangle; 
+                    m_pfnDrawTriangle = &SoftwareRasterizer::DrawFlatTriangle; 
                     break;
 
                 case ShadeModeNone:
                 case ShadeModeCopy:    
                 case ShadeModeGouraud: 
-                    m_pfnDrawTriangle = DrawTriangle; 
+                    m_pfnDrawTriangle = &SoftwareRasterizer::DrawTriangle; 
                     break;
             }
 
@@ -3049,7 +3050,7 @@ public:
             m_passCount = 0;
 
             if (m_shadeMode == ShadeModeNone) {
-                m_pfnFillSubTriangle = FillSubTriangleNoop;
+                m_pfnFillSubTriangle = &SoftwareRasterizer::FillSubTriangleNoop;
                 return;
             } else if (m_psurfaceTexture == NULL) {
                 if (
@@ -3059,8 +3060,8 @@ public:
                     && !ShouldZWrite()
                     && m_b565
                 ) {
-                    m_pfnFillSubTriangle = FillSubTriangleMultiPass;
-                    m_ppfnFillChunk[m_passCount++] = FlatBlend1InvA;
+                    m_pfnFillSubTriangle = &SoftwareRasterizer::FillSubTriangleMultiPass;
+                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::FlatBlend1InvA;
                     return;
                 }
             } else if (
@@ -3073,11 +3074,11 @@ public:
                 // Fast paths
                 //
 
-                m_pfnFillSubTriangle = FillSubTriangleMultiPass;
+                m_pfnFillSubTriangle = &SoftwareRasterizer::FillSubTriangleMultiPass;
 
                 if (m_blendMode == BlendModeSource) {
                     if (m_shadeMode == ShadeModeCopy) {
-                        m_pfnFillSubTriangle = FillSubTriangleTextureZTestZWriteAndColorKey;
+                        m_pfnFillSubTriangle = &SoftwareRasterizer::FillSubTriangleTextureZTestZWriteAndColorKey;
                     } else {
                         //
                         // Multi pass
@@ -3086,17 +3087,17 @@ public:
                         switch (m_shadeMode) {
                             case ShadeModeFlat:
                                 if (m_bColorKeyOn) {
-                                    m_ppfnFillChunk[m_passCount++] = CopyTextureZTestZWriteFlatAndColorKey;
+                                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::CopyTextureZTestZWriteFlatAndColorKey;
                                 } else {
-                                    m_ppfnFillChunk[m_passCount++] = CopyTextureZTestZWriteFlat;
+                                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::CopyTextureZTestZWriteFlat;
                                 }
                                 break;
 
                             case ShadeModeGouraud:
                                 if (m_bColorKeyOn) {
-                                    m_ppfnFillChunk[m_passCount++] = CopyTextureZTestZWriteGouraudAndColorKey;  
+                                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::CopyTextureZTestZWriteGouraudAndColorKey;  
                                 } else {
-                                    m_ppfnFillChunk[m_passCount++] = CopyTextureZTestZWriteGouraud;
+                                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::CopyTextureZTestZWriteGouraud;
                                 }
                                 break;
 
@@ -3109,12 +3110,12 @@ public:
                 } else if (m_blendMode == BlendModeAdd) {
                     switch (m_shadeMode) {
                         case ShadeModeCopy:
-                            m_ppfnFillChunk[m_passCount++] = CopyTextureZTestZWriteBlend11;
+                            m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::CopyTextureZTestZWriteBlend11;
                             return;
 
                         case ShadeModeFlat:
                             if (m_bColorKeyOn) {
-                                m_ppfnFillChunk[m_passCount++] = FlatTextureZTestZWriteBlend11;
+                                m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::FlatTextureZTestZWriteBlend11;
                                 return;
                             }
                     }
@@ -3125,14 +3126,14 @@ public:
             // Chunked multi pass
             //
 
-            m_pfnFillSubTriangle = FillSubTriangleMultiPassChunk;
+            m_pfnFillSubTriangle = &SoftwareRasterizer::FillSubTriangleMultiPassChunk;
 
             //
             // ZTest
             //
 
             if (ShouldZTest()) {
-                m_ppfnFillChunk[m_passCount++] = ZTest;
+                m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::ZTest;
             }
 
             //
@@ -3144,14 +3145,14 @@ public:
                 // Texture
                 //
 
-                m_ppfnFillChunk[m_passCount++] = LoadColor565Texture;
+                m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::LoadColor565Texture;
 
                 //
                 // Color key
                 //
 
                 if (m_bColorKeyOn) {
-                    m_ppfnFillChunk[m_passCount++] = ColorKeyTest;
+                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::ColorKeyTest;
                 }
 
                 //
@@ -3163,12 +3164,12 @@ public:
                         break;
 
                     case ShadeModeFlat:
-                        m_ppfnFillChunk[m_passCount++] = FlatShade;
+                        m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::FlatShade;
                         break;
 
                     case ShadeModeGouraud:
                     case ShadeModeGlobalColor:
-                        m_ppfnFillChunk[m_passCount++] = GouraudShade;
+                        m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::GouraudShade;
                         break;
                 }
             } else {
@@ -3183,11 +3184,11 @@ public:
 
                     case ShadeModeCopy:
                     case ShadeModeFlat:
-                        m_ppfnFillChunk[m_passCount++] = LoadFlatColor;
+                        m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::LoadFlatColor;
                         break;
 
                     case ShadeModeGouraud:
-                        m_ppfnFillChunk[m_passCount++] = LoadGouraudColor;
+                        m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::LoadGouraudColor;
                         break;
                 }
             }
@@ -3201,15 +3202,15 @@ public:
                 || m_blendMode == BlendModeSourceAlpha
             ) {
                 if (m_b565) {
-                    m_ppfnFillChunk[m_passCount++] = Load565Dest;
+                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::Load565Dest;
                 } else {
-                    m_ppfnFillChunk[m_passCount++] = Load555Dest;
+                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::Load555Dest;
                 }
 
                 if (m_blendMode == BlendModeAdd) {
-                    m_ppfnFillChunk[m_passCount++] = Blend11;
+                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::Blend11;
                 } else {
-                    m_ppfnFillChunk[m_passCount++] = Blend1InvA;
+                    m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::Blend1InvA;
                 }
             };
 
@@ -3218,9 +3219,9 @@ public:
             //
 
             if (m_b565) {
-                m_ppfnFillChunk[m_passCount++] = CopyToColor565Destination;
+                m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::CopyToColor565Destination;
             } else {
-                m_ppfnFillChunk[m_passCount++] = CopyToColor555Destination;
+                m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::CopyToColor555Destination;
             }
 
             //
@@ -3228,7 +3229,7 @@ public:
             //
 
             if (ShouldZWrite()) {
-                m_ppfnFillChunk[m_passCount++] = ZWrite;
+                m_ppfnFillChunk[m_passCount++] = &SoftwareRasterizer::ZWrite;
             }
 
             ZAssert(m_passCount <= MaxChunkPasses);

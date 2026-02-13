@@ -45,7 +45,8 @@ namespace Training
         pShip->SetFuel (pShip->GetHullType ()->GetMaxFuel ());
 
         // fill the first empty cargo slot with missiles
-        for (int i = -1; i > -c_maxCargo; i--)
+        int i;
+        for (i = -1; i > -c_maxCargo; i--)
             if (pShip->GetMountedPart (NA, i) == 0)
             {
                 g_pMission->AddPartToShip (150, i, 0x7fff);

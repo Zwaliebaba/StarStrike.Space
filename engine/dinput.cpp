@@ -891,7 +891,7 @@ public:
                     }
                 }
 
-                for (index = 0; index < countButtons; index++) {
+                for (int index = 0; index < countButtons; index++) {
                     m_vbuttonObject[index]->GetValue()->SetValue(
                         m_pbyteData[countValues * 4 + index] != 0
                     );

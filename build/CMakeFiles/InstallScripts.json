@@ -1,0 +1,17 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/zlib/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/guids/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/_Utility/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/Igc/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/engine/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/effect/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/soundengine/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/clintlib/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/training/cmake_install.cmake",
+		"C:/Users/zwali/source/repos/StarStrike.Space/build/sharemem/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

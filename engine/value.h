@@ -600,7 +600,7 @@ typedef TPointerListObject<IObject> IObjectList;
 template<class Type>
 class DoSetIndex {
 public:
-    static SetIndex(Type* pobject, int index)
+    static void SetIndex(Type* pobject, int index)
     {
         pobject->SetIndex(index);
     }
@@ -608,7 +608,7 @@ public:
 
 class DontSetIndex {
 public:
-    static SetIndex(void* pobject, int index)
+    static void SetIndex(void* pobject, int index)
     {
     }
 };
@@ -616,7 +616,7 @@ public:
 template<class Type, class SetIndexType = DontSetIndex>
 class TLookup {
 public:
-    static Parse(IObjectList* plist, int offset, TVector<TRef<Type> >& m_v)
+    static void Parse(IObjectList* plist, int offset, TVector<TRef<Type> >& m_v)
     {
         int maxIndex = offset;
 

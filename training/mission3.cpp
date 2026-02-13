@@ -270,7 +270,8 @@ namespace Training
     {
         // generate the array of leaf conditions and fill it in
         Condition*      pTargetCondition[TM_NUMBER_OF_DERELICTS];
-        for (int i = 0; i < TM_NUMBER_OF_DERELICTS; i++)
+        int i;
+        for (i = 0; i < TM_NUMBER_OF_DERELICTS; i++)
             pTargetCondition[i] = new GetTargetCondition (trekClient.GetShip(), OT_ship, m_derelict_hulls[i]);
 
         // walk the array of leaf conditions pairing them using Or conditions
@@ -380,7 +381,7 @@ namespace Training
 		// tm_3_07
 		// The armor gauge shows how much more damage your ship hull 
 		// can withstand before breaking apart. If this gauge drops to 
-		// 0, you will explodeÿ. This is what it will look like when 
+		// 0, you will explodeï¿½. This is what it will look like when 
 		// you take armor damage.
         {
             Goal*   pGoal = CreatePlaySoundGoal (tm_3_07Sound);
@@ -862,7 +863,7 @@ namespace Training
         pGoalList->AddGoal (new Goal (new ElapsedTimeCondition (0.5f)));
 
 		// tm_3_34
-		// Blow up your target with the machine guns.ÿ
+		// Blow up your target with the machine guns.ï¿½
         {
             Goal*   pGoal = new Goal (new GetShipIsDestroyedCondition (new CurrentTarget (new PlayerShipTarget, true)));
             pGoal->AddStartAction (new MessageAction ("Destroy current target."));

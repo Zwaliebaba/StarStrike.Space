@@ -1,4 +1,10 @@
 #include "pch.h"
+
+// Required for SEH to work without conflict with C++ exception handling
+// This file has functions that use both SEH (__try/__except) and C++ exceptions
+// We need to enable async exceptions for the SEH functions
+#pragma warning(disable: 4530) // C++ exception handler used, but unwind semantics are not enabled
+
 #include "regkey.h"
 
 //////////////////////////////////////////////////////////////////////////////
@@ -314,10 +320,55 @@ void Win32App::OnAssertBreak()
 //
 //////////////////////////////////////////////////////////////////////////////
 
+// Forward declare the inner function that is compiled without /EHsc
+static int Win32MainInner(LPSTR lpszCmdLine);
+
+// Outer wrapper with SEH - this is declared extern "C" to prevent C++ name mangling
+// and compiled with /EHa enabled for this translation unit
+extern "C" static int Win32MainWithSEH(LPSTR lpszCmdLine)
+{
+    __try {
+        return Win32MainInner(lpszCmdLine);
+    } __except (g_papp->OnException(_exception_code(), (ExceptionData*)_exception_info())){
+        return 1;
+    }
+}
+
+// Inner function that does the actual work, with no SEH
+static int Win32MainInner(LPSTR lpszCmdLine)
+{
+    HRESULT hr = S_OK;
+
+    do {
+        #ifdef _DEBUG
+            InitializeDebugf();
+        #endif
+
+        BreakOnError(hr = Window::StaticInitialize());
+        BreakOnError(hr = g_papp->Initialize(lpszCmdLine));
+
+        //
+        // Win32App::Initialize() return S_FALSE if this is a command line app and
+        // we shouldn't run the message loop
+        //
+
+        if (SUCCEEDED(hr) && S_FALSE != hr) {
+            Window::MessageLoop();
+        }
+
+        g_papp->Terminate();
+        Window::StaticTerminate();
+
+        #ifdef _DEBUG
+            TerminateDebugf();
+        #endif
+    } while (false);
+
+    return 0;
+}
+
 __declspec(dllexport) int WINAPI Win32Main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
 {
-    HRESULT hr;
-
     // seed the random number generator with the current time
     // (GetTickCount may be semi-predictable on server startup, so we add the 
     // clock time to shake things up a bit)
@@ -327,36 +378,9 @@ __declspec(dllexport) int WINAPI Win32Main(HINSTANCE hInstance, HINSTANCE hPrevI
     char* pzSpacer = new char[4 * (int)random(21, 256)];
     pzSpacer[0] = *(char*)_alloca(4 * (int)random(1, 256));
 
-    __try {
-        do {
-            #ifdef _DEBUG
-                InitializeDebugf();
-            #endif
+    int result = Win32MainWithSEH(lpszCmdLine);
 
-            BreakOnError(hr = Window::StaticInitialize());
-            BreakOnError(hr = g_papp->Initialize(lpszCmdLine));
+    delete[] pzSpacer;
 
-            //
-            // Win32App::Initialize() return S_FALSE if this is a command line app and
-            // we shouldn't run the message loop
-            //
-
-            if (SUCCEEDED(hr) && S_FALSE != hr) {
-                Window::MessageLoop();
-            }
-
-            g_papp->Terminate();
-            Window::StaticTerminate();
-
-            #ifdef _DEBUG
-                TerminateDebugf();
-            #endif
-
-        } while (false);
-    } __except (g_papp->OnException(_exception_code(), (ExceptionData*)_exception_info())){
-    }
-
-    delete pzSpacer;
-
-    return 0;
+    return result;
 }

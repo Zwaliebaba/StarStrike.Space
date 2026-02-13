@@ -62,7 +62,7 @@ public:
 
 //////////////////////////////////////////////////////////////////////////////
 // WinTrek Client
-const c_numGrooveLevels = 3;
+const int c_numGrooveLevels = 3;
 
 class  WinTrekClient :
     public BaseClient,

@@ -48,7 +48,7 @@ public:
         //
 
         CastTo(m_pbuttonClose, m_pns->FindMember("closeButton"));
-        AddEventTarget(OnButtonClose, m_pbuttonClose->GetEventSource());
+        AddEventTarget(&MMLPopup::OnButtonClose, m_pbuttonClose->GetEventSource());
 
         //
         // Default attributes

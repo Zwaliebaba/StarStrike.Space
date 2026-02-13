@@ -40,15 +40,15 @@ void Color::GetHSB(float& h, float& s, float& b)
     //
 
     if (c0 > cm) {
-        swap(c0, cm);
+        zswap(c0, cm);
     }
 
     if (cm > c1) {
-        swap(cm, c1);
+        zswap(cm, c1);
     }
 
     if (c0 > cm) {
-        swap(c0, cm);
+        zswap(c0, cm);
     }
 
     //

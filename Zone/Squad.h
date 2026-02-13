@@ -22,7 +22,7 @@ public:
     RANK_UNKNOWN,
   };
 
-  static IsRankValid(Rank rank)
+  static bool IsRankValid(Rank rank)
   {
       return rank >= RANK_COTTON && rank < RANK_MAX;
   }

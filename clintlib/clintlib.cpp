@@ -2909,7 +2909,8 @@ void BaseClient::FireMissile(IshipIGC* pShip,
     float               fDispersionBase = -fDispersion;
     float               fUniformDispersion = (2.0f * fDispersion) / (float) iNumMissiles;
     float               fHalfUniformDispersion = fUniformDispersion * 0.5f;
-    for (int i = 0; i < iNumMissiles; i++)
+    int i;
+    for (i = 0; i < iNumMissiles; i++)
     {
         missileLaunchData[i].vecForward = vecLaunchForward;
         if (fDispersion != 0.0f)

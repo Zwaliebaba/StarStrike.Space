@@ -81,7 +81,7 @@ inline ValueType bound(ValueType value, ValueType min, ValueType max)
 }
 
 template<class Type>
-inline void swap(Type& x, Type& y)
+inline void zswap(Type& x, Type& y)
 {
     Type temp(x);
     x = y;

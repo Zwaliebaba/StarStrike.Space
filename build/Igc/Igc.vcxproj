@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>ARM64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|Win32">
+      <Configuration>Test</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9D4B72C1-3FD7-3A49-AC7C-DD563EAF030F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>Win32</Platform>
+    <ProjectName>Igc</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\igc\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Igc.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">igc</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\igc\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Igc.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">igc</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\igc\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">Igc.dir\Test\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">igc</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <ForcedIncludeFiles>C:/Users/zwali/source/repos/StarStrike.Space/cmake/allegiance_compat.h</ForcedIncludeFiles>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;DEBUG;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <ForcedIncludeFiles>C:/Users/zwali/source/repos/StarStrike.Space/cmake/allegiance_compat.h</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <ForcedIncludeFiles>C:/Users/zwali/source/repos/StarStrike.Space/cmake/allegiance_compat.h</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild>false</MinimalRebuild>
+      <OmitFramePointers>true</OmitFramePointers>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;CMAKE_INTDIR="Test"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;CMAKE_INTDIR=\"Test\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/zwali/source/repos/StarStrike.Space/Igc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/zwali/source/repos/StarStrike.Space -BC:/Users/zwali/source/repos/StarStrike.Space/build --check-stamp-file C:/Users/zwali/source/repos/StarStrike.Space/build/Igc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\zwali\source\repos\StarStrike.Space\build\Igc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/zwali/source/repos/StarStrike.Space/Igc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/zwali/source/repos/StarStrike.Space -BC:/Users/zwali/source/repos/StarStrike.Space/build --check-stamp-file C:/Users/zwali/source/repos/StarStrike.Space/build/Igc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\zwali\source\repos\StarStrike.Space\build\Igc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">Building Custom Rule C:/Users/zwali/source/repos/StarStrike.Space/Igc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/zwali/source/repos/StarStrike.Space -BC:/Users/zwali/source/repos/StarStrike.Space/build --check-stamp-file C:/Users/zwali/source/repos/StarStrike.Space/build/Igc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:\Users\zwali\source\repos\StarStrike.Space\build\Igc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\afterburnerIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\asteroidigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\bucketigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\buoyigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\chaffigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\chafftypeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\civilizationigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\cloakigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\clusterIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\common.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\developmentigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\dispenserigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\dronetypeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\hullTypeIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\launchertypeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\magazineigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\mapmakerigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\mineigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\minetypeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\missileigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\missiletypeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\missionigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\modelIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\packigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\partTypeIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\pch.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\private.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\probeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\probetypeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\projectileIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\projectileTypeIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\shieldIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\shipIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\sideigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\stationIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\stationtypeigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\treasureIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\treasuresetigc.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\warpIGC.cpp" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\weaponIGC.cpp" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\afterburnerIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\asteroidigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\bucketigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\buildingeffectigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\buoyigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\chaffigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\chafftypeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\civilizationigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\cloakigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\clusterIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\developmentigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\dispenserigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\dronetypeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\hullTypeIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\igc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\launchertypeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\magazineigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\mapmakerigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\mineigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\minetypeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\missileigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\missiletypeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\missionigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\modelIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\packigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\partTypeIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\pch.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\private.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\probeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\probetypeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\projectileIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\projectileTypeIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\shieldIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\shipIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\sideigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\sounds.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\stationIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\stationtypeigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\treasureIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\treasuresetigc.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\warpIGC.h" />
+    <ClInclude Include="C:\Users\zwali\source\repos\StarStrike.Space\Igc\weaponIGC.h" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\zwali\source\repos\StarStrike.Space\build\ZERO_CHECK.vcxproj">
+      <Project>{86200264-745F-3439-95F8-1D7DB6018DF0}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\zwali\source\repos\StarStrike.Space\build\guids\FedGuids.vcxproj">
+      <Project>{EF581A22-3DB0-34CC-806E-4933E0F9C864}</Project>
+      <Name>FedGuids</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\zwali\source\repos\StarStrike.Space\build\_Utility\Utility.vcxproj">
+      <Project>{985E8014-D043-37A7-BA74-BE12D5A7B865}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\zwali\source\repos\StarStrike.Space\build\zlib\ZLibrary.vcxproj">
+      <Project>{F19146DA-88CE-3EEE-940C-7D944EA3518C}</Project>
+      <Name>ZLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

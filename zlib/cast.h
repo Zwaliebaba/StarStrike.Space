@@ -119,4 +119,7 @@ void RuntimeCastTo(TRef<DestType>& pdest, TRef<SourceType>& psource)
         return p;                         \
     }
 
+// CastMember is an alias for DefineCastMember (legacy compatibility)
+#define CastMember(Type) DefineCastMember(Type)
+
 #endif

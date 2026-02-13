@@ -318,7 +318,7 @@ public:
         str += Indent(indent) + "], [\n";
 
         count = m_indices.GetCount();
-        for(index = 0; index < count; index += 3) {
+        for(int index = 0; index < count; index += 3) {
             str +=
                   Indent(indent + 1)
                 + ZString((int)m_indices[index]) + ", "
@@ -1551,7 +1551,8 @@ public:
         //
 
         int count = GetChildCount();
-        for (int index = 0; index < count - 1; index++) {
+        int index;
+        for (index = 0; index < count - 1; index++) {
             if (radius > m_radii[index]) {
                 break;
             }
@@ -1576,7 +1577,8 @@ public:
             // Insert before index
             //
 
-            for (int inew = count - 1; inew > index; inew--) {
+            int inew;
+            for (inew = count - 1; inew > index; inew--) {
                 m_radii.Set(inew, m_radii[inew - 1]);
             }
 
@@ -1640,7 +1642,8 @@ public:
         float radius = pcontext->GetLOD();
 
         int count = GetChildCount();
-        for (int index = 0; index < count - 1; index++) {
+        int index;
+        for (index = 0; index < count - 1; index++) {
             if (radius > m_radii[index]) {
                 break;
             }

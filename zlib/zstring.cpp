@@ -71,7 +71,8 @@ void ZString::ZStringData::Set(int index, char ch)
 int ZString::ZStringData::Find(const ZStringData* pdata) const
 {
     for(int index = 0; index < m_length - pdata->m_length + 1; index++) {
-        for (int index2 = 0; index2 < pdata->m_length; index2++) {
+        int index2;
+        for (index2 = 0; index2 < pdata->m_length; index2++) {
             if (m_pcc[index + index2] != pdata->m_pcc[index2]) {
                 break;
             }
@@ -87,7 +88,8 @@ int ZString::ZStringData::Find(const ZStringData* pdata) const
 int ZString::ZStringData::ReverseFind(const ZStringData* pdata) const
 {
     for(int index = m_length - pdata->m_length + 1; index >=0 ; index--) {
-        for (int index2 = 0; index2 < pdata->m_length; index2++) {
+        int index2;
+        for (index2 = 0; index2 < pdata->m_length; index2++) {
             if (m_pcc[index + index2] != pdata->m_pcc[index2]) {
                 break;
             }
@@ -562,7 +564,8 @@ ZString ZString::ToUpper() const
 
 void ZToLower(char* szDest, PCC szSource)
 {
-    for (int index = 0; szSource[index] != '\0'; ++index) {
+    int index;
+    for (index = 0; szSource[index] != '\0'; ++index) {
         char ch = szSource[index];
         if (ch >= 'A' && ch <= 'Z')
             szDest[index] = (ch - ('A' - 'a'));
@@ -574,7 +577,8 @@ void ZToLower(char* szDest, PCC szSource)
 
 void ZToUpper(char* szDest, PCC szSource)
 {
-    for (int index = 0; szSource[index] != '\0'; ++index) {
+    int index;
+    for (index = 0; szSource[index] != '\0'; ++index) {
         char ch = szSource[index];
         if (ch >= 'a' && ch <= 'z')
             szDest[index] = (ch - ('a' - 'A'));

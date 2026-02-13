@@ -139,7 +139,7 @@ public:
         return Point(u, v);
     }
 
-    friend operator==(const Vertex& v0, const Vertex& v1)
+    friend bool operator==(const Vertex& v0, const Vertex& v1)
     {
         return
                v0.x  == v1.x
@@ -253,7 +253,7 @@ public:
         return Color(r, g, b, a);
     }
 
-    friend operator==(const VertexL& v0, const VertexL& v1)
+    friend bool operator==(const VertexL& v0, const VertexL& v1)
     {
         return
                v0.x == v1.x

@@ -310,7 +310,8 @@ public:
         void AddImport(const ZString& str, INameSpace* pns)
         {
             int count = m_pnss.GetCount();
-            for (int index = 0; index < count; index++) {
+            int index;
+            for (index = 0; index < count; index++) {
                 if (m_pnss[index] == pns) {
                     break;
                 }

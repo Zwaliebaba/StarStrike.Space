@@ -289,6 +289,26 @@ public:
 
     //////////////////////////////////////////////////////////////////////////////
     //
+    // SEH helper for destructor cleanup - must be separate function without
+    // C++ objects that require unwinding
+    //
+    //////////////////////////////////////////////////////////////////////////////
+
+    static void DestructorCleanup_SEH(FrameData** ppDamageFrames, int* pCrashCount)
+    {
+        __try {
+            delete[] *ppDamageFrames;
+            *ppDamageFrames = NULL;
+        } __except (true) {
+            //
+            // We got an exception.  Just continue.
+            //
+            (*pCrashCount)++;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    //
     // 
     //
     //////////////////////////////////////////////////////////////////////////////
@@ -297,41 +317,26 @@ public:
     {
         //
         // This destructor crashes sometimes.  If it does, just continue.
+        // The delete[] is protected by SEH in a separate function.
         //
 
-        __try {
-            /*
-            static count = 0;
-            count++;
-            if (count == 1) {
-                *(BYTE*)NULL = 0;
-            }
-            */
+        DestructorCleanup_SEH(&m_damageFrames, &s_crashCount);
 
-            delete[] m_damageFrames;
-
-            m_pmodeler = NULL;
-            m_pframes = NULL;
-            m_pgeoTrail = NULL;
-            m_pgeoMesh = NULL;
-            m_phullHitGeo = NULL;
-            m_pgeoLights = NULL;
-            m_pgeoBounds = NULL;
-            m_psurfaceTexture = NULL;
-            m_pvectorPositionTrail = NULL;
-            m_pvectorRightTrail = NULL;
-            m_pbooleanMoving = NULL;
-            m_pgroupFlares = NULL;
-            m_pParticleGeo = NULL;
-            m_pbitsGeo = NULL;
-            m_pimageGlow = NULL;
-        } __except (true) {
-            //
-            // We got an exception.  Just continue.
-            //
-
-            s_crashCount++;
-        }
+        m_pmodeler = NULL;
+        m_pframes = NULL;
+        m_pgeoTrail = NULL;
+        m_pgeoMesh = NULL;
+        m_phullHitGeo = NULL;
+        m_pgeoLights = NULL;
+        m_pgeoBounds = NULL;
+        m_psurfaceTexture = NULL;
+        m_pvectorPositionTrail = NULL;
+        m_pvectorRightTrail = NULL;
+        m_pbooleanMoving = NULL;
+        m_pgroupFlares = NULL;
+        m_pParticleGeo = NULL;
+        m_pbitsGeo = NULL;
+        m_pimageGlow = NULL;
     }
 
     //////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,12 @@
+C:/Users/zwali/source/repos/StarStrike.Space/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/zlib/CMakeFiles/ZLibrary.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/guids/CMakeFiles/FedGuids.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/_Utility/CMakeFiles/Utility.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Igc/CMakeFiles/Igc.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/engine/CMakeFiles/Engine.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/effect/CMakeFiles/Effect.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/soundengine/CMakeFiles/SoundEngine.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/clintlib/CMakeFiles/ClintLib.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/training/CMakeFiles/Training.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/sharemem/CMakeFiles/ShareMem.dir
