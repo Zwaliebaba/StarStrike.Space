@@ -247,7 +247,6 @@
     <ClCompile Include="..\sentinal\srvdbg.cpp" />
     <ClCompile Include="..\sharemem\pch.cpp" />
     <ClCompile Include="..\sharemem\sharemem.cpp" />
-    <ClCompile Include="AdminEventLoggerHook.cpp" />
     <ClCompile Include="AdminGame.cpp" />
     <ClCompile Include="AdminGames.cpp" />
     <ClCompile Include="AdminServer.cpp" />
@@ -286,7 +285,6 @@
     <ClInclude Include="..\sentinal\sentinal.h" />
     <ClInclude Include="..\sentinal\srvdbg.h" />
     <ClInclude Include="..\sharemem\pch.h" />
-    <ClInclude Include="AdminEventLoggerHook.h" />
     <ClInclude Include="AdminGame.h" />
     <ClInclude Include="AdminGames.h" />
     <ClInclude Include="AdminServer.h" />

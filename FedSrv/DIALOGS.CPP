@@ -9,17 +9,16 @@
 #include "Resource.h"
 #include "fedsrv.h"
 
-// All externs from fedsrv.cpp
-extern const char * c_szBadArtPath;
-extern const char * c_szBadArtPathTitle;
-extern const int    c_cbArtFilePath;
-extern char         g_szFileSpecArt[]; //Same as ...Dir below, but with '*' at the end
-extern char         g_szFilePathArt[];
-extern char         g_szHTTPArt[]; // what the client gets to prepend to all http art requests
-extern const char * c_szIniSection;
-extern const char * c_szIniFile;
-extern const char * c_szIniKeyHTTPArt;
-extern const char * c_szIniKeyFileArt;
+// Art path globals (originally from non-standalone server)
+const char * c_szBadArtPath = "Bad path to art files.";
+const char * c_szBadArtPathTitle = "Error";
+char         g_szFileSpecArt[MAX_PATH] = "";
+char         g_szFilePathArt[MAX_PATH] = "";
+char         g_szHTTPArt[MAX_PATH] = "";
+const char * c_szIniSection = "AllSrv";
+const char * c_szIniFile = "AllSrv.ini";
+const char * c_szIniKeyHTTPArt = "HTTPArt";
+const char * c_szIniKeyFileArt = "FileArt";
 
 /****************************************************************************
 *

@@ -21,7 +21,7 @@ typedef struct _PERF_COUNTER_MAP
 
 typedef struct _PERF_OBJECT_MAP
 {
-    TCHAR               mszProgramName[MAX_SERVICE_NAME_LENGTH];
+    wchar_t             mszProgramName[MAX_SERVICE_NAME_LENGTH];
 
     //
     // mPerfId should be defined in counters.h

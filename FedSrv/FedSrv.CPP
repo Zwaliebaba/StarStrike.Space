@@ -4476,7 +4476,7 @@ HRESULT FedSrvSiteBase::OnAppMessage(FedMessaging * pthis, CFMConnection & cnxnF
       if (bForward)
           ForwardChatMessage(pfsMission, pfsPlayer, pfm,
                              &(pfmChat->cd),
-                             pszMsg,
+                             FM_VAR_REF(pfmChat, Message),
                              pfmChat->otTarget,
                              pfmChat->oidTarget,
                              NULL);
@@ -6554,7 +6554,7 @@ void ProcessNetworkMessages()
       DWORD cMsgs;
       DWORD cbMsgs;
       HRESULT hr = g.fm.GetConnectionSendQueue(&cnxn, &cMsgs, &cbMsgs);
-      const cMaxQ = 50;
+      const int cMaxQ = 50;
       if ((cnxn.IncAbsentCount() > 6) || // give them a ridiculous 1 minute of no messages
           FAILED(hr) || 
           (cMsgs > cMaxQ)) // dead--nuke 'em
@@ -11106,7 +11106,7 @@ IshipIGC*   PickNewLeader(const ShipListIGC*    pships,
     {
       SYSTEMTIME systime;
       DWORD l = strlen(psz);
-      const c_cbPrefix = 19; // time format: 12/31 23:59:59.999 
+      const int c_cbPrefix = 19; // time format: 12/31 23:59:59.999 
       DWORD cbLine = l + c_cbPrefix;
       OVERLAPPED* pov = (OVERLAPPED*)(new char [ sizeof(OVERLAPPED) + cbLine ]);
       *pov = m_overlapped;

@@ -10,6 +10,18 @@
 #ifndef _FEDSRV_PCH_
 #define _FEDSRV_PCH_
 
+// Prevent MsHTML.h from being included - it conflicts with zlib's IEventTarget
+#define __mshtml_h__
+
+// Required C++ headers before ATL
+#include <new>
+#include <exception>
+
+// ALLSRV_STANDALONE mode is now the default - Zone authentication removed
+#ifndef ALLSRV_STANDALONE
+  #define ALLSRV_STANDALONE
+#endif
+
 #define _ATL_STATIC_REGISTRY
 
 // browse info overflow warnings for STL objects
@@ -51,18 +63,28 @@
 //extern CServiceModule _Module;
 //#include <atlcom.h>
 
-#include <ZoneAuthDecrypt.h>
+// ZoneAuthDecrypt.h only needed for non-standalone (Zone authentication)
+#if !defined(ALLSRV_STANDALONE)
+  #include <ZoneAuthDecrypt.h>
+#endif
+
+// ATL is incompatible with the 'new' macro from zlib/alloc.h
+#ifdef _DebugNewDefined_
+  #undef new
+#endif
 
 // This also includes <atlbase.h> and <atlcom.h>
 #include "AllSrvModule.h"
 
 #include <TCLib.h>
-#include <..\TCLib\AutoHandle.h>
+#include <AutoHandle.h>
 
 #include <TCAtl.h>
-#include <..\TCAtl\ObjectMap.h>
-#include <..\TCAtl\UserAcct.h>
-#include <..\TCLib\TCThread.h>
+#include <ObjectMap.h>
+#include <UserAcct.h>
+#include <TCThread.h>
+
+// NOTE: Debug 'new' macro is disabled for FedSrv due to ATL incompatibility
 
 
 #include "Zone.h"
@@ -74,12 +96,13 @@
 #include "SWMRG.h"
 #include "BitArray.h"
 #include "point.h"
-//#include "srvdbg.h"
+#include "srvdbg.h"
 
 #include "sharemem.h"
-//#include "config.h"
+#include "config.h"
 #include "counters.h"
 #include "srvqueries.h" // and allegdb.h
+#include "dirmon.h"
 
 #include "AllSrvModuleIDL.h" 
 #include "AdminUtil.h" 

@@ -71,7 +71,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -96,16 +96,16 @@
       <TreatWarningAsError>false</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;FEDSRV;igc_static;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;FEDSRV;igc_static;_WIN32_WINNT=0x0501;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;AGC_HOST;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;DEBUG;FEDSRV;igc_static;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;DEBUG;FEDSRV;igc_static;_WIN32_WINNT=0x0501;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;AGC_HOST;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -113,7 +113,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\igc\igc.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\_utility\Utility.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\zlib\zlib.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\guids\guids.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\sharemem\sharemem.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;comctl32.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\igc\igc.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\_utility\Utility.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\zlib\zlib.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\guids\guids.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Debug\sharemem\sharemem.lib;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Lib\dplayx.lib;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86\dxguid.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;comctl32.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;winmm.lib;netapi32.lib;wininet.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
@@ -125,7 +125,7 @@
       <LinkErrorReporting></LinkErrorReporting>
       <ProgramDataBaseFile>C:/Users/zwali/source/repos/StarStrike.Space/objs/debug/AllSrvd.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -133,7 +133,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -161,16 +161,16 @@
       <TreatWarningAsError>false</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0501;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;AGC_HOST;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0501;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;AGC_HOST;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -178,7 +178,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\igc\igc.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\_utility\Utility.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\zlib\zlib.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\guids\guids.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\sharemem\sharemem.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;comctl32.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\igc\igc.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\_utility\Utility.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\zlib\zlib.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\guids\guids.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Release\sharemem\sharemem.lib;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Lib\dplayx.lib;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86\dxguid.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;comctl32.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;winmm.lib;netapi32.lib;wininet.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
@@ -190,7 +190,7 @@
       <LinkErrorReporting></LinkErrorReporting>
       <ProgramDataBaseFile>C:/Users/zwali/source/repos/StarStrike.Space/objs/retail/AllSrv.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -198,7 +198,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -226,16 +226,16 @@
       <TreatWarningAsError>false</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR="Test"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0501;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;AGC_HOST;CMAKE_INTDIR="Test"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR=\"Test\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;FEDSRV;igc_static;_WIN32_WINNT=0x0501;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;AGC_HOST;CMAKE_INTDIR=\"Test\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\FedSrv;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\Igc;C:\Users\zwali\source\repos\StarStrike.Space\AGC;C:\Users\zwali\source\repos\StarStrike.Space\fedperf;C:\Users\zwali\source\repos\StarStrike.Space\sentinal;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\test\Inc;C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\test\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -243,7 +243,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\igc\igc.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\_utility\Utility.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\zlib\zlib.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\guids\guids.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\sharemem\sharemem.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;comctl32.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\igc\igc.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\_utility\Utility.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\zlib\zlib.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\guids\guids.lib;C:\Users\zwali\source\repos\StarStrike.Space\objs\Test\sharemem\sharemem.lib;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Lib\dplayx.lib;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86\dxguid.lib;ws2_32.lib;odbc32.lib;odbccp32.lib;comctl32.lib;version.lib;ole32.lib;oleaut32.lib;uuid.lib;winmm.lib;netapi32.lib;wininet.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
@@ -255,7 +255,7 @@
       <LinkErrorReporting></LinkErrorReporting>
       <ProgramDataBaseFile>C:/Users/zwali/source/repos/StarStrike.Space/objs/test/AllSrv.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -320,11 +320,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/AllSrv.dir/Test/cmake_pch.pch</PrecompiledHeaderOutputFile>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\AdminEventLoggerHook.cpp">
-      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-    </ClCompile>
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\AdminGame.cpp">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -381,7 +376,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\config.cpp">
-      <ObjectFileName>$(IntDir)/config.cpp.obj</ObjectFileName>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -438,7 +432,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\srvdbg.cpp">
-      <ObjectFileName>$(IntDir)/srvdbg.cpp.obj</ObjectFileName>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -449,6 +442,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\SWMRG.CPP">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\AGCGuids.cpp">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -479,34 +477,37 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\config.cpp">
-      <ObjectFileName>$(IntDir)/__/sentinal/config.cpp.obj</ObjectFileName>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\TCLib.cpp">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\dplaychk.cpp">
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\WorkerThread.cpp">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\sentinal.cpp">
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\TCThread.cpp">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\srvdbg.cpp">
-      <ObjectFileName>$(IntDir)/__/sentinal/srvdbg.cpp.obj</ObjectFileName>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\UtilityThread.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\DynaLib.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\StrManip.cpp">
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir/Test/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <ResourceCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\FedSrv.RC">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">NotUsing</PrecompiledHeader>
-    </ResourceCompile>
-    <ResourceCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\sentinal.rc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">NotUsing</PrecompiledHeader>

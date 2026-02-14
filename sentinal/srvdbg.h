@@ -12,10 +12,20 @@
 
 ************************************************************************/
 
+// If FedSrv/srvdbg.h was already included via pch.h, skip this file
 #ifdef _SRVDBG_H
+
+// Use FedSrv version instead - define sentmsg constants if needed
+#ifndef SRVDBG_ASSERT
+#include "sentmsg.h"
+#endif
+
+#else // !_SRVDBG_H
+
+#ifdef _SENTINAL_SRVDBG_H_
 #error srvdbg.h included twice
 #endif
-#define _SRVDBG_H
+#define _SENTINAL_SRVDBG_H_
 
 #ifndef _WINDOWS_
 #define WIN32_LEAN_AND_MEAN
@@ -141,3 +151,5 @@ void SRVDBG_DoAssert(
     LPCSTR                      szFile,
     int                         iLine,
     LPCSTR                      szAssert );
+
+#endif // !_SRVDBG_H

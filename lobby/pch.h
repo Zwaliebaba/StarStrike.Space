@@ -11,6 +11,11 @@
 #ifndef _LOBBY_PCH_
 #define _LOBBY_PCH_
 
+// Define ALLSRV_STANDALONE to bypass legacy Zone authentication
+#ifndef ALLSRV_STANDALONE
+  #define ALLSRV_STANDALONE
+#endif
+
 #include <windows.h>
 #include <stdlib.h>
 #include <memory.h>

@@ -29,9 +29,9 @@
 //      interface ISampleEvents : IUnknown
 //      {
 //        HRESULT OnHello([in] VARIANT_BOOL IsHappy, [in] BSTR Text);
-//        …
+//        ï¿½
 //        HRESULT OnGoodbye([in] VARIANT_BOOL IsHappy, [in] BSTR Text);
-//        …
+//        ï¿½
 //      }; // End: interface ISampleEvents : IUnknown
 //
 // To declare a connection point class for this sample interface, use the
@@ -77,7 +77,7 @@ public:
   // Declares a vector type of /IV/ interface pointers.
   typedef std::vector<IV*> vector_vtbl;
   // Declares a vector iterator type for vector_vtbl.
-  typedef vector_vtbl::iterator it_vtbl;
+  typedef typename vector_vtbl::iterator it_vtbl;
 
 // Overrides
 protected:
@@ -264,7 +264,7 @@ void TCComEventsCP<T, IV, piid>::RemoveFailedSink(HRESULT hr, IV* pIfVtbl)
 // Declaration:
 // #define BEGIN_TCComEventsCP(className, IV)                               \
 //   BEGIN_TCComEventsCP_IID(className, IV, IID_##IV)                      
-// …
+// ï¿½
 // #define BEGIN_TCComEventsCP_IID(className, IV, IID_vtbl)                 \
 //   template <class T>                                                     \
 //   class ATL_NO_VTABLE className : public TCComEventsCP<T, IV, &IID_vtbl> \
@@ -272,7 +272,7 @@ void TCComEventsCP<T, IV, piid>::RemoveFailedSink(HRESULT hr, IV* pIfVtbl)
 //   protected:                                                             \
 //     typedef TCComEventsCP<T, IV, &IID_vtbl>::TIV TIV;                    \
 //     typedef TCComEventsCP<T, IV, &IID_vtbl>::PIV PIV;
-// …
+// ï¿½
 // #define END_TCComEventsCP()                                              \
 //   };
 //
@@ -301,8 +301,8 @@ void TCComEventsCP<T, IV, piid>::RemoveFailedSink(HRESULT hr, IV* pIfVtbl)
   class ATL_NO_VTABLE className : public TCComEventsCP<T, IV, &IID_vtbl>    \
   {                                                                         \
   protected:                                                                \
-    typedef TCComEventsCP<T, IV, &IID_vtbl>::TIV TIV;                       \
-    typedef TCComEventsCP<T, IV, &IID_vtbl>::PIV PIV;
+    typedef typename TCComEventsCP<T, IV, &IID_vtbl>::TIV TIV;              \
+    typedef typename TCComEventsCP<T, IV, &IID_vtbl>::PIV PIV;
 
 /////////////////////////////////////////////////////////////////////////////
 // {partof:BEGIN_TCComEventsCP}

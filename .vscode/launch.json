@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug AllSrv (Server)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/objs/debug/AllSrvd.exe",
+            "cwd": "${workspaceFolder}/objs/debug"
+        },
+        {
+            "name": "Debug Allegiance (Client)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/objs/debug/Allegianced.exe",
+            "cwd": "${workspaceFolder}/objs/debug"
+        }
+    ]
+}

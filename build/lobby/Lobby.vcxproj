@@ -96,12 +96,12 @@
       <TreatWarningAsError>false</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;DEBUG;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;DEBUG;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -161,12 +161,12 @@
       <TreatWarningAsError>false</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -226,12 +226,12 @@
       <TreatWarningAsError>false</TreatWarningAsError>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR="Test"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;CMAKE_INTDIR="Test"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;CMAKE_INTDIR=\"Test\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;STRICT;DIRECTINPUT_VERSION=0x0700;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;DEBUG;OPTIMIZED;LOBBY;_WIN32_WINNT=0x0400;_ATL_STATIC_REGISTRY;ALLSRV_STANDALONE;CMAKE_INTDIR=\"Test\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\zwali\source\repos\StarStrike.Space\Inc;C:\Users\zwali\source\repos\StarStrike.Space\Zone;C:\Users\zwali\source\repos\StarStrike.Space\guids;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;C:\Users\zwali\source\repos\StarStrike.Space\DX9\Include;C:\Users\zwali\source\repos\StarStrike.Space\lobby;C:\Users\zwali\source\repos\StarStrike.Space\zlib;C:\Users\zwali\source\repos\StarStrike.Space\_Utility;C:\Users\zwali\source\repos\StarStrike.Space\sharemem;C:\Users\zwali\source\repos\StarStrike.Space\TCLib;C:\Users\zwali\source\repos\StarStrike.Space\TCAtl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>

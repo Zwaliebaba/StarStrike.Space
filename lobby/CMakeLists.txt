@@ -50,6 +50,7 @@ target_compile_definitions(Lobby PRIVATE
     LOBBY
     _WIN32_WINNT=0x0400
     _ATL_STATIC_REGISTRY
+    ALLSRV_STANDALONE  # Bypass legacy Zone authentication
 )
 
 # Enable RTTI (RuntimeTypeInfo)

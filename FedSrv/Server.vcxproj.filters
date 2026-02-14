@@ -45,7 +45,6 @@
     <ClCompile Include="..\sentinal\srvdbg.cpp">
       <Filter>Sentinal</Filter>
     </ClCompile>
-    <ClCompile Include="AdminEventLoggerHook.cpp" />
     <ClCompile Include="AdminGame.cpp" />
     <ClCompile Include="AdminGames.cpp" />
     <ClCompile Include="AdminServer.cpp" />
@@ -107,7 +106,6 @@
       <Filter>Sentinal</Filter>
     </ClInclude>
     <ClInclude Include="_fedsrv.h" />
-    <ClInclude Include="AdminEventLoggerHook.h" />
     <ClInclude Include="AdminGame.h" />
     <ClInclude Include="AdminGames.h" />
     <ClInclude Include="AdminServer.h" />

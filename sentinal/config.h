@@ -11,10 +11,13 @@
  * Copyright 1986-1998 Microsoft Corporation, All Rights Reserved
  *-----------------------------------------------------------------------*/
 
-#ifdef _CONFIG_H
+// If FedSrv/config.h was already included via pch.h, skip this file
+#ifndef _CONFIG_H
+
+#ifdef _SENTINAL_CONFIG_H_
 #error config.h included twice
 #endif
-#define _CONFIG_H
+#define _SENTINAL_CONFIG_H_
 
 #define HKLM_Sentinal		"SYSTEM\\CurrentControlSet\\Services\\Sentinal\\Parameters"
 
@@ -250,3 +253,4 @@ private:
     }
 };
 
+#endif // !_CONFIG_H

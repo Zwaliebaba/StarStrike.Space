@@ -82,7 +82,6 @@ OBJSCNST= $(DESTDIR)\FedSrv.obj   \
           $(DESTDIR)\AdminSession.obj \
           $(DESTDIR)\AdminSessionClass.obj \
           $(DESTDIR)\AdminSessionEventSink.obj \
-          $(DESTDIR)\AdminEventLoggerHook.obj \
           $(DESTDIR)\AdminShip.obj \
           $(DESTDIR)\AllSrvModule.obj \
           $(DESTDIR)\fslobby.obj \
@@ -133,7 +132,6 @@ $(DESTDIR)\AdminServer.obj           : $(PCHFILE)
 $(DESTDIR)\AdminSession.obj          : $(PCHFILE)
 $(DESTDIR)\AdminSessionClass.obj     : $(PCHFILE)
 $(DESTDIR)\AdminSessionEventSink.obj : $(PCHFILE)
-$(DESTDIR)\AdminEventLoggerHook.obj  : $(PCHFILE)
 $(DESTDIR)\AdminUser.obj             : $(PCHFILE)
 $(DESTDIR)\AdminUsers.obj            : $(PCHFILE)
 $(DESTDIR)\AdminShip.obj             : $(PCHFILE)

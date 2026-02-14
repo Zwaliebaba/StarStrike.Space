@@ -123,7 +123,7 @@ public:
     #endif // defined(XWorkItem_TRACE)
 
     if (m_pfnRelease)
-      (*m_pfnRelease)(m_idMsg, m_vec.size(), m_vec.begin());
+      (*m_pfnRelease)(m_idMsg, m_vec.size(), m_vec.data());
   }
 
 // Group=Data Members
@@ -460,18 +460,18 @@ unsigned TCWorkerThread::ThreadThunk(void* pvThis)
 // virtual method call, the XWorkItem instance is deleted which, in turn,
 // will allow the derived class to release any resources represented by the
 // arguments. Keep in mind that although the element of work is processed by
-// the OnMessage override of the derived class, *the* *method* *is* „
-// *called* *in* *the* *processing* *context* *of* *the* *worker* „
+// the OnMessage override of the derived class, *the* *method* *is* ï¿½
+// *called* *in* *the* *processing* *context* *of* *the* *worker* ï¿½
 // *thread.* This may pose little or no problem for most situations, but it
 // deserves to be mentioned here.
 //
 // Note: The virtual method is called within a *__try* block in case the
 // derived class instance has been destroyed or throws an uncaught exception
-// for any other reason. /If/ /the/ /derived/ /class/ /is/ /a/ /COM/ „
-// /object,/ /the/ /TCWorkerThread::XWorkItem::m_punkOwner/ /data/ /member/ „
-// /should/ /have/ /been/ /set,/ /causing/ /an/ /AddRef./ /This/ /should/ „
-// /circumvent/ /the/ /possibility/ /of/ /the/ /instance/ /being/ „
-// /destroyed/ /while/ /it/ /still/ /has/ /elements/ /of/ /work/ /in/ /the/ „
+// for any other reason. /If/ /the/ /derived/ /class/ /is/ /a/ /COM/ ï¿½
+// /object,/ /the/ /TCWorkerThread::XWorkItem::m_punkOwner/ /data/ /member/ ï¿½
+// /should/ /have/ /been/ /set,/ /causing/ /an/ /AddRef./ /This/ /should/ ï¿½
+// /circumvent/ /the/ /possibility/ /of/ /the/ /instance/ /being/ ï¿½
+// /destroyed/ /while/ /it/ /still/ /has/ /elements/ /of/ /work/ /in/ /the/ ï¿½
 // /queue./ However, this will also catch an ill-behaved override, so as to
 // not unexpectedly crash the thread. The associated *__except* block simply
 // sends a text message to the debug monitor but, mainly, serves the purpose
@@ -555,7 +555,7 @@ void TCWorkerThread::DispatchWorkItem(TCWorkerThread::XWorkItem* pItem)
     GetDebugOutput()->WriteLen(60,
       "XWorkItem\t%08X\tTCWorkerThread::DispatchWorkItem\n", pItem);
   #endif // defined(XWorkItem_TRACE)
-  OnMessage(pItem->m_idMsg, pItem->m_vec.size(), pItem->m_vec.begin());
+  OnMessage(pItem->m_idMsg, pItem->m_vec.size(), pItem->m_vec.data());
   DestroyWorkItem(pItem);
 }
 

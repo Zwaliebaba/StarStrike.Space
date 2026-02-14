@@ -22,6 +22,7 @@
 typedef enum
 {
     kCompId_FedSrv,                 // Settings related to FedSrv
+    kCompId_Sentinal,               // Settings related to Sentinal
 
     // !!NOTE!! If you add to this table, update REGCFG.CPP's CompIdToKey()
     // so when we run in registry mode we know where to look...
@@ -33,6 +34,9 @@ typedef enum
 
     kCompId_Last    // Must be last...
 } ComponentId;
+
+// Registry key paths
+#define HKLM_Sentinal		"SYSTEM\\CurrentControlSet\\Services\\Sentinal\\Parameters"
 
 typedef enum
 {

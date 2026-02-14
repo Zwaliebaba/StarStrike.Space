@@ -29,8 +29,9 @@ void __stdcall _com_issue_error(HRESULT);
   #define ALLEGIANCE_THROW0() 
   #define ALLEGIANCE_THROW(e) 
 #else
-  #define ALLEGIANCE_THROW0() throw()
-  #define ALLEGIANCE_THROW(e) throw(e)
+  // Use noexcept for C++11 and later (throw() is deprecated)
+  #define ALLEGIANCE_THROW0() noexcept
+  #define ALLEGIANCE_THROW(e) noexcept(false)
 #endif
 
 
@@ -872,11 +873,11 @@ public:
 
 	// Comparison operations
 	//
-	bool operator==(const VARIANT& varSrc) const ALLEGIANCE_THROW(_com_error);
-	bool operator==(const VARIANT* pSrc) const ALLEGIANCE_THROW(_com_error);
+	bool operator==(const VARIANT& varSrc) const ALLEGIANCE_THROW0();
+	bool operator==(const VARIANT* pSrc) const ALLEGIANCE_THROW0();
 
-	bool operator!=(const VARIANT& varSrc) const ALLEGIANCE_THROW(_com_error);
-	bool operator!=(const VARIANT* pSrc) const ALLEGIANCE_THROW(_com_error);
+	bool operator!=(const VARIANT& varSrc) const ALLEGIANCE_THROW0();
+	bool operator!=(const VARIANT* pSrc) const ALLEGIANCE_THROW0();
 
 	// Low-level operations
 	//

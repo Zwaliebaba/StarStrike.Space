@@ -37,11 +37,11 @@ DEFINE_GUID(FEDSRV_GUID,
 // !!! LoadSettings() !!!
 typedef enum
     {
-    karg_fTimeout, 
-    karg_fWantInt3,       
-    karg_dwPingInterval,
-    karg_szPagerNotificationURL,                  
-    karg_szMonitorServers,              
+    karg_sent_fTimeout, 
+    karg_sent_fWantInt3,       
+    karg_sent_dwPingInterval,
+    karg_sent_szPagerNotificationURL,                  
+    karg_sent_szMonitorServers,              
     } SENTINAL_ARGS;
 
 // instance of class that handles registry config parms
@@ -84,8 +84,8 @@ DWORD PingThreadProc(LPVOID lpv)
     char szServers[MAX_PATH + 1];
     char *psz = NULL;
     int nServers = 0;
-    g_pCfgMgr->GetConfigDWORD(kCompId_Sentinal, karg_dwPingInterval, (DWORD*)&dwPingInterval);
-    g_pCfgMgr->GetConfigString(kCompId_Sentinal, karg_szMonitorServers, szServers, sizeof(szServers)-1);
+    g_pCfgMgr->GetConfigDWORD(kCompId_Sentinal, karg_sent_dwPingInterval, (DWORD*)&dwPingInterval);
+    g_pCfgMgr->GetConfigString(kCompId_Sentinal, karg_sent_szMonitorServers, szServers, sizeof(szServers)-1);
     for (psz = szServers; *psz; psz++)
         if (*psz==';' || *psz==',')
         {
@@ -149,7 +149,7 @@ DWORD SendAPage(char* sz, ...) //const char *sz, ...)
     va_end(vl);
 
     char szPagerNotificationURL[MAX_PATH + 1];
-    g_pCfgMgr->GetConfigString(kCompId_Sentinal, karg_szPagerNotificationURL, szPagerNotificationURL, sizeof(szPagerNotificationURL)-1);
+    g_pCfgMgr->GetConfigString(kCompId_Sentinal, karg_sent_szPagerNotificationURL, szPagerNotificationURL, sizeof(szPagerNotificationURL)-1);
 
     char* szFormat = szPagerNotificationURL;
     //for (char* szFormat = szPagerNotificationURL; *szFormat; szFormat += lstrlen(szFormat) + 1)
@@ -246,7 +246,7 @@ HRESULT pascal Sentinal_Init()
 #ifdef _INTERNET_PAGING
 	// are we going to be doing paging?
     char szPagerNotificationURL[MAX_PATH + 1];
-    g_pCfgMgr->GetConfigString(kCompId_Sentinal, karg_szPagerNotificationURL, szPagerNotificationURL, sizeof(szPagerNotificationURL)-1);
+    g_pCfgMgr->GetConfigString(kCompId_Sentinal, karg_sent_szPagerNotificationURL, szPagerNotificationURL, sizeof(szPagerNotificationURL)-1);
 	if (szPagerNotificationURL[0])
 	{
 		HINSTANCE hinstWininet          = LoadLibrary("wininet.dll");

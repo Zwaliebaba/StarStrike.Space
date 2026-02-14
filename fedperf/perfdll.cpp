@@ -35,7 +35,7 @@ VOID InitializePerfObject(PPERF_OBJECT_MAP pPerfObject)
     //
     swprintf(szRegKey, L"System\\CurrentControlSet\\Services\\%s\\Performance",
         pPerfObject->mszProgramName);
-    lStatus = RegOpenKeyEx(HKEY_LOCAL_MACHINE,          // Hive
+    lStatus = RegOpenKeyExW(HKEY_LOCAL_MACHINE,          // Hive
                             szRegKey,                   // SubKey
                             0L,                         // Reserved
                             KEY_READ,                   // Access Rights

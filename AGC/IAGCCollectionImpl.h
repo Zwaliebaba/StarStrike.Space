@@ -68,7 +68,8 @@ public:
     }
 
     // Initialize enumerator object with the temporary CComVariant vector
-    HRESULT hr = pEnum->Init(vecTemp.begin(), vecTemp.end(), NULL, AtlFlagCopy);
+    // Use data() for raw pointer access (modern ATL requires pointers, not iterators)
+    HRESULT hr = pEnum->Init(vecTemp.data(), vecTemp.data() + vecTemp.size(), NULL, AtlFlagCopy);
     if (SUCCEEDED(hr))
       hr = pEnum->QueryInterface(IID_IEnumVARIANT, (void**)ppunkEnum);
     if (FAILED(hr))

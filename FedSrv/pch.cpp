@@ -12,11 +12,12 @@
 
 #include <atlbase.h>
 
+// Modern ATL has static registry support built-in, statreg.cpp not needed
 #ifdef _ATL_STATIC_REGISTRY
 #include <statreg.h>
-#include <statreg.cpp>
 #endif
 
-#include <atlimpl.cpp>
+// atlimpl.cpp is not needed in modern ATL (functionality is in headers)
+// #include <atlimpl.cpp>
 
 #include <../TCAtl/UserAcct.cpp>

@@ -18,10 +18,11 @@
   #define STRICT
 #endif
 #ifndef _WIN32_WINNT
-  #define _WIN32_WINNT 0x0400
+  #define _WIN32_WINNT 0x0501
 #endif
 #define _ATL_APARTMENT_THREADED
 
+#include <new>       // Required before ATL headers (for nothrow)
 #include <atlbase.h>
 #include <AGC.h>
 #include <..\TCLib\AutoHandle.h>

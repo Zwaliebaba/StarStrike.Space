@@ -4,9 +4,6 @@
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\build\FedSrv\CMakeFiles\AllSrv.dir\cmake_pch.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\AdminEventLoggerHook.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\AdminGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -76,6 +73,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\SWMRG.CPP" />
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\AGCGuids.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\fedperf\cntrmap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -91,16 +91,22 @@
     <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\fedperf\perfutil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\config.cpp">
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\TCLib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\dplaychk.cpp">
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\WorkerThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\sentinal.cpp">
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\TCThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\srvdbg.cpp">
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\UtilityThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\DynaLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\test\TCLib\StrManip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -120,9 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\FedSrv\FedSrv.RC" />
-    <ResourceCompile Include="C:\Users\zwali\source\repos\StarStrike.Space\sentinal\sentinal.rc">
-      <Filter>Source Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Precompile Header File">

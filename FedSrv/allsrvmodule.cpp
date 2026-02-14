@@ -17,11 +17,6 @@
 #include <..\TCAtl\ObjectMap.h>
 #include <..\TCLib\CoInit.h>
 
-#if !defined(ALLSRV_STANDALONE)
-  #include "AdminEventLoggerHook.h"
-  CComObjectGlobal<CAdminEventLoggerHook> g_DBLoggingHook;
-#endif // !defined(ALLSRV_STANDALONE)
-
 #ifdef _DEBUG
   #include "FedSrvApp.h"
   #include <AGCDebugHook.h>

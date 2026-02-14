@@ -298,16 +298,18 @@ CFSMission::~CFSMission()
   }
   
   // remove us from our list of missions
+  bool bFoundInList = false;
   for (LinkFSMission * plinkFSMis = s_list.first(); plinkFSMis; plinkFSMis = plinkFSMis->next())
   {
     CFSMission * pfsMission = plinkFSMis->data();
     if (this == pfsMission)
     {
       delete plinkFSMis;
+      bFoundInList = true;
       break;
     }
   }
-  assert (plinkFSMis);      // better have found it
+  assert (bFoundInList);      // better have found it
   m_pMission->Terminate();
   delete m_pMission;
   m_psiteMission->Destroy(this);
@@ -1849,7 +1851,7 @@ void CFSMission::StartCountdown(float fCountdownLength)
         if (nStations == 1)
         {
             //Start all ships at that station
-            for (pshipLink = pships->first();
+            for (ShipLinkIGC* pshipLink = pships->first();
                  (pshipLink != NULL);
                  pshipLink = pshipLink->next())
             {
@@ -1876,7 +1878,7 @@ void CFSMission::StartCountdown(float fCountdownLength)
             int     unassignedWings = 0;
 
             {
-                for (pshipLink = pships->first();
+                for (ShipLinkIGC* pshipLink = pships->first();
                      (pshipLink != NULL);
                      pshipLink = pshipLink->next())
                 {
@@ -1929,7 +1931,7 @@ void CFSMission::StartCountdown(float fCountdownLength)
             }
             
             {
-                for (pshipLink = pships->first();
+                for (ShipLinkIGC* pshipLink = pships->first();
                      (pshipLink != NULL);
                      pshipLink = pshipLink->next())
                 {

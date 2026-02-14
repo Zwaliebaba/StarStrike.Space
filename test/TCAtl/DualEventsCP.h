@@ -35,13 +35,13 @@
 //      {
 //        [id(DISPID_OnHello), helpstring("Indicates 'Hello'.")]
 //        HRESULT OnHello([in] VARIANT_BOOL IsHappy, [in] BSTR Text);
-//        …
+//        ï¿½
 //        [id(DISPID_OnGoodbye), helpstring("Indicates 'Goodbye'.")]
 //        HRESULT OnGoodbye([in] VARIANT_BOOL IsHappy, [in] BSTR Text);
-//        …
+//        ï¿½
 //      }; // End: interface ISampleEvents : IUnknown
-//      …
-//      …
+//      ï¿½
+//      ï¿½
 //      // DISampleEvents Interface
 //      [
 //        oleautomation, uuid(098A9AF1-1C79-11d2-8519-00400536E6C1),
@@ -50,7 +50,7 @@
 //      dispinterface DISampleEvents
 //      {
 //        interface ISampleEvents;
-//        …
+//        ï¿½
 //      }; // End: dispinterface DISampleEvents
 //
 // Notice that the *interface* and the *dispinterface* must each have a
@@ -287,7 +287,7 @@ void TCComDualEventsCP<T, IV, piid, CPD>::RemoveFailedSink(HRESULT hr,
 // Declaration:
 // #define BEGIN_TCComDualEventsCP(className, IV, IID_disp)                 \
 //   BEGIN_TCComDualEventsCP_IID(className, IV, IID_##IV, IID_disp)        
-// …
+// ï¿½
 // #define BEGIN_TCComDualEventsCP_IID(className, IV, IID_vtbl, IID_disp)   \
 //   template <class T> class ATL_NO_VTABLE className :                     \
 //     public TCComDualEventsCP<T, IV, &IID_vtbl,                           \
@@ -298,7 +298,7 @@ void TCComDualEventsCP<T, IV, piid, CPD>::RemoveFailedSink(HRESULT hr,
 //       IConnectionPointImpl<T, &IID_disp> >::TIV TIV;                     \
 //     typedef TCComDualEventsCP<T, IV, &IID_vtbl,                          \
 //       IConnectionPointImpl<T, &IID_disp> >::PIV PIV;
-//  …
+//  ï¿½
 // #define END_TCComDualEventsCP()                                          \
 //   };
 //
@@ -331,9 +331,9 @@ void TCComDualEventsCP<T, IV, piid, CPD>::RemoveFailedSink(HRESULT hr,
       IConnectionPointImpl<T, &IID_disp> >                                  \
   {                                                                         \
   protected:                                                                \
-    typedef TCComDualEventsCP<T, IV, &IID_vtbl,                             \
+    typedef typename TCComDualEventsCP<T, IV, &IID_vtbl,                    \
       IConnectionPointImpl<T, &IID_disp> >::TIV TIV;                        \
-    typedef TCComDualEventsCP<T, IV, &IID_vtbl,                             \
+    typedef typename TCComDualEventsCP<T, IV, &IID_vtbl,                    \
       IConnectionPointImpl<T, &IID_disp> >::PIV PIV;
 
 /////////////////////////////////////////////////////////////////////////////

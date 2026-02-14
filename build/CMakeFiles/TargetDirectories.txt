@@ -12,7 +12,6 @@ C:/Users/zwali/source/repos/StarStrike.Space/build/training/CMakeFiles/Training.
 C:/Users/zwali/source/repos/StarStrike.Space/build/sharemem/CMakeFiles/ShareMem.dir
 C:/Users/zwali/source/repos/StarStrike.Space/build/WinTrek/CMakeFiles/Allegiance.dir
 C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir
-C:/Users/zwali/source/repos/StarStrike.Space/build/lobby/CMakeFiles/Lobby.dir
 C:/Users/zwali/source/repos/StarStrike.Space/build/mdlc/CMakeFiles/mdlc.dir
 C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/CMakeFiles/ArtworkRootCopy.dir
 C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/CMakeFiles/Artwork.dir

@@ -89,7 +89,7 @@ add_subdirectory(sharemem)
 # Phase 6: Executables
 add_subdirectory(WinTrek)
 add_subdirectory(FedSrv)
-add_subdirectory(lobby)
+# add_subdirectory(lobby)  # Matchmaking server - not needed for standalone/LAN
 
 # Phase 7: Tools
 add_subdirectory(mdlc)
