@@ -87,4 +87,5 @@ allegiance_add_pch(ZLibrary pch.h pch.cpp)
 set_target_properties(ZLibrary PROPERTIES
     OUTPUT_NAME "zlib"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/zlib
+    FOLDER "Libraries/Foundation"
 )

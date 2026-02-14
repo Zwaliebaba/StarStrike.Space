@@ -12,8 +12,10 @@ target_include_directories(ShareMem
 )
 
 allegiance_set_compiler_flags(ShareMem)
+allegiance_add_pch(ShareMem pch.h pch.cpp)
 
 set_target_properties(ShareMem PROPERTIES
     OUTPUT_NAME "sharemem"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/sharemem
+    FOLDER "Libraries/Server"
 )

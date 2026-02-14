@@ -25,6 +25,7 @@ function(allegiance_set_compiler_flags target)
         /WX-        # Disable warnings as errors (legacy code has many warnings)
         /Zi         # Debug info
         /FS         # Force synchronous PDB writes (parallel compilation)
+        /MP         # Multi-processor compilation
         /EHsc       # C++ exceptions
         /Gm-        # Disable minimal rebuild
         /permissive # Enable permissive mode for legacy code patterns

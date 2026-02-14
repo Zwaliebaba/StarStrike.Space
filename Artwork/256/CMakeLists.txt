@@ -264,6 +264,14 @@ add_custom_target(Artwork256
     COMMENT "Building all 256 artwork"
 )
 
+set_property(TARGET Artwork256_Bitmaps PROPERTY FOLDER "Assets/Artwork/256")
+set_property(TARGET Artwork256_MDLs PROPERTY FOLDER "Assets/Artwork/256")
+set_property(TARGET Artwork256_Media PROPERTY FOLDER "Assets/Artwork/256")
+set_property(TARGET Artwork256_Animations PROPERTY FOLDER "Assets/Artwork/256")
+set_property(TARGET Artwork256_Fonts PROPERTY FOLDER "Assets/Artwork/256")
+set_property(TARGET Artwork256_Quick PROPERTY FOLDER "Assets/Artwork/256")
+set_property(TARGET Artwork256 PROPERTY FOLDER "Assets/Artwork/256")
+
 # ============================================================================
 # Status messages
 # ============================================================================

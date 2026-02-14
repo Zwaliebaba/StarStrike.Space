@@ -21,8 +21,10 @@ target_link_libraries(ClintLib
 )
 
 allegiance_set_compiler_flags(ClintLib)
+allegiance_add_pch(ClintLib pch.h pch.cpp)
 
 set_target_properties(ClintLib PROPERTIES
     OUTPUT_NAME "clintlib"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/clintlib
+    FOLDER "Libraries/Client"
 )

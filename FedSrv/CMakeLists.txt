@@ -145,4 +145,6 @@ target_link_options(AllSrv PRIVATE
 set_target_properties(AllSrv PROPERTIES
     OUTPUT_NAME "AllSrv"
     DEBUG_POSTFIX "d"
+    FOLDER "Executables"
+    VS_DEBUGGER_WORKING_DIRECTORY "$<TARGET_FILE_DIR:AllSrv>"
 )

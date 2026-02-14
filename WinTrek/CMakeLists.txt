@@ -129,4 +129,6 @@ target_link_options(Allegiance PRIVATE
 set_target_properties(Allegiance PROPERTIES
     OUTPUT_NAME "Allegiance"
     DEBUG_POSTFIX "d"
+    FOLDER "Executables"
+    VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 )

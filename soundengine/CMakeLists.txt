@@ -16,8 +16,10 @@ target_link_libraries(SoundEngine
 )
 
 allegiance_set_compiler_flags(SoundEngine)
+allegiance_add_pch(SoundEngine pch.h pch.cpp)
 
 set_target_properties(SoundEngine PROPERTIES
     OUTPUT_NAME "soundengine"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/soundengine
+    FOLDER "Libraries/Client"
 )

@@ -20,4 +20,5 @@ allegiance_set_compiler_flags(FedGuids)
 set_target_properties(FedGuids PROPERTIES
     OUTPUT_NAME "guids"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/guids
+    FOLDER "Libraries/Foundation"
 )

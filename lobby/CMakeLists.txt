@@ -66,19 +66,19 @@ target_link_libraries(Lobby PRIVATE
 
 # Link libraries - DirectX
 target_link_libraries(Lobby PRIVATE
-    ${DIRECTX_DPLAYX_LIBRARY}
-    ${DIRECTX_DXGUID_LIBRARY}
+    DirectX::DPlayX
+    DirectX::DXGuid
 )
 
 # Link libraries - Windows system
 target_link_libraries(Lobby PRIVATE
-    ws2_32.lib
-    odbc32.lib
-    odbccp32.lib
-    ole32.lib
-    oleaut32.lib
-    uuid.lib
-    winmm.lib
+    ws2_32
+    odbc32
+    odbccp32
+    ole32
+    oleaut32
+    uuid
+    winmm
 )
 
 # Linker options
@@ -91,5 +91,6 @@ target_link_options(Lobby PRIVATE
 set_target_properties(Lobby PROPERTIES
     OUTPUT_NAME "Lobby"
     DEBUG_POSTFIX "d"
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+    FOLDER "Executables"
+    VS_DEBUGGER_WORKING_DIRECTORY "$<TARGET_FILE_DIR:Lobby>"
 )

@@ -44,4 +44,5 @@ allegiance_add_pch(Utility pch.h pch.cpp)
 set_target_properties(Utility PROPERTIES
     OUTPUT_NAME "Utility"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/_utility
+    FOLDER "Libraries/Foundation"
 )

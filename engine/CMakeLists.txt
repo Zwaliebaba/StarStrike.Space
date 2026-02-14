@@ -62,8 +62,10 @@ target_link_libraries(Engine
 )
 
 allegiance_set_compiler_flags(Engine)
+allegiance_add_pch(Engine pch.h pch.cpp)
 
 set_target_properties(Engine PROPERTIES
     OUTPUT_NAME "engine"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/engine
+    FOLDER "Libraries/Core"
 )

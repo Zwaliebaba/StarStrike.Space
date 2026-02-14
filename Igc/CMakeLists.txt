@@ -102,8 +102,10 @@ target_link_libraries(Igc
 )
 
 allegiance_set_compiler_flags(Igc)
+allegiance_add_pch(Igc pch.h pch.cpp)
 
 set_target_properties(Igc PROPERTIES
     OUTPUT_NAME "igc"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/igc
+    FOLDER "Libraries/Core"
 )

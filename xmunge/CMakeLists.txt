@@ -48,6 +48,8 @@ if(BUILD_XMUNGE)
         set_target_properties(xmunge PROPERTIES
             OUTPUT_NAME "xmunge"
             RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+            FOLDER "Tools"
+            VS_DEBUGGER_WORKING_DIRECTORY "$<TARGET_FILE_DIR:xmunge>"
         )
     else()
         message(WARNING "xmunge: d3drm.lib not found - Direct3D Retained Mode is required but no longer available in modern SDKs")

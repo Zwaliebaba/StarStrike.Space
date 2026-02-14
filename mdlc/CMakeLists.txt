@@ -42,26 +42,23 @@ target_link_libraries(mdlc PRIVATE
 
 # Link libraries - DirectX
 target_link_libraries(mdlc PRIVATE
-    ${DDRAW_LIBRARY}
-    ${DSOUND_LIBRARY}
-    ${DINPUT_LIBRARY}
-    ${DXGUID_LIBRARY}
-    ${DPLAYX_LIBRARY}
+    DirectX::DirectX
+    DirectX::DPlayX
 )
 
 # Link libraries - Windows system
 target_link_libraries(mdlc PRIVATE
-    winmm.lib
-    comctl32.lib
-    version.lib
-    ws2_32.lib
-    wininet.lib
-    urlmon.lib
-    lz32.lib
-    ole32.lib
-    oleaut32.lib
-    uuid.lib
-    delayimp.lib
+    winmm
+    comctl32
+    version
+    ws2_32
+    wininet
+    urlmon
+    lz32
+    ole32
+    oleaut32
+    uuid
+    delayimp
 )
 
 # Linker options for console app
@@ -72,5 +69,6 @@ target_link_options(mdlc PRIVATE
 # Output to tools directory
 set_target_properties(mdlc PROPERTIES
     OUTPUT_NAME "mdlc"
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/objs/$<CONFIG>/mdlc"
+    FOLDER "Tools"
+    VS_DEBUGGER_WORKING_DIRECTORY "$<TARGET_FILE_DIR:mdlc>"
 )

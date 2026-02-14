@@ -20,8 +20,10 @@ target_link_libraries(Training
 )
 
 allegiance_set_compiler_flags(Training)
+allegiance_add_pch(Training pch.h pch.cpp)
 
 set_target_properties(Training PROPERTIES
     OUTPUT_NAME "training"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/training
+    FOLDER "Libraries/Client"
 )

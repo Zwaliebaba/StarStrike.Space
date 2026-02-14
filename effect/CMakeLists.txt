@@ -15,8 +15,10 @@ target_link_libraries(Effect
 )
 
 allegiance_set_compiler_flags(Effect)
+allegiance_add_pch(Effect pch.h pch.cpp)
 
 set_target_properties(Effect PROPERTIES
     OUTPUT_NAME "effect"
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/effect
+    FOLDER "Libraries/Core"
 )

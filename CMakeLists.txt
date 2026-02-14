@@ -17,6 +17,9 @@ endif()
 # Build configurations
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Test" CACHE STRING "" FORCE)
 
+# Enable folder organization in Visual Studio Solution Explorer
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
 # Custom Test configuration (Release with _DEBUG)
 set(CMAKE_CXX_FLAGS_TEST "${CMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "" FORCE)
 set(CMAKE_C_FLAGS_TEST "${CMAKE_C_FLAGS_RELEASE}" CACHE STRING "" FORCE)
@@ -31,17 +34,10 @@ set(ALLEGIANCE_INC_DIR ${ALLEGIANCE_ROOT}/Inc)
 set(ALLEGIANCE_ZONE_DIR ${ALLEGIANCE_ROOT}/Zone)
 set(ALLEGIANCE_GUIDS_DIR ${ALLEGIANCE_ROOT}/guids)
 
-# Output directories (match existing objs/ structure)
-# Use per-config directories for multi-config generators
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${ALLEGIANCE_ROOT}/objs/debug)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${ALLEGIANCE_ROOT}/objs/retail)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_TEST ${ALLEGIANCE_ROOT}/objs/test)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${ALLEGIANCE_ROOT}/objs/debug)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${ALLEGIANCE_ROOT}/objs/retail)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_TEST ${ALLEGIANCE_ROOT}/objs/test)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${ALLEGIANCE_ROOT}/objs/debug)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${ALLEGIANCE_ROOT}/objs/retail)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_TEST ${ALLEGIANCE_ROOT}/objs/test)
+# Output directories (CMake build/bin + build/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<CONFIG>)
 
 # ============================================================================
 # CMake Modules
@@ -82,6 +78,9 @@ add_subdirectory(sharemem)
 add_subdirectory(WinTrek)
 add_subdirectory(FedSrv)
 # add_subdirectory(lobby)  # Matchmaking server - not needed for standalone/LAN
+
+# Startup project for Visual Studio
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT Allegiance)
 
 # Phase 7: Tools
 add_subdirectory(mdlc)

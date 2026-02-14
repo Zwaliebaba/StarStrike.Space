@@ -28,6 +28,7 @@ add_custom_target(ArtworkRootCopy ALL
     COMMENT "Copying root artwork files"
     VERBATIM
 )
+set_property(TARGET ArtworkRootCopy PROPERTY FOLDER "Assets/Artwork")
 
 # ============================================================================
 # Main Artwork target (aggregates all artwork builds)
@@ -36,6 +37,7 @@ add_custom_target(Artwork
     DEPENDS ArtworkRootCopy Artwork256
     COMMENT "Building all artwork assets"
 )
+set_property(TARGET Artwork PROPERTY FOLDER "Assets/Artwork")
 
 # Note: The full artwork pipeline includes:
 # - Bitmap conversion (BMP -> MDL via mdlc -convert)
