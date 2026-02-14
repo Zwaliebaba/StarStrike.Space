@@ -80,24 +80,16 @@ allegiance_set_compiler_flags(AllSrv)
 # Precompiled header
 target_precompile_headers(AllSrv PRIVATE pch.h)
 
-# Include directories
+# Include directories - only add what doesn't propagate from linked libraries
 target_include_directories(AllSrv PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/Inc
-    ${CMAKE_SOURCE_DIR}/zlib
-    ${CMAKE_SOURCE_DIR}/_Utility
-    ${CMAKE_SOURCE_DIR}/Igc
-    ${CMAKE_SOURCE_DIR}/guids
-    ${CMAKE_SOURCE_DIR}/Zone
     ${CMAKE_SOURCE_DIR}/AGC
     ${CMAKE_SOURCE_DIR}/fedperf
     ${CMAKE_SOURCE_DIR}/sentinal
-    ${CMAKE_SOURCE_DIR}/sharemem
     ${CMAKE_SOURCE_DIR}/lobby
     ${CMAKE_SOURCE_DIR}/test/Inc
     ${CMAKE_SOURCE_DIR}/test/TCLib
     ${CMAKE_SOURCE_DIR}/test/TCAtl
-    ${DIRECTX_INCLUDE_DIR}
 )
 
 # Compile definitions
@@ -122,25 +114,25 @@ target_link_libraries(AllSrv PRIVATE
     ShareMem
 )
 
-# Link libraries - DirectX
+# Link libraries - DirectX (use imported targets)
 target_link_libraries(AllSrv PRIVATE
-    ${DPLAYX_LIBRARY}
-    ${DXGUID_LIBRARY}
+    DirectX::DPlayX
+    DirectX::DXGuid
 )
 
-# Link libraries - Windows system
+# Link libraries - Windows system (no .lib suffix needed)
 target_link_libraries(AllSrv PRIVATE
-    ws2_32.lib
-    odbc32.lib
-    odbccp32.lib
-    comctl32.lib
-    version.lib
-    ole32.lib
-    oleaut32.lib
-    uuid.lib
-    winmm.lib
-    netapi32.lib
-    wininet.lib
+    ws2_32
+    odbc32
+    odbccp32
+    comctl32
+    version
+    ole32
+    oleaut32
+    uuid
+    winmm
+    netapi32
+    wininet
 )
 
 # Linker options
@@ -153,5 +145,4 @@ target_link_options(AllSrv PRIVATE
 set_target_properties(AllSrv PROPERTIES
     OUTPUT_NAME "AllSrv"
     DEBUG_POSTFIX "d"
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )

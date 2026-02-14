@@ -39,22 +39,13 @@ PCHINCLOCAL=$(SRCDIR)\*.h
 MAINTARG=$(MAINTARGROOT).$(MAINTARGEXT)
 MAINTARGFULLPATH=$(DESTDIR)\$(MAINTARG)
 
-#todo: use an env var to specify prefix installation location
-!if defined(prefix)
-CC=c:\prefix\bin\prefix.exe
-!else
 CC=cl
-!endif
 
 LINK=link
-BSCMAKE=bscmake
 LIB=lib
 MIDL=midl
-MSDEV=msdev
 REMDIR=$(FEDSRC)\tools\bin32\delnode -q
-MKDEP=$(FEDSRC)\tools\bin32\mkdep
 REGSVR=regsvr32 /s /c
-SPLITSYMBOLSTOOL=$(FEDSRC)\tools\build\SplitSymbols
 
 
 #############################################################################
@@ -129,7 +120,7 @@ RARGSVERSION=
 
 #############################################################################
 #
-# Static Retail build
+# Optimization flags
 #
 #############################################################################
 
@@ -159,55 +150,12 @@ OPTIMIZATION_FLAGS=/Og /Os /Oy /Ob1 /Gs /Gf /Gy
 
 #############################################################################
 #
-# Static Retail build
+# Build Configurations
+# Supported: debug (default), retail, test, training
 #
 #############################################################################
 
-!IFDEF sretail
-
-FLAVOR=SRetail
-STATICFLAVOR=SRetail
-
-CARGSFLAVOR= $(COMPILE_DEV_REGKEY) /D "NDEBUG" /D "OPTIMIZED" /MT $(OPTIMIZATION_FLAGS) /GR-
-RARGSFLAVOR= /d "NDEBUG" /D "OPTIMIZED" $(RARGSVERSION)
-LIBSFLAVOR=libcmt.lib libcpmt.lib libcimt.lib
-MFCLIBSFLAVOR=nafxcw.lib ctl3d32s.lib comctl32.lib
-LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /RELEASE /nodefaultlib /OPT:REF /OPT:ICF,4
-
-!ELSEIFDEF stest
-
-#############################################################################
-#
-# Static Test build
-#
-#############################################################################
-FLAVOR=STest
-STATICFLAVOR=STest
-
-CARGSFLAVOR= $(COMPILE_DEV_REGKEY) /D "_DEBUG" /D "DEBUG" /D "OPTIMIZED" /MT $(OPTIMIZATION_FLAGS) /GR
-RARGSFLAVOR= /d "_DEBUG" /d "DEBUG" /D "OPTIMIZED" $(RARGSVERSION)
-LIBSFLAVOR=libcmtd.lib libcpmtd.lib libcimtd.lib
-MFCLIBSFLAVOR=nafxcwd.lib ctl3d32s.lib comctl32.lib
-LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /nodefaultlib /OPT:REF /OPT:ICF,4
-
-!ELSEIFDEF sdebug
-
-#############################################################################
-#
-# Static Debug build
-#
-#############################################################################
-FLAVOR=SDebug
-STATICFLAVOR=SDebug
-
-CARGSFLAVOR = $(COMPILE_DEV_REGKEY) /D "_DEBUG" /D "DEBUG" /MTd /Od /GR /RTC1
-RARGSFLAVOR= /d "_DEBUG" /d "DEBUG" $(RARGSVERSION)
-LIBSFLAVOR=libcmtd.lib libcpmtd.lib libcimtd.lib
-MFCLIBSFLAVOR=nafxcwd.lib ctl3d32s.lib comctl32.lib
-LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /nodefaultlib
-
-
-!ELSEIFDEF retail
+!IFDEF retail
 
 
 #############################################################################
@@ -254,23 +202,6 @@ LIBSFLAVOR=msvcrtd.lib msvcprtd.lib
 MFCLIBSFLAVOR=mfc42d.lib mfcs42d.lib mfco42d.lib ctl3d32.lib
 LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /nodefaultlib
 
-!ELSEIFDEF prefix
-
-#############################################################################
-#
-# prefix build
-#
-# This only works for the standard retail build.
-#
-#############################################################################
-
-FLAVOR=prefix
-CARGSFLAVOR= $(COMPILE_DEV_REGKEY) /D "NDEBUG" /D "OPTIMIZED" /D"_AFXDLL" /MD $(OPTIMIZATION_FLAGS) /GR-
-RARGSFLAVOR= /d "NDEBUG" /D "OPTIMIZED" /D"_AFXDLL" $(RARGSVERSION)
-LIBSFLAVOR=msvcrt.lib msvcprt.lib
-MFCLIBSFLAVOR=mfc42.lib mfcs42.lib ctl3d32.lib
-LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /RELEASE /nodefaultlib /fixed:no
-
 !ELSE
 
 #############################################################################
@@ -289,74 +220,6 @@ LARGSFLAVOR=/debug /debugtype:map,cv /INCREMENTAL:NO /nodefaultlib
 
 !ENDIF
 
-#############################################################################
-#
-# BoundsChecker build
-#
-#############################################################################
-
-!ifdef BCHK
-!ifndef BCBINDIR
-!error For BC build, specify location of nmcl.exe in BCBINDIR variable!
-!endif
-
-!ifdef STATICFLAVOR
-
-!IFDEF sretail
-FLAVOR = SBChecker
-!else
-FLAVOR = SBCheckerD
-!endif
-
-!else
-
-!IFDEF retail
-FLAVOR = BChecker
-!else
-FLAVOR = BCheckerD
-!endif
-
-!endif
-
-CC     = "$(BCBINDIR)\nmcl.exe" $(BCOPTS)
-LINK   = "$(BCBINDIR)\nmlink.exe"
-
-!endif
-
-#############################################################################
-#
-# Numega TrueTime build
-#
-#############################################################################
-
-!ifdef TRUETIME
-!ifndef TTBINDIR
-!error For TT build, specify location of nmcl.exe in TTBINDIR variable!
-!endif
-
-!ifdef STATICFLAVOR
-
-!IFDEF sretail
-FLAVOR = STrueTime
-!else
-FLAVOR = STrueTimeD
-!endif
-
-!else
-
-!IFDEF retail
-FLAVOR = TrueTime
-!else
-FLAVOR = TrueTimeD
-!endif
-
-!endif
-
-CC     = "$(TTBINDIR)\nmcl.exe" /NMttOn $(TTOPTS)
-LINK   = "$(TTBINDIR)\nmlink.exe" /NMttOn
-
-!endif
-
 !if defined(VERBOSE)
 NOLOGO=
 !else
@@ -364,10 +227,7 @@ CC=@$(CC)
 LINK=@$(LINK)
 LIB=@$(LIB)
 MIDL=@$(MIDL)
-BSCMAKE=@$(BSCMAKE)
-MSDEV=@$(MSDEV)
 REMDIR=@$(REMDIR)
-MKDEP=@$(MKDEP)
 NOLOGO=/nologo
 REGEXE=@$(REGEXE)
 UNREGEXE=@$(UNREGEXE)
@@ -375,16 +235,6 @@ REGDLL=@$(REGDLL)
 UNREGDLL=@$(UNREGDLL)
 !endif
 
-
-#############################################################################
-#
-# Win95
-#
-#############################################################################
-
-!IFDEF WIN95
-CARGSFLAVOR= $(CARGSFLAVOR) /D"WIN95"
-!ENDIF
 
 #############################################################################
 #
@@ -522,11 +372,7 @@ $(DESTDIR):
 !ifdef PCHROOT
 PCHFILE=$(DESTDIR)\$(PCHROOT).pch
 PCHHEADER=$(PCHROOT).h
-!if defined(prefix)
-CARGSPCH=
-!else
 CARGSPCH=/Yu$(PCHHEADER) /Fp$(PCHFILE)
-!endif
 $(PCHFILE): $(PCHINCLOCAL) $(PCHINC)
     $(CC) $(CARGS) /Yc$(PCHHEADER) /Fp$(PCHFILE) $(SRCDIR)\$(@B).cpp
 !else

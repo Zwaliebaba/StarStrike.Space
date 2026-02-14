@@ -32,18 +32,19 @@ Messages in `Inc/Messages.h` use `DEFINE_FEDMSG` macros. The `MSGVER` constant m
 
 ## Build Guidance
 
-### nmake Build
+### CMake (Primary)
 ```powershell
-build.cmd                    # Debug build
-build.cmd retail=1           # Release build
-build.cmd Client debug=1     # Debug client only
+# Configure (one-time)
+cmake -B build -G "Visual Studio 18 2026" -A Win32
+
+# Build
+cmake --build build --config Debug      # Debug build
+cmake --build build --config Release    # Release build
 ```
 
-### CMake Migration
-See `cmake-migration-plan.md` for the ongoing CMake migration. When working on build system:
-1. Create CMakeLists.txt files following the plan
-2. Test both nmake and CMake builds for parity
-3. Update verification scripts
+### Legacy nmake (Deprecated)
+The legacy nmake build system (`Makefile`, `makefile.inc`, per-project makefiles) is retained
+for reference but is deprecated. Do not invest in nmake improvements.
 
 ## Coding Expectations
 - This is legacy 1999 code - use judgment when modernizing.
@@ -55,11 +56,10 @@ See `cmake-migration-plan.md` for the ongoing CMake migration. When working on b
 ## Agent Workflow
 1. Understand the change scope (client-only, server-only, or IGC/shared).
 2. Check if `MSGVER` or `Parts.h` changes are needed.
-3. Build with `build.cmd` to verify compilation.
-4. For CMake work, follow `cmake-migration-plan.md` task order.
+3. Build with CMake to verify compilation.
 
 ## Key Files Reference
 - `Inc/Messages.h` - Network protocol
 - `Igc/igc.h` - Core game interfaces
-- `makefile.inc` - Shared build configuration
+- `CMakeLists.txt` - Root CMake build configuration
 - `.github/copilot-instructions.md` - Detailed instructions

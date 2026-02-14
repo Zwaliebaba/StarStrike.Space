@@ -58,7 +58,7 @@ target_include_directories(Engine
 target_link_libraries(Engine
     PUBLIC ZLibrary
     PUBLIC FedGuids
-    PUBLIC ${DIRECTX_LIBRARIES}
+    PUBLIC DirectX::DirectX
 )
 
 allegiance_set_compiler_flags(Engine)

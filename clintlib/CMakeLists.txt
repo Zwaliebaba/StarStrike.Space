@@ -12,11 +12,11 @@ target_include_directories(ClintLib
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
     PRIVATE ${CMAKE_SOURCE_DIR}/lobby
     PRIVATE ${CMAKE_SOURCE_DIR}/Club
-    PRIVATE ${CMAKE_SOURCE_DIR}/engine
 )
 
 target_link_libraries(ClintLib
     PUBLIC Igc
+    PUBLIC Engine
     PUBLIC FedGuids
 )
 

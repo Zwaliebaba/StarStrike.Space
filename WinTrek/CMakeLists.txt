@@ -72,22 +72,11 @@ allegiance_set_compiler_flags(Allegiance)
 # Precompiled header
 target_precompile_headers(Allegiance PRIVATE pch.h)
 
-# Include directories
+# Include directories - only add what doesn't propagate from linked libraries
 target_include_directories(Allegiance PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/Inc
-    ${CMAKE_SOURCE_DIR}/zlib
-    ${CMAKE_SOURCE_DIR}/_Utility
-    ${CMAKE_SOURCE_DIR}/Igc
-    ${CMAKE_SOURCE_DIR}/engine
-    ${CMAKE_SOURCE_DIR}/effect
-    ${CMAKE_SOURCE_DIR}/soundengine
-    ${CMAKE_SOURCE_DIR}/clintlib
-    ${CMAKE_SOURCE_DIR}/training
     ${CMAKE_SOURCE_DIR}/lobby
     ${CMAKE_SOURCE_DIR}/Club
-    ${CMAKE_SOURCE_DIR}/Zone
-    ${DIRECTX_INCLUDE_DIR}
 )
 
 # Compile definitions
@@ -99,43 +88,35 @@ target_compile_definitions(Allegiance PRIVATE
     DLL
 )
 
-# Link libraries - internal
+# Link libraries - internal (includes propagate via PUBLIC dependencies)
 target_link_libraries(Allegiance PRIVATE
     ClintLib
     Training
     SoundEngine
     Effect
-    Engine
-    Igc
-    Utility
-    ZLibrary
-    FedGuids
 )
 
-# Link libraries - DirectX
+# Link libraries - DirectX (use imported targets)
 target_link_libraries(Allegiance PRIVATE
-    ${DDRAW_LIBRARY}
-    ${DSOUND_LIBRARY}
-    ${DINPUT_LIBRARY}
-    ${DXGUID_LIBRARY}
-    ${DPLAYX_LIBRARY}
+    DirectX::DirectX
+    DirectX::DPlayX
 )
 
-# Link libraries - Windows system
+# Link libraries - Windows system (no .lib suffix needed)
 target_link_libraries(Allegiance PRIVATE
-    winmm.lib
-    comctl32.lib
-    version.lib
-    ws2_32.lib
-    wininet.lib
-    urlmon.lib
-    odbc32.lib
-    odbccp32.lib
-    strmiids.lib
-    ole32.lib
-    oleaut32.lib
-    uuid.lib
-    lz32.lib
+    winmm
+    comctl32
+    version
+    ws2_32
+    wininet
+    urlmon
+    odbc32
+    odbccp32
+    strmiids
+    ole32
+    oleaut32
+    uuid
+    lz32
 )
 
 # Linker options
@@ -148,5 +129,4 @@ target_link_options(Allegiance PRIVATE
 set_target_properties(Allegiance PROPERTIES
     OUTPUT_NAME "Allegiance"
     DEBUG_POSTFIX "d"
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )

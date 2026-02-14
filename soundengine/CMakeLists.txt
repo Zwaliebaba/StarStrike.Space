@@ -11,7 +11,7 @@ target_include_directories(SoundEngine
 
 target_link_libraries(SoundEngine
     PUBLIC ZLibrary
-    PUBLIC ${DSOUND_LIBRARY}
+    PUBLIC DirectX::DSound
     PUBLIC winmm
 )
 

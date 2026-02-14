@@ -10,14 +10,13 @@ target_include_directories(Training
     PRIVATE ${CMAKE_SOURCE_DIR}/lobby
     PRIVATE ${CMAKE_SOURCE_DIR}/Club
     PRIVATE ${CMAKE_SOURCE_DIR}/WinTrek
-    PRIVATE ${CMAKE_SOURCE_DIR}/engine
-    PRIVATE ${CMAKE_SOURCE_DIR}/soundengine
-    PRIVATE ${CMAKE_SOURCE_DIR}/effect
-    PRIVATE ${CMAKE_SOURCE_DIR}/clintlib
 )
 
 target_link_libraries(Training
     PUBLIC Igc
+    PUBLIC ClintLib
+    PUBLIC Effect
+    PUBLIC SoundEngine
 )
 
 allegiance_set_compiler_flags(Training)

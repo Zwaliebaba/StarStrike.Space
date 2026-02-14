@@ -7,6 +7,8 @@ add_library(ShareMem STATIC ${SHAREMEM_SOURCES} ${SHAREMEM_HEADERS})
 
 target_include_directories(ShareMem
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+    PUBLIC ${ALLEGIANCE_INC_DIR}
+    PUBLIC ${ALLEGIANCE_ZONE_DIR}
 )
 
 allegiance_set_compiler_flags(ShareMem)

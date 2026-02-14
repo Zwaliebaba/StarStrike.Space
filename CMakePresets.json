@@ -1,0 +1,62 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "win32-base",
+      "hidden": true,
+      "generator": "Visual Studio 18 2026",
+      "toolset": "v180",
+      "architecture": "Win32",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_CONFIGURATION_TYPES": "Debug;Release;Test"
+      }
+    },
+    {
+      "name": "win32-vs2026",
+      "displayName": "Visual Studio 2026 (Win32)",
+      "description": "Configure for Visual Studio 2026 with Win32 (x86) architecture",
+      "inherits": "win32-base"
+    },
+    {
+      "name": "win32-vs2022",
+      "displayName": "Visual Studio 2022 (Win32)",
+      "description": "Configure for Visual Studio 2022 with Win32 (x86) architecture",
+      "inherits": "win32-base",
+      "generator": "Visual Studio 17 2022",
+      "toolset": "v143"
+    },
+    {
+      "name": "win32-vs2019",
+      "displayName": "Visual Studio 2019 (Win32)",
+      "description": "Configure for Visual Studio 2019 with Win32 (x86) architecture",
+      "inherits": "win32-base",
+      "generator": "Visual Studio 16 2019"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "displayName": "Debug Build",
+      "configurePreset": "win32-vs2026",
+      "configuration": "Debug"
+    },
+    {
+      "name": "release",
+      "displayName": "Release Build",
+      "configurePreset": "win32-vs2026",
+      "configuration": "Release"
+    },
+    {
+      "name": "test",
+      "displayName": "Test Build",
+      "configurePreset": "win32-vs2026",
+      "configuration": "Test"
+    }
+  ]
+}

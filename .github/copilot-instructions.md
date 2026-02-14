@@ -20,24 +20,26 @@ Allegiance is a multiplayer space combat game originally developed by Microsoft 
 
 ## Build System
 
-### Primary Build (nmake)
+### CMake (Primary)
 ```powershell
-# From VS Developer Command Prompt (x86)
-build.cmd                    # Debug build
-build.cmd retail=1           # Release build
-build.cmd Client             # Client only
-build.cmd Server             # Server only
-build.cmd Clean              # Clean outputs
+# Configure (one-time)
+cmake -B build -G "Visual Studio 18 2026" -A Win32
+
+# Build
+cmake --build build --config Debug      # Debug build
+cmake --build build --config Release    # Release build
 ```
 
-The build outputs to `objs/{debug|retail|test}/` subdirectories.
+The build outputs to `build/bin/{Debug|Release}/`.
 
-### CMake Migration
-A CMake migration is in progress. See `cmake-migration-plan.md` for details.
+### Legacy nmake (Deprecated)
+The legacy nmake build system (`Makefile`, `makefile.inc`, per-project makefiles) is retained
+for reference but is deprecated. Use CMake for all new development.
 
 ### Environment Requirements
-- Visual Studio 2019/2022 with C++ Desktop workload
+- Visual Studio 2022+ with C++ Desktop workload
 - Windows SDK (DirectX headers included)
+- CMake 3.21+
 - x86 (32-bit) build only
 
 ## Architecture Patterns
@@ -86,7 +88,7 @@ Most projects use `pch.h`/`pch.cpp`. Include `pch.h` first in source files.
 | `Inc/Parts.h` | Ship parts/equipment definitions |
 | `Igc/igc.h` | Core game interfaces (~6000 lines) |
 | `zlib/zlib.h` | Foundation types and utilities |
-| `makefile.inc` | Shared compiler/linker settings |
+| `CMakeLists.txt` | Root CMake build configuration |
 
 ## Dependencies
 

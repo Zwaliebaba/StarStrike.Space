@@ -1,5 +1,13 @@
 # Find DirectX SDK or Windows SDK DirectX components
-# Sets: DIRECTX_INCLUDE_DIRS, DIRECTX_LIBRARIES
+#
+# Creates IMPORTED targets:
+#   DirectX::DDraw    - DirectDraw
+#   DirectX::DSound   - DirectSound
+#   DirectX::DInput   - DirectInput (legacy)
+#   DirectX::DInput8  - DirectInput 8
+#   DirectX::DXGuid   - DirectX GUIDs
+#   DirectX::DPlayX   - DirectPlay (if available)
+#   DirectX::DirectX  - Convenience target linking all of the above
 #
 # Note: Allegiance requires legacy DirectX headers that are NOT included in
 # the Windows SDK:
@@ -86,11 +94,12 @@ endif()
 
 find_library(DDRAW_LIBRARY ddraw PATHS ${DIRECTX_LIB_SEARCH_PATHS})
 find_library(DSOUND_LIBRARY dsound PATHS ${DIRECTX_LIB_SEARCH_PATHS})
-find_library(DINPUT_LIBRARY dinput PATHS ${DIRECTX_LIB_SEARCH_PATHS})  # dinput contains DirectInputCreate
+find_library(DINPUT_LIBRARY dinput PATHS ${DIRECTX_LIB_SEARCH_PATHS})
 find_library(DINPUT8_LIBRARY dinput8 PATHS ${DIRECTX_LIB_SEARCH_PATHS})
 find_library(DXGUID_LIBRARY dxguid PATHS ${DIRECTX_LIB_SEARCH_PATHS})
 find_library(DPLAYX_LIBRARY dplayx PATHS ${DIRECTX_LIB_SEARCH_PATHS})
 
+# Build combined include directories list
 set(DIRECTX_INCLUDE_DIRS ${DIRECTX_INCLUDE_DIR})
 if(HAVE_LOCAL_DX9)
     list(APPEND DIRECTX_INCLUDE_DIRS "${LOCAL_DX9_DIR}/Include")
@@ -98,20 +107,91 @@ endif()
 if(HAVE_LEGACY_DXSDK)
     list(APPEND DIRECTX_INCLUDE_DIRS "${DXSDK_DIR}/Include")
 endif()
-
-set(DIRECTX_LIBRARIES
-    ${DDRAW_LIBRARY}
-    ${DSOUND_LIBRARY}
-    ${DINPUT_LIBRARY}
-    ${DXGUID_LIBRARY}
-)
-
-if(DPLAYX_LIBRARY)
-    list(APPEND DIRECTX_LIBRARIES ${DPLAYX_LIBRARY})
-endif()
+list(REMOVE_DUPLICATES DIRECTX_INCLUDE_DIRS)
 
 find_package_handle_standard_args(DirectX
     REQUIRED_VARS DIRECTX_INCLUDE_DIR DDRAW_LIBRARY DSOUND_LIBRARY
 )
 
 mark_as_advanced(DIRECTX_INCLUDE_DIR DDRAW_LIBRARY DSOUND_LIBRARY DINPUT_LIBRARY DXGUID_LIBRARY DPLAYX_LIBRARY)
+
+# ============================================================================
+# Create IMPORTED targets (modern CMake approach)
+# ============================================================================
+
+if(DirectX_FOUND AND NOT TARGET DirectX::DDraw)
+    # DirectX::DDraw
+    add_library(DirectX::DDraw UNKNOWN IMPORTED)
+    set_target_properties(DirectX::DDraw PROPERTIES
+        IMPORTED_LOCATION "${DDRAW_LIBRARY}"
+        INTERFACE_INCLUDE_DIRECTORIES "${DIRECTX_INCLUDE_DIRS}"
+    )
+
+    # DirectX::DSound
+    add_library(DirectX::DSound UNKNOWN IMPORTED)
+    set_target_properties(DirectX::DSound PROPERTIES
+        IMPORTED_LOCATION "${DSOUND_LIBRARY}"
+        INTERFACE_INCLUDE_DIRECTORIES "${DIRECTX_INCLUDE_DIRS}"
+    )
+
+    # DirectX::DInput (legacy)
+    if(DINPUT_LIBRARY)
+        add_library(DirectX::DInput UNKNOWN IMPORTED)
+        set_target_properties(DirectX::DInput PROPERTIES
+            IMPORTED_LOCATION "${DINPUT_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${DIRECTX_INCLUDE_DIRS}"
+        )
+    endif()
+
+    # DirectX::DInput8
+    if(DINPUT8_LIBRARY)
+        add_library(DirectX::DInput8 UNKNOWN IMPORTED)
+        set_target_properties(DirectX::DInput8 PROPERTIES
+            IMPORTED_LOCATION "${DINPUT8_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${DIRECTX_INCLUDE_DIRS}"
+        )
+    endif()
+
+    # DirectX::DXGuid
+    if(DXGUID_LIBRARY)
+        add_library(DirectX::DXGuid UNKNOWN IMPORTED)
+        set_target_properties(DirectX::DXGuid PROPERTIES
+            IMPORTED_LOCATION "${DXGUID_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${DIRECTX_INCLUDE_DIRS}"
+        )
+    endif()
+
+    # DirectX::DPlayX (optional - legacy networking)
+    if(DPLAYX_LIBRARY)
+        add_library(DirectX::DPlayX UNKNOWN IMPORTED)
+        set_target_properties(DirectX::DPlayX PROPERTIES
+            IMPORTED_LOCATION "${DPLAYX_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${DIRECTX_INCLUDE_DIRS}"
+        )
+    endif()
+
+    # DirectX::DirectX - convenience target bundling common libraries
+    add_library(DirectX::DirectX INTERFACE IMPORTED)
+    set(_directx_deps DirectX::DDraw DirectX::DSound)
+    if(TARGET DirectX::DInput)
+        list(APPEND _directx_deps DirectX::DInput)
+    endif()
+    if(TARGET DirectX::DXGuid)
+        list(APPEND _directx_deps DirectX::DXGuid)
+    endif()
+    set_target_properties(DirectX::DirectX PROPERTIES
+        INTERFACE_LINK_LIBRARIES "${_directx_deps}"
+    )
+    unset(_directx_deps)
+endif()
+
+# Legacy variables for backward compatibility (deprecated - use targets instead)
+set(DIRECTX_LIBRARIES
+    ${DDRAW_LIBRARY}
+    ${DSOUND_LIBRARY}
+    ${DINPUT_LIBRARY}
+    ${DXGUID_LIBRARY}
+)
+if(DPLAYX_LIBRARY)
+    list(APPEND DIRECTX_LIBRARIES ${DPLAYX_LIBRARY})
+endif()

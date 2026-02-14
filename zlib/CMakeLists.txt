@@ -71,8 +71,13 @@ set(ZLIB_HEADERS
 
 add_library(ZLibrary STATIC ${ZLIB_SOURCES} ${ZLIB_HEADERS})
 
+# Alias for namespaced usage
+add_library(Allegiance::ZLib ALIAS ZLibrary)
+
 target_include_directories(ZLibrary
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+    PUBLIC ${ALLEGIANCE_INC_DIR}
+    PUBLIC ${ALLEGIANCE_ZONE_DIR}
 )
 
 allegiance_set_compiler_flags(ZLibrary)

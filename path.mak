@@ -7,19 +7,13 @@
 #   vcvarsall.bat x86
 # before building.
 #
+# DEPRECATED: This nmake build system is maintained for legacy
+# compatibility. New development should use CMake.
+#
 ###################################################################
-
-!IFDEF WINBOOTDIR
-
-OSPATHS=$(WINBOOTDIR)\system;$(WINBOOTDIR);$(WINBOOTDIR)\Command
-OSCMDSHELL=command
-
-!ELSE
 
 OSPATHS=$(SYSTEMROOT)\system32;$(WINDIR)
 OSCMDSHELL=cmd
-
-!ENDIF
 
 # Use system PATH which should include VS tools after running vcvarsall.bat
 # Add local tools directories

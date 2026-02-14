@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.21)
 project(Allegiance VERSION 1.0.0 LANGUAGES CXX C)
 
 # ============================================================================
@@ -7,10 +7,11 @@ project(Allegiance VERSION 1.0.0 LANGUAGES CXX C)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Only support Win32 (x86)
-if(NOT CMAKE_GENERATOR_PLATFORM)
-    set(CMAKE_GENERATOR_PLATFORM "Win32" CACHE STRING "Target platform" FORCE)
+# Only support Win32 (x86) - fail fast if misconfigured
+if(NOT CMAKE_SIZEOF_VOID_P EQUAL 4)
+    message(FATAL_ERROR "Allegiance only supports 32-bit builds (Win32/x86). Use -A Win32 with Visual Studio generator.")
 endif()
 
 # Build configurations
@@ -31,14 +32,16 @@ set(ALLEGIANCE_ZONE_DIR ${ALLEGIANCE_ROOT}/Zone)
 set(ALLEGIANCE_GUIDS_DIR ${ALLEGIANCE_ROOT}/guids)
 
 # Output directories (match existing objs/ structure)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${ALLEGIANCE_ROOT}/objs/$<CONFIG>)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${ALLEGIANCE_ROOT}/objs/$<CONFIG>)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${ALLEGIANCE_ROOT}/objs/$<CONFIG>)
-
-# Per-target output subdirectories
+# Use per-config directories for multi-config generators
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${ALLEGIANCE_ROOT}/objs/debug)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${ALLEGIANCE_ROOT}/objs/retail)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_TEST ${ALLEGIANCE_ROOT}/objs/test)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${ALLEGIANCE_ROOT}/objs/debug)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${ALLEGIANCE_ROOT}/objs/retail)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_TEST ${ALLEGIANCE_ROOT}/objs/test)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${ALLEGIANCE_ROOT}/objs/debug)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${ALLEGIANCE_ROOT}/objs/retail)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_TEST ${ALLEGIANCE_ROOT}/objs/test)
 
 # ============================================================================
 # CMake Modules
@@ -49,17 +52,6 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 include(CompilerFlags)
 include(PrecompiledHeaders)
 find_package(DirectX REQUIRED)
-
-# ============================================================================
-# Global Include Directories
-# ============================================================================
-
-include_directories(
-    ${ALLEGIANCE_INC_DIR}
-    ${ALLEGIANCE_ZONE_DIR}
-    ${ALLEGIANCE_GUIDS_DIR}
-    ${DIRECTX_INCLUDE_DIRS}
-)
 
 # ============================================================================
 # Subprojects (in dependency order)
@@ -93,7 +85,7 @@ add_subdirectory(FedSrv)
 
 # Phase 7: Tools
 add_subdirectory(mdlc)
-# add_subdirectory(xmunge)
+add_subdirectory(xmunge)
 
 # Phase 8: Artwork assets
 add_subdirectory(Artwork)
