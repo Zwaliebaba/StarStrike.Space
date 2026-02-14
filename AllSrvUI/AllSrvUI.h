@@ -55,11 +55,6 @@ public:
 protected:
   HANDLE GetAllSrvUIEvent();
   void CreateAllSrvUIEvent();
-  HRESULT FirstRunEula();
-
-// Types
-protected:
-  typedef DWORD (*EBUPROC) (LPCTSTR lpRegKeyLocation, LPCTSTR lpEULAFileName, LPCSTR lpWarrantyFileName, BOOL fCheckForFirstRun);
 
 // Message Handlers
 protected:

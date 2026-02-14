@@ -66,6 +66,8 @@ add_executable(Allegiance WIN32
     ${WINTREK_RC}
 )
 
+add_dependencies(Allegiance Artwork)
+
 # Apply common compiler flags
 allegiance_set_compiler_flags(Allegiance)
 

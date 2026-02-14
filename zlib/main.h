@@ -6,55 +6,36 @@
 
 int WINAPI Win32Main(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow);
 
-#ifdef DREAMCAST
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpszCmdLine, int nCmdShow)
-{
-    InitAllocs();
-    int result = Win32Main(hInstance, hPrevInstance, "", nCmdShow);
-    return result;
-}
-#else
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)
 {
-    _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_WNDW);
+  _CrtSetReportMode(_CRT_ASSERT, _CRTDBG_MODE_WNDW);
 
-    InitAllocs();
+  InitAllocs();
 
-    // OleInitialize() is needed for Ole Drag and Drop
+  // OleInitialize() is needed for Ole Drag and Drop
 
-    OleInitialize(NULL);
-    //CoInitialize(NULL);
+  OleInitialize(nullptr);
 
-    int result = Win32Main(hInstance, hPrevInstance, lpszCmdLine, nCmdShow);
+  int result = Win32Main(hInstance, hPrevInstance, lpszCmdLine, nCmdShow);
 
-    OleUninitialize();
-    //CoUninitialize();
+  OleUninitialize();
 
-    return result;
+  return result;
 }
-#endif
 
-int main( int argc, char *argv[ ])
+int main(int argc, char *argv[])
 {
-    ZString strCommandLine;
+  ZString strCommandLine;
 
-    for(int index = 1; index < argc; index++) {
-        ZString str = argv[index];
+  for (int index = 1; index < argc; index++)
+  {
+    ZString str = argv[index];
 
-        if (str.Find(' ') == -1) {
-            strCommandLine += ZString(argv[index]);
-        } else {
-            strCommandLine += "\"" + ZString(argv[index]) + "\"";
-        }
+    if (str.Find(' ') == -1) { strCommandLine += ZString(argv[index]); }
+    else { strCommandLine += "\"" + ZString(argv[index]) + "\""; }
 
-        if (index < argc - 1) {
-            strCommandLine += " ";
-        }
-    }
+    if (index < argc - 1) { strCommandLine += " "; }
+  }
 
-#ifdef DREAMCAST
-    return WinMain(GetModuleHandle(NULL), NULL, NULL, SW_SHOW);
-#else
-    return WinMain(GetModuleHandle(NULL), NULL, (char*)(PCC)strCommandLine, SW_SHOW);
-#endif
+  return WinMain(GetModuleHandle(nullptr), nullptr, (char *) static_cast<PCC>(strCommandLine), SW_SHOW);
 }

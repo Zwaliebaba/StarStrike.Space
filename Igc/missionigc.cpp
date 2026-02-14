@@ -776,7 +776,6 @@ void CmissionIGC::Initialize(Time now, IIgcSite* pIgcSite)
 
     m_damageTracks.Initialize(now);
 
- #ifndef DREAMCAST
     //preload the convex hulls used for the various asteroids
     ZVerify(HitTest::Load("bgrnd50"));
     ZVerify(HitTest::Load("bgrnd51"));

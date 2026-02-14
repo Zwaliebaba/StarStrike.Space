@@ -640,12 +640,6 @@ public:
             }
         }
 
-        if (g_bAskForCDKey && !bHaveVisited && trekClient.GetCDKey().IsEmpty())
-        {
-            TRef<IPopup> ppopupCDKey = CreateCDKeyPopup();
-            GetWindow()->GetPopupContainer()->OpenPopup(ppopupCDKey, false);
-        }
-
         // stop us from asking again during this execution
         bHaveVisited = true;
 

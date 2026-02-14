@@ -2343,18 +2343,6 @@ public:
         TRef<ZFile> pfile= new ZFile(strToOpen, OF_READ | OF_SHARE_DENY_WRITE);
 
         ZRetailAssert(!(bError && !pfile->IsValid() && m_psite));
-        /*
-        if (
-               bError
-            && !pfile->IsValid()
-            && m_psite
-        ) {
-            m_psite->Error(
-                  "Could not open the artwork file '"
-                + strToOpen + "'"
-            );
-        }
-        */
 
         return pfile->IsValid() ? pfile : NULL;
     }
