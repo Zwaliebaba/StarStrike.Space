@@ -2957,7 +2957,7 @@ public:
         CastTo(m_pstrpaneCurrentFile,    pns->FindMember("AutoDownloadCurrentFileStringPane"  ));
         CastTo(m_pstrpaneApproxMinutes,  pns->FindMember("AutoDownloadApproxMinutes"  ));
 
-        AddEventTarget(OnButtonAbort, m_pbuttonAbort->GetEventSource());
+        AddEventTarget(&AutoDownloadProgressDialogPopup::OnButtonAbort, m_pbuttonAbort->GetEventSource());
 
         pmodeler->UnloadNameSpace(pns);
     }

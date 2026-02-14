@@ -187,8 +187,8 @@ public:
         // Buttons
         //
         
-        AddEventTarget(OnButtonBack, m_pbuttonBack->GetEventSource());
-        AddEventTarget(OnButtonSignUp, m_pbuttonSignUp->GetEventSource());
+        AddEventTarget(&ZoneEventsScreen::OnButtonBack, m_pbuttonBack->GetEventSource());
+        AddEventTarget(&ZoneEventsScreen::OnButtonSignUp, m_pbuttonSignUp->GetEventSource());
 
 
         //

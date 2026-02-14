@@ -86,14 +86,17 @@ add_subdirectory(sharemem)
 # Phase 5: COM components (uncomment when ready)
 # add_subdirectory(AGC)
 
-# Phase 6: Executables (uncomment when ready)
-# add_subdirectory(WinTrek)
-# add_subdirectory(FedSrv)
-# add_subdirectory(lobby)
+# Phase 6: Executables
+add_subdirectory(WinTrek)
+add_subdirectory(FedSrv)
+add_subdirectory(lobby)
 
-# Phase 7: Tools (uncomment when ready)
-# add_subdirectory(mdlc)
+# Phase 7: Tools
+add_subdirectory(mdlc)
 # add_subdirectory(xmunge)
+
+# Phase 8: Artwork assets
+add_subdirectory(Artwork)
 
 # ============================================================================
 # Summary

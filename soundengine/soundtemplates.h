@@ -4,6 +4,9 @@
 // Several useful sound template implementations.
 //
 
+#ifndef _SOUNDTEMPLATES_H_
+#define _SOUNDTEMPLATES_H_
+
 namespace SoundEngine {
 
 // creates a sound template for the given wave file
@@ -100,3 +103,4 @@ HRESULT CreateSerializedSoundTemplate(TRef<ISoundTemplate>& pstDest, ISoundTempl
                                       bool bSingleInstance);
 };
 
+#endif // _SOUNDTEMPLATES_H_

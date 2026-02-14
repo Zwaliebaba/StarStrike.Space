@@ -1987,9 +1987,9 @@ public:
         CastTo(m_pbuttonRestore,  pns->FindMember("restoreButton"));
         CastTo(m_pbuttonClose,    pns->FindMember("closeButton"));
 
-        AddEventTarget(OnButtonOK,      m_pbuttonOK->GetEventSource());
-        AddEventTarget(OnButtonCancel,  m_pbuttonCancel->GetEventSource());
-        AddEventTarget(OnButtonRestore, m_pbuttonRestore->GetEventSource());
+        AddEventTarget(&InputMapPopup::OnButtonOK,      m_pbuttonOK->GetEventSource());
+        AddEventTarget(&InputMapPopup::OnButtonCancel,  m_pbuttonCancel->GetEventSource());
+        AddEventTarget(&InputMapPopup::OnButtonRestore, m_pbuttonRestore->GetEventSource());
         //AddEventTarget(OnButtonCancel,  m_pbuttonClose->GetEventSource());
 
         //
@@ -2007,7 +2007,7 @@ public:
 
         CastTo(m_plistPane, (Pane*)pns->FindMember("listPane"));
 
-        AddEventTarget(OnDoubleClick, m_plistPane->GetDoubleClickEventSource());
+        AddEventTarget(&InputMapPopup::OnDoubleClick, m_plistPane->GetDoubleClickEventSource());
 
         m_plistPane->SetItemPainter(this);
         m_plistPane->SetList(this);
@@ -2622,27 +2622,27 @@ public:
                         float value = pvalue->GetValue();
 
                         if (value > 0.75f) {
-                            if (AddButtonMapping(indexJoystick, -3)) {
+                            if (AddButtonMapping(m_paxis[5].m_indexJoystick, -3)) {
                                 StopEditing();
                             }
                             return;
                         } else if (value > 0.25f) {
-                            if (AddButtonMapping(indexJoystick, -2)) {
+                            if (AddButtonMapping(m_paxis[5].m_indexJoystick, -2)) {
                                 StopEditing();
                             }
                             return;
                         } else if (value > -0.25f) {
-                            if (AddButtonMapping(indexJoystick, -1)) {
+                            if (AddButtonMapping(m_paxis[5].m_indexJoystick, -1)) {
                                 StopEditing();
                             }
                             return;
                         } else if (value > -0.75f) {
-                            if (AddButtonMapping(indexJoystick, -4)) {
+                            if (AddButtonMapping(m_paxis[5].m_indexJoystick, -4)) {
                                 StopEditing();
                             }
                             return;
                         } else if (value > -1.25f) {
-                            if (AddButtonMapping(indexJoystick, -3)) {
+                            if (AddButtonMapping(m_paxis[5].m_indexJoystick, -3)) {
                                 StopEditing();
                             }
                             return;

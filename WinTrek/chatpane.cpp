@@ -130,8 +130,8 @@ public:
         m_bPlayerChatsOnly = true;
         m_pListPane = ListPaneOld::Create(ptSize, 12, true, NULL),
         InsertAtBottom(m_pListPane);
-        AddEventTarget(OnListSelect, m_pListPane->GetEventSource());
-        AddEventTarget(OnScroll, m_pListPane->GetScrollEvent());
+        AddEventTarget(&ChatListPaneImpl::OnListSelect, m_pListPane->GetEventSource());
+        AddEventTarget(&ChatListPaneImpl::OnScroll, m_pListPane->GetScrollEvent());
         UpdateContents();
         m_keyboardDelegate = IKeyboardInput::CreateDelegate(this);
         GetWindow()->AddKeyboardInputFilter(m_keyboardDelegate);
@@ -153,7 +153,7 @@ public:
             m_targetAutoscrollOn->Disconnect();
 
         m_targetAutoscrollOn = 
-            new TEventTarget<ChatListPaneImpl>(this, OnAutoscrollTimeout, GetWindow(), 10);
+            new TEventTarget<ChatListPaneImpl>(this, &ChatListPaneImpl::OnAutoscrollTimeout, GetWindow(), 10);
     }
 
     void AutoscrollOn()

@@ -240,7 +240,7 @@ private:
             CastTo(m_pbuttonOK,              pns->FindMember("historyOkButtonPane"  ));
             CastTo(m_plistPaneHistory,(Pane*)pns->FindMember("historyListPane"      ));
 
-            AddEventTarget(OnButtonOK, m_pbuttonOK->GetEventSource());
+            AddEventTarget(&HistoryDialogPopup::OnButtonOK, m_pbuttonOK->GetEventSource());
         }
 
         void SetHistory(TList<ZString> * pList)
@@ -418,68 +418,68 @@ public:
         // Normal buttons
         // 
         CastTo(m_pbuttonZoneClub, pns->FindMember("zoneclubButtonPane"));
-        AddEventTarget(OnButtonZoneClub, m_pbuttonZoneClub->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonZoneClub, m_pbuttonZoneClub->GetEventSource());
 
         CastTo(m_pbuttonPlayerProfile, pns->FindMember("playerProfileButtonPane"));
-        AddEventTarget(OnButtonPlayerProfile, m_pbuttonPlayerProfile->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonPlayerProfile, m_pbuttonPlayerProfile->GetEventSource());
 
         CastTo(m_pbuttonLeaderboard, pns->FindMember("leaderboardButtonPane"));
-        AddEventTarget(OnButtonLeaderboard, m_pbuttonLeaderboard->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonLeaderboard, m_pbuttonLeaderboard->GetEventSource());
 
         CastTo(m_pbuttonPrev, pns->FindMember("prevButtonPane"));
-        AddEventTarget(OnButtonPrev, m_pbuttonPrev->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonPrev, m_pbuttonPrev->GetEventSource());
 
         CastTo(m_pbuttonNext, pns->FindMember("nextButtonPane"));
-        AddEventTarget(OnButtonNext, m_pbuttonNext->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonNext, m_pbuttonNext->GetEventSource());
 
         CastTo(m_pbuttonTop, pns->FindMember("topButtonPane"));
-        AddEventTarget(OnButtonTop, m_pbuttonTop->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonTop, m_pbuttonTop->GetEventSource());
 
         CastTo(m_pbuttonEditSquad, pns->FindMember("editsquadButtonPane"));
-        AddEventTarget(OnButtonEditSquad, m_pbuttonEditSquad->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonEditSquad, m_pbuttonEditSquad->GetEventSource());
 
         CastTo(m_pbuttonReject, pns->FindMember("rejectButtonPane"));
-        AddEventTarget(OnButtonReject, m_pbuttonReject->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonReject, m_pbuttonReject->GetEventSource());
 
         CastTo(m_pbuttonAccept, pns->FindMember("acceptButtonPane"));
-        AddEventTarget(OnButtonAccept, m_pbuttonAccept->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonAccept, m_pbuttonAccept->GetEventSource());
 
         CastTo(m_pbuttonCommission, pns->FindMember("commissionButtonPane"));
-        AddEventTarget(OnButtonCommission, m_pbuttonCommission->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonCommission, m_pbuttonCommission->GetEventSource());
 
         CastTo(m_pbuttonDemote, pns->FindMember("demoteButtonPane"));
-        AddEventTarget(OnButtonDemote, m_pbuttonDemote->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonDemote, m_pbuttonDemote->GetEventSource());
 
         CastTo(m_pbuttonTransferControl, pns->FindMember("transfercontrolButtonPane"));
-        AddEventTarget(OnButtonTransferControl, m_pbuttonTransferControl->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonTransferControl, m_pbuttonTransferControl->GetEventSource());
 
         CastTo(m_pbuttonRequestJoin, pns->FindMember("requestjoinButtonPane"));
-        AddEventTarget(OnButtonRequestJoin, m_pbuttonRequestJoin->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonRequestJoin, m_pbuttonRequestJoin->GetEventSource());
 
         CastTo(m_pbuttonCancelRequest, pns->FindMember("cancelrequestButtonPane"));
-        AddEventTarget(OnButtonCancelRequest, m_pbuttonCancelRequest->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonCancelRequest, m_pbuttonCancelRequest->GetEventSource());
 
         CastTo(m_pbuttonQuitSquad, pns->FindMember("quitsquadButtonPane"));
-        AddEventTarget(OnButtonQuitSquad, m_pbuttonQuitSquad->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonQuitSquad, m_pbuttonQuitSquad->GetEventSource());
 
         CastTo(m_pbuttonCreateSquad, pns->FindMember("createsquadButtonPane"));
-        AddEventTarget(OnButtonCreateSquad, m_pbuttonCreateSquad->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonCreateSquad, m_pbuttonCreateSquad->GetEventSource());
         m_pbuttonCreateSquad->SetEnabled(true);
 
         CastTo(m_pbuttonLog, pns->FindMember("logButtonPane"));
-        AddEventTarget(OnButtonLog, m_pbuttonLog->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonLog, m_pbuttonLog->GetEventSource());
         m_pbuttonLog->SetEnabled(false);
 
         CastTo(m_pbuttonApply, pns->FindMember("applyButtonPane"));
-        AddEventTarget(OnButtonApply, m_pbuttonApply->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonApply, m_pbuttonApply->GetEventSource());
         m_pbuttonApply->SetEnabled(false);
 		    m_pbuttonApply->SetHidden(true);
 
         CastTo(m_pbuttonURL, pns->FindMember("URLButtonPane"));
-        AddEventTarget(OnButtonJumpURL, m_pbuttonURL->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonJumpURL, m_pbuttonURL->GetEventSource());
 
         CastTo(m_pbuttonFindSquad, pns->FindMember("squadFindButtonPane"));
-        AddEventTarget(OnButtonFindSquad, m_pbuttonFindSquad->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonFindSquad, m_pbuttonFindSquad->GetEventSource());
 
         //
         // Combo panes
@@ -520,7 +520,7 @@ public:
         m_colorTabTextSelected =         pColor->GetValue();
 
         ParseIntVector(pobjColumns, m_viTabColumns);
-        AddEventTarget(_OnButtonBarTabs, m_ptabSquads->GetEventSource());
+        AddEventTarget(&SquadsScreen::_OnButtonBarTabs, m_ptabSquads->GetEventSource());
 
         m_ptabSquads->SetHidden(FILTER_DUDEX, true);
 
@@ -536,7 +536,7 @@ public:
         CastTo(pColor,                   pns->FindMember("squadSelectColor"   ));
         m_colorSquadSelectionBar =       pColor->GetValue();
 
-        AddEventTarget(_OnButtonBarSquads, m_pbuttonbarSquadsHeader->GetEventSource());
+        AddEventTarget(&SquadsScreen::_OnButtonBarSquads, m_pbuttonbarSquadsHeader->GetEventSource());
 
         ParseIntVector(pobjColumns, m_viColumns);
         m_peventSquads = m_plistPaneSquads->GetSelectionEventSource();
@@ -554,28 +554,28 @@ public:
         //
         CastTo(m_peditPaneSquadName, (Pane*)pns->FindMember("squadNameEditPane"));
         m_peditPaneSquadName->SetMaxLength(c_cbNameDB);
-        AddEventTarget(OnSquadNameClick, m_peditPaneSquadName->GetClickEvent());
+        AddEventTarget(&SquadsScreen::OnSquadNameClick, m_peditPaneSquadName->GetClickEvent());
 
         m_peventNameEdit = m_peditPaneSquadName->GetChangeEvent();
         m_peventNameEdit->AddSink(m_psinkNameEdit = new TEvent<ZString>::Delegate(this));
 
         CastTo(m_peditPaneSquadDescription, (Pane*)pns->FindMember("squadDescriptionEditPane"));
         m_peditPaneSquadDescription->SetMaxLength(c_cbSquadDescriptionDB); 
-        AddEventTarget(OnSquadDescriptionClick, m_peditPaneSquadDescription->GetClickEvent());
+        AddEventTarget(&SquadsScreen::OnSquadDescriptionClick, m_peditPaneSquadDescription->GetClickEvent());
 
         m_peventDescEdit = m_peditPaneSquadDescription->GetChangeEvent();
         m_peventDescEdit->AddSink(m_psinkDescEdit = new TEvent<ZString>::Delegate(this));
 
         CastTo(m_peditPaneSquadURL, (Pane*)pns->FindMember("squadURLEditPane"));
         m_peditPaneSquadURL->SetMaxLength(c_cbURLDB);
-        AddEventTarget(OnSquadURLClick, m_peditPaneSquadURL->GetClickEvent());
+        AddEventTarget(&SquadsScreen::OnSquadURLClick, m_peditPaneSquadURL->GetClickEvent());
 
         m_peventURLEdit = m_peditPaneSquadURL->GetChangeEvent();
         m_peventURLEdit->AddSink(m_psinkURLEdit = new TEvent<ZString>::Delegate(this));
 
         CastTo(m_peditPaneFind, (Pane*)pns->FindMember("squadFindPane"));
         m_peditPaneFind->SetMaxLength(c_cbNameDB);
-        AddEventTarget(OnFindClick, m_peditPaneFind->GetClickEvent());
+        AddEventTarget(&SquadsScreen::OnFindClick, m_peditPaneFind->GetClickEvent());
 
         m_peventFind = m_peditPaneFind->GetChangeEvent();
         m_peventFind->AddSink(m_psinkFind = new TEvent<ZString>::Delegate(this));
@@ -598,14 +598,14 @@ public:
         CastTo(pColor,                    pns->FindMember("playerSelectColor"   ));
         m_colorPlayerSelectionBar =       pColor->GetValue();
 
-        AddEventTarget(OnButtonBarPlayers, m_pbuttonbarPlayersHeader->GetEventSource());
+        AddEventTarget(&SquadsScreen::OnButtonBarPlayers, m_pbuttonbarPlayersHeader->GetEventSource());
 
         ParseIntVector(pobjColumns, m_viPlayersColumns);
         m_peventPlayers = m_plistPanePlayers->GetSelectionEventSource();
         m_peventPlayers->AddSink(m_psinkPlayers = new IItemEvent::Delegate(this));
         m_plistPanePlayers->SetItemPainter(new PlayersItemPainter(m_viPlayersColumns, this));
 
-        AddEventTarget(OnDoubleClickPlayer, m_plistPanePlayers->GetDoubleClickEventSource());
+        AddEventTarget(&SquadsScreen::OnDoubleClickPlayer, m_plistPanePlayers->GetDoubleClickEventSource());
 
 //        m_peventPlayersDoubleClick = m_plistPanePlayers->GetDoubleClickEventSource();
 //        m_peventPlayersDoubleClick->AddSink(m_psinkPlayersDoubleClick = new IItemEvent::Delegate(this));
@@ -644,72 +644,6 @@ public:
         ZString temp(m_strSquadToBeSelected);
         OnButtonBarTabs(nTemp);
         m_strSquadToBeSelected = temp; // quick fix hack
-
-        //
-        //  Temporary, throw some squads in there
-        //
-
-/*
-        for (int i = 0; i < 30; ++i)
-        {
-          TRef<IZoneSquad> psquad = CreateZoneSquad();
-
-          psquad->SetName("Marco's Squad");
-          psquad->SetDescription("Right mix of Pro's and Newbies");
-          psquad->SetURL("home.sprintmail.com/~mcurrie");
-          psquad->SetInceptionDate("12/11/99");
-          psquad->SetWins(55-i);
-          psquad->SetLosses(3+i);
-          psquad->SetRanking((i+1)*2-1);
-          psquad->SetRank(IZoneSquad::Rank((i+1)%3+1));
-          psquad->SetCivID((i+2)%4-1);
-          psquad->SetScore((i+2)%4-1);
-
-          psquad->AppendOwnershipLog("Jack Smith", "1/1/98");
-          psquad->AppendOwnershipLog("Tom Daly", "3/19/98");
-
-          int j;
-          TRef<IZonePlayer> pplayer;
-
-          for (j = 0; j < 35 - i; ++j)
-          {
-            pplayer = CreateZonePlayer();
-            pplayer->Randomize();
-            psquad->AddPlayer(*pplayer, IZonePlayer::DSTAT_MEMBER);
-          }
-          psquad->SetOwner(pplayer);
-
-          AddSquadToScreen(psquad);
-
-          psquad = CreateZoneSquad();
-
-          psquad->SetName("Marco's Squad 2");
-          psquad->SetDescription("Come meet your doom.");
-          psquad->SetURL("www.dkeep.com/marco");
-          psquad->SetInceptionDate("12/12/99");
-          psquad->SetWins(50-i);
-          psquad->SetLosses(7+i);
-          psquad->SetRanking((i+1)*2);
-          psquad->SetRank(IZoneSquad::Rank(i%3+1));
-          psquad->SetCivID(i%4-1);
-          psquad->SetScore(i%4-1);
-          psquad->AppendOwnershipLog("Mary Wilson", "8/10/99");
-          psquad->AppendOwnershipLog("Steve Smith", "10/11/99");
-          psquad->AppendOwnershipLog("Jack Reed", "11/12/99");
-
-          for (j = 0; j < 32 - i; ++j)
-          {
-            pplayer = CreateZonePlayer();
-            pplayer->Randomize();
-            psquad->AddPlayer(*pplayer, IZonePlayer::DSTAT_MEMBER);
-          }
-          psquad->SetOwner(pplayer);
-
-          s_pActivePlayer = pplayer; // make the last player
-
-          AddSquadToScreen(psquad);
-        }
-*/        
     }
 
     void OnLeavingScreen()
@@ -735,37 +669,6 @@ public:
         return nRanking >= m_nCurrentRanking - c_cSquadsShown / 2 && 
                nRanking <= m_nCurrentRanking + c_cSquadsShown / 2;
     }
-
-/*
-    int FindRanking_ForMiddleSquad()
-    {
-        XSquadsIt it(m_listSquads[FILTER_ALL]);
-
-        int nLowest = 99999999;
-        int nHighest = -1;
-
-        while(!it.End())
-        {
-          int nRank = it.Value()->GetRanking(s_column);
-
-          if (nRank < nLowest)
-          {
-              nLowest = nRank;
-          }
-          if (nRank > nHighest)
-          {
-              nHighest = nRank;
-          }
-
-          it.Next();
-        }
-
-        if (nHighest != -1 && nLowest + c_cSquadsShown / 2 <= nHighest)
-          return nLowest + c_cSquadsShown / 2;
-        else
-          return -1;
-    }
-*/
 
     /*-------------------------------------------------------------------------
      * FindSquadByID()

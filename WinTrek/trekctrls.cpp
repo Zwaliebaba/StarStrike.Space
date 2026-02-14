@@ -77,7 +77,7 @@ public:
         m_pColumnPane->InsertAtBottom(m_pButtonBarPane);
         InsertAtBottom(m_pColumnPane);
         m_pEventSource = new IntegerEventSourceImpl();
-        AddEventTarget(OnSelectTab, m_pButtonBarPane->GetEventSource());
+        AddEventTarget(&TabPaneImpl::OnSelectTab, m_pButtonBarPane->GetEventSource());
     }
 
     ~TabPaneImpl()
@@ -251,7 +251,7 @@ public:
                     false, 0.25f, 1, 1, 1, 1
                 );
 
-            AddEventTarget(OnScroll, m_pScrollPane->GetEventSource());
+            AddEventTarget(&ListPaneOldImpl::OnScroll, m_pScrollPane->GetEventSource());
             m_pScrollPane->SetPageSize(m_cVisibleItems);
             m_pScrollPane->SetSize(0);
         

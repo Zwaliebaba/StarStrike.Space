@@ -69,6 +69,7 @@
       <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ConformanceMode>false</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -112,6 +113,7 @@
       <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>false</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -158,6 +160,7 @@
       <AdditionalOptions>%(AdditionalOptions) /FS</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>false</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4244;4267;4996</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>

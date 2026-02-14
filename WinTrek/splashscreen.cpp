@@ -24,9 +24,9 @@ public:
         pmodeler->UnloadNameSpace("splashscreen");
 
         if (g_bQuickstart || true) // REVIEW
-            AddEventTarget(OnTimeout, GetWindow(), 0.01f);
+            AddEventTarget(&SplashScreen::OnTimeout, GetWindow(), 0.01f);
         else
-            AddEventTarget(OnTimeout, GetWindow(), 6.85f);
+            AddEventTarget(&SplashScreen::OnTimeout, GetWindow(), 6.85f);
 
         m_keyboardDelegate = IKeyboardInput::CreateDelegate(this);
         GetWindow()->AddKeyboardInputFilter(m_keyboardDelegate);

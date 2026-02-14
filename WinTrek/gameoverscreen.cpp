@@ -327,7 +327,7 @@ public:
         // back button
         // 
 
-        AddEventTarget(OnButtonBack, m_pbuttonBack->GetEventSource());
+        AddEventTarget(&GameOverScreen::OnButtonBack, m_pbuttonBack->GetEventSource());
 
         //
         // Text messages
@@ -356,7 +356,7 @@ public:
         m_peventStats = m_plistPaneStats->GetSelectionEventSource();
         m_peventStats->AddSink(m_psinkStats = new IItemEvent::Delegate(this));
 
-        AddEventTarget(OnButtonBarStats, m_pbuttonbarStats->GetEventSource());
+        AddEventTarget(&GameOverScreen::OnButtonBarStats, m_pbuttonbarStats->GetEventSource());
         OnButtonBarStats(7);
 
         //
@@ -369,7 +369,7 @@ public:
         m_peventStatsSide = m_plistPaneStatsSide->GetSelectionEventSource();
         m_peventStats->AddSink(m_psinkStatsSide = new IItemEvent::Delegate(this));
 
-        AddEventTarget(OnButtonBarStatsSide, m_pbuttonbarStatsSide->GetEventSource());
+        AddEventTarget(&GameOverScreen::OnButtonBarStatsSide, m_pbuttonbarStatsSide->GetEventSource());
         OnButtonBarStatsSide(6);
 
         //
@@ -384,7 +384,7 @@ public:
         GetWindow()->SetFocus();
         GetWindow()->SetFocus(m_peditPane);
 
-        AddEventTarget(OnButtonSend, m_pbuttonSend->GetEventSource());
+        AddEventTarget(&GameOverScreen::OnButtonSend, m_pbuttonSend->GetEventSource());
 
         GetWindow()->SetLobbyChatTarget(CHAT_EVERYONE);
 

@@ -78,7 +78,7 @@ public:
     SelectionPane(IEventSource* peventSourceOnSelChange)
     {
         InsertAtBottom(m_prowPane = new RowPane());
-        AddEventTarget(OnSelChange, peventSourceOnSelChange);
+        AddEventTarget(&SelectionPane::OnSelChange, peventSourceOnSelChange);
     }
 
     bool OnSelChange()

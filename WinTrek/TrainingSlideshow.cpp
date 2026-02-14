@@ -39,7 +39,7 @@ public:
         GetWindow ()->GetPopupContainer ()->OpenPopup (pMsgBox, false);
 
         // pause to let the "starting..." box draw itself
-        AddEventTarget (OnSwitchOut, GetWindow(), 0.1f);
+        AddEventTarget (&TrainingSlideshow::OnSwitchOut, GetWindow(), 0.1f);
     }
 
     bool OnSwitchOut (void)

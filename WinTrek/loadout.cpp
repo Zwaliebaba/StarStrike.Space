@@ -557,23 +557,23 @@ public:
           OnTabSelect0();
           
 
-          AddEventTarget(OnTabSelect0, m_pButtonTab0->GetEventSource());
-          AddEventTarget(OnTabSelect1, m_pButtonTab1->GetEventSource());
-          AddEventTarget(OnTabSelect2, m_pButtonTab2->GetEventSource());
-          AddEventTarget(OnTabSelect3, m_pButtonTab3->GetEventSource());
-          AddEventTarget(OnTabSelect4, m_pButtonTab4->GetEventSource());
-          AddEventTarget(OnTabSelect5, m_pButtonTab5->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnTabSelect0, m_pButtonTab0->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnTabSelect1, m_pButtonTab1->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnTabSelect2, m_pButtonTab2->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnTabSelect3, m_pButtonTab3->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnTabSelect4, m_pButtonTab4->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnTabSelect5, m_pButtonTab5->GetEventSource());
 
 
           //AddEventTarget(OnTabSelect, m_pTabPaneTeamPurchases->GetEventSource());
 
 
-          AddEventTarget(OnListSelect, m_pListPane->GetEventSource());
-          AddEventTarget(OnListHover, m_pListPane->GetMouseOverEvent());
-          AddEventTarget(OnInvest, m_pButtonInvest->GetEventSource());
-          AddEventTarget(OnButtonBack, m_pButtonClose->GetEventSource());
-          AddEventTarget(OnMouseEnterInvestButton, m_pButtonInvest->GetMouseEnterEventSource());
-          AddEventTarget(OnMouseLeaveInvestButton, m_pButtonInvest->GetMouseLeaveEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnListSelect, m_pListPane->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnListHover, m_pListPane->GetMouseOverEvent());
+          AddEventTarget(&PurchasesPaneImpl::OnInvest, m_pButtonInvest->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnButtonBack, m_pButtonClose->GetEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnMouseEnterInvestButton, m_pButtonInvest->GetMouseEnterEventSource());
+          AddEventTarget(&PurchasesPaneImpl::OnMouseLeaveInvestButton, m_pButtonInvest->GetMouseLeaveEventSource());
           
           //m_pTabPaneTeamPurchases->ShowSelPane();
       }

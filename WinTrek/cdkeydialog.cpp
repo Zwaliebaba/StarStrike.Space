@@ -32,8 +32,8 @@ public:
         CastTo(m_peditPane,      (Pane*)pns->FindMember("CDKeyEditPane"));
 
         m_peditPane->SetMaxLength(c_cbCDKey - 1);
-        AddEventTarget(OnButtonOK, m_pbuttonOK->GetEventSource());
-        AddEventTarget(OnButtonCancel, m_pbuttonCancel->GetEventSource());
+        AddEventTarget(&CDKeyDialogImpl::OnButtonOK, m_pbuttonOK->GetEventSource());
+        AddEventTarget(&CDKeyDialogImpl::OnButtonCancel, m_pbuttonCancel->GetEventSource());
     }
 
     //

@@ -10,3 +10,16 @@ C:/Users/zwali/source/repos/StarStrike.Space/build/soundengine/CMakeFiles/SoundE
 C:/Users/zwali/source/repos/StarStrike.Space/build/clintlib/CMakeFiles/ClintLib.dir
 C:/Users/zwali/source/repos/StarStrike.Space/build/training/CMakeFiles/Training.dir
 C:/Users/zwali/source/repos/StarStrike.Space/build/sharemem/CMakeFiles/ShareMem.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/WinTrek/CMakeFiles/Allegiance.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/FedSrv/CMakeFiles/AllSrv.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/lobby/CMakeFiles/Lobby.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/mdlc/CMakeFiles/mdlc.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/CMakeFiles/ArtworkRootCopy.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/CMakeFiles/Artwork.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/256/CMakeFiles/Artwork256_Bitmaps.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/256/CMakeFiles/Artwork256_MDLs.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/256/CMakeFiles/Artwork256_Media.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/256/CMakeFiles/Artwork256_Animations.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/256/CMakeFiles/Artwork256_Fonts.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/256/CMakeFiles/Artwork256_Quick.dir
+C:/Users/zwali/source/repos/StarStrike.Space/build/Artwork/256/CMakeFiles/Artwork256.dir

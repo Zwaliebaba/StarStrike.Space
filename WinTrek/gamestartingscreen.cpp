@@ -21,7 +21,7 @@ public:
         CastTo(m_ppane, pns->FindMember("screen"));
 
         CastTo(m_pbuttonQuit, pns->FindMember("quitButtonPane"));
-        AddEventTarget(OnButtonQuit, m_pbuttonQuit->GetEventSource());
+        AddEventTarget(&GameStartingScreen::OnButtonQuit, m_pbuttonQuit->GetEventSource());
         pmodeler->UnloadNameSpace(pns);
     }
 

@@ -70,9 +70,9 @@ public:
             CastTo (m_pcomboCiv,        pns->FindMember("civComboPane"));
 
             // handle the ok and cancel buttons
-            AddEventTarget(OnButtonOk, m_pbuttonOk->GetEventSource());
-            AddEventTarget(OnButtonCancel, m_pbuttonCancel->GetEventSource());
-            AddEventTarget(OnButtonCancel, m_pbuttonCancel2->GetEventSource());
+            AddEventTarget(&TrainLiveDialogPopup::OnButtonOk, m_pbuttonOk->GetEventSource());
+            AddEventTarget(&TrainLiveDialogPopup::OnButtonCancel, m_pbuttonCancel->GetEventSource());
+            AddEventTarget(&TrainLiveDialogPopup::OnButtonCancel, m_pbuttonCancel2->GetEventSource());
 
             // fill in the combo pane of civs
             m_pcomboCiv->AddItem("Iron Coalition", 25);
@@ -160,27 +160,27 @@ public:
         // buttons
         //
 
-        AddEventTarget(OnButtonBack, m_pbuttonBack->GetEventSource());
-        AddEventTarget(OnButtonTrain, m_pbuttonTrain->GetEventSource());
-        AddEventTarget(OnButtonTrainMission1, m_pbuttonTrainMission1->GetEventSource());
-        AddEventTarget(OnButtonTrainMission2, m_pbuttonTrainMission2->GetEventSource());
-        AddEventTarget(OnButtonTrainMission3, m_pbuttonTrainMission3->GetEventSource());
-        AddEventTarget(OnButtonTrainMission4, m_pbuttonTrainMission4->GetEventSource());
-        AddEventTarget(OnButtonTrainMission5, m_pbuttonTrainMission5->GetEventSource());
-        AddEventTarget(OnButtonTrainMission6, m_pbuttonTrainMission6->GetEventSource());
-        AddEventTarget(OnButtonTrainMission7, m_pbuttonTrainMission7->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonBack, m_pbuttonBack->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrain->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrainMission1, m_pbuttonTrainMission1->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrainMission2, m_pbuttonTrainMission2->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrainMission3, m_pbuttonTrainMission3->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrainMission4, m_pbuttonTrainMission4->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrainMission5, m_pbuttonTrainMission5->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrainMission6, m_pbuttonTrainMission6->GetEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrainMission7, m_pbuttonTrainMission7->GetEventSource());
 
         //
         // buttons
         //
 
-        AddEventTarget(OnButtonTrain, m_pbuttonTrainMission1->GetDoubleClickEventSource());
-        AddEventTarget(OnButtonTrain, m_pbuttonTrainMission2->GetDoubleClickEventSource());
-        AddEventTarget(OnButtonTrain, m_pbuttonTrainMission3->GetDoubleClickEventSource());
-        AddEventTarget(OnButtonTrain, m_pbuttonTrainMission4->GetDoubleClickEventSource());
-        AddEventTarget(OnButtonTrain, m_pbuttonTrainMission5->GetDoubleClickEventSource());
-        AddEventTarget(OnButtonTrain, m_pbuttonTrainMission6->GetDoubleClickEventSource());
-        AddEventTarget(OnButtonTrain, m_pbuttonTrainMission7->GetDoubleClickEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrainMission1->GetDoubleClickEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrainMission2->GetDoubleClickEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrainMission3->GetDoubleClickEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrainMission4->GetDoubleClickEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrainMission5->GetDoubleClickEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrainMission6->GetDoubleClickEventSource());
+        AddEventTarget(&TrainingScreen::OnButtonTrain, m_pbuttonTrainMission7->GetDoubleClickEventSource());
 
         // hilite the current mission
         switch (m_iMissionNext)
@@ -450,7 +450,7 @@ public:
         GetWindow ()->GetPopupContainer ()->OpenPopup (pMsgBox, false);
 
         // pause to let the "creating game..." box draw itself
-        AddEventTarget(OnTrainLive, GetWindow(), 0.1f);
+        AddEventTarget(&TrainingScreen::OnTrainLive, GetWindow(), 0.1f);
 
         // this then goes to OnTrainLive
 
@@ -547,7 +547,7 @@ public:
                     GetWindow ()->GetPopupContainer ()->OpenPopup (pMsgBox, false);
 
                     // pause to let the "connecting..." box draw itself
-                    AddEventTarget(OnTryLogon, GetWindow(), 0.1f);
+                    AddEventTarget(&TrainingScreen::OnTryLogon, GetWindow(), 0.1f);
 
                     // this then goes to OnTryLogon
                 }

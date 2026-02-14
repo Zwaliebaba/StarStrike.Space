@@ -8,6 +8,9 @@
  * Copyright 1986-2000 Microsoft Corporation, All Rights Reserved
  *-----------------------------------------------------------------------*/
 
+#ifndef _AUTODOWNLOAD_H_
+#define _AUTODOWNLOAD_H_
+
 #include "regkey.h"
 
 class IAutoUpdateSink;
@@ -752,3 +755,5 @@ private:
 
 
 bool LaunchReloaderAndExit(bool bReLaunchAllegianceAsMinimized);
+
+#endif // _AUTODOWNLOAD_H_

@@ -27,6 +27,7 @@ function(allegiance_set_compiler_flags target)
         /FS         # Force synchronous PDB writes (parallel compilation)
         /EHsc       # C++ exceptions
         /Gm-        # Disable minimal rebuild
+        /permissive # Enable permissive mode for legacy code patterns
         /wd4244     # Disable conversion warnings (float/double)
         /wd4267     # Disable size_t to int conversion warnings
         /wd4996     # Disable deprecated function warnings

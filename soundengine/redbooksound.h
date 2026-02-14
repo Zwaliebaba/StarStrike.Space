@@ -4,6 +4,9 @@
 // SoundEngine support for redbook audio
 //
 
+#ifndef _REDBOOKSOUND_H_
+#define _REDBOOKSOUND_H_
+
 namespace SoundEngine {
 
 //
@@ -45,3 +48,5 @@ HRESULT CreateDummyDiskPlayer(TRef<IDiskPlayer>& pdiskplayer);
 HRESULT CreateRedbookSoundTemplate(TRef<ISoundTemplate>& pstDest, TRef<IDiskPlayer> diskPlayer, int nTrack);
 
 };
+
+#endif // _REDBOOKSOUND_H_

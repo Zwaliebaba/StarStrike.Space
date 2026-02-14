@@ -56,6 +56,7 @@
 #include "effect.h"
 #include "utility.h"
 #include "igc.h"
+
 #include "zone.h"
 #include "trekinput.h"
 #include "resource.h"

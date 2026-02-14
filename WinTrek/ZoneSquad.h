@@ -12,6 +12,8 @@
  * Copyright 1986-2000 Microsoft Corporation, All Rights Reserved
  *-----------------------------------------------------------------------*/
 
+#ifndef _ZONESQUAD_H_
+#define _ZONESQUAD_H_
 
 
 class IZonePlayer;
@@ -133,3 +135,5 @@ public:
 };
 
 TRef<IZonePlayer> CreateZonePlayer(const char *szName, int nID);
+
+#endif // _ZONESQUAD_H_

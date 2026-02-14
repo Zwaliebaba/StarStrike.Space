@@ -39,8 +39,8 @@ public:
         m_peditPane->SetType(EditPane::Password);
         m_peditPane->SetString(strPassword);
         m_peditPane->SetMaxLength(c_cbGamePassword - 1);
-        AddEventTarget(OnButtonOK, m_pbuttonOK->GetEventSource());
-        AddEventTarget(OnButtonCancel, m_pbuttonCancel->GetEventSource());
+        AddEventTarget(&PasswordDialogImpl::OnButtonOK, m_pbuttonOK->GetEventSource());
+        AddEventTarget(&PasswordDialogImpl::OnButtonCancel, m_pbuttonCancel->GetEventSource());
     }
 
     void SetMission(MissionInfo* pmission)
