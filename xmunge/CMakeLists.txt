@@ -12,6 +12,7 @@ if(BUILD_XMUNGE)
     # Try to find d3drm.lib
     find_library(D3DRM_LIBRARY d3drm
         PATHS
+            "${ALLEGIANCE_ROOT}/DX9/Lib"
             "${ALLEGIANCE_ROOT}/DX9/Lib/x86"
             "$ENV{DXSDK_DIR}/Lib/x86"
     )
@@ -40,6 +41,8 @@ if(BUILD_XMUNGE)
             ZLibrary
             ${D3DRM_LIBRARY}
             ${DIRECTX_LIBRARIES}
+            "${ALLEGIANCE_ROOT}/DX9/Lib/dxguid.lib"
+            winmm.lib
         )
 
         allegiance_set_compiler_flags(xmunge)

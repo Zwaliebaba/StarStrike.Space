@@ -86,6 +86,7 @@ set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT Allegiance)
 add_subdirectory(mdlc)
 add_subdirectory(xmunge)
 add_subdirectory(cvh)
+add_subdirectory(qhull)
 
 # Phase 8: Artwork assets
 add_subdirectory(Artwork)

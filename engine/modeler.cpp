@@ -1,12 +1,5 @@
 #include "pch.h"
-
-//////////////////////////////////////////////////////////////////////////////
-//
-// Function defined in xfile.cpp
-//
-//////////////////////////////////////////////////////////////////////////////
-
-TRef<Geo> ImportXFile(Modeler* pmodeler, ZFile* pfile, Number* pnumberFrame, bool& bAnimation);
+#include "xfile.h"
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -2494,6 +2487,87 @@ public:
         return NULL;
     }
 
+    //////////////////////////////////////////////////////////////////////////////
+    //
+    // Create a namespace from a .x file, bypassing the legacy D3DRM art pipeline.
+    // Looks for name.x as the primary mesh. If name_static.x also exists, creates
+    // a LODGeo with the animated mesh as the highest detail and the static mesh
+    // as a lower LOD level.
+    //
+    //////////////////////////////////////////////////////////////////////////////
+
+    INameSpace* CreateNameSpaceFromXFile(const ZString& str)
+    {
+        //
+        // Strip any existing extension from the name
+        //
+
+        ZString strBase = str;
+        PathString pathStr(str);
+        ZString strExt = pathStr.GetExtension();
+        if (!strExt.IsEmpty()) {
+            strBase = str.Left(str.GetLength() - (int)strExt.GetLength() - 1);
+        }
+
+        //
+        // Try to load the primary .x file
+        //
+
+        TRef<ZFile> pfileX = GetFile(strBase, "x", false);
+        if (!pfileX) {
+            return NULL;
+        }
+
+        if (g_bMDLLog) {
+            ZDebugOutput("Loading X file directly '" + strBase + ".x'\n");
+        }
+
+        TRef<Number> pnumberFrame = new ModifiableNumber(0);
+        bool bAnimation = false;
+        TRef<Geo> pgeo = ::ImportXFile(this, pfileX, pnumberFrame, bAnimation);
+
+        if (!pgeo) {
+            ZDebugOutput("Failed to parse X file '" + strBase + ".x'\n");
+            return NULL;
+        }
+
+        //
+        // Check if a _static.x variant exists for use as an LOD level
+        //
+
+        ZString strStatic = strBase + "_static";
+        TRef<ZFile> pfileStatic = GetFile(strStatic, "x", false);
+
+        if (pfileStatic) {
+            if (g_bMDLLog) {
+                ZDebugOutput("Loading static LOD X file '" + strStatic + ".x'\n");
+            }
+
+            bool bAnimStatic = false;
+            TRef<Geo> pgeoStatic = ::ImportXFile(this, pfileStatic, pnumberFrame, bAnimStatic);
+
+            if (pgeoStatic) {
+                //
+                // Create an LOD hierarchy: full mesh at distance > 64, static at <= 64
+                //
+
+                TRef<LODGeo> plodGeo = LODGeo::Create(pgeo);
+                plodGeo->AddGeo(pgeoStatic, 64.0f);
+                pgeo = plodGeo;
+            }
+        }
+
+        //
+        // Create a namespace and add the geo as "object"
+        //
+
+        TRef<INameSpace> pns = ::CreateNameSpace(str);
+        pns->AddMember("object", (Value*)pgeo);
+        pns->AddMember("frame",  (Value*)(Number*)pnumberFrame);
+
+        return pns;
+    }
+
     INameSpace* GetNameSpace(const ZString& str, bool bError)
     {
         TRef<INameSpace> pns = GetCachedNameSpace(str);
@@ -2502,7 +2576,7 @@ public:
             return pns;
         }
 
-        TRef<ZFile> pfile = GetFile(str, "mdl", bError);
+        TRef<ZFile> pfile = GetFile(str, "mdl", false);
 
         if (pfile != NULL) {
             if (*(DWORD*)pfile->GetPointer(false, false) == MDLMagic) {
@@ -2519,6 +2593,22 @@ public:
 
             m_mapNameSpace.Set(str, pns);
             return pns;
+        }
+
+        //
+        // No .mdl file found - try loading .x file directly.
+        // This bypasses the legacy D3DRM-dependent art pipeline (xmunge/pmesh)
+        // by using the engine's native X-file parser.
+        //
+
+        pns = CreateNameSpaceFromXFile(str);
+        if (pns) {
+            m_mapNameSpace.Set(str, pns);
+            return pns;
+        }
+
+        if (bError && m_psite) {
+            ZRetailAssert(false);
         }
 
         return NULL;

@@ -1131,6 +1131,19 @@ class EngineImpl : public Engine {
     }
 
 public:
+    // D3DRM is optional - it may crash on platforms where d3drm.dll is not available
+    // (e.g., ARM64 Windows running x86 emulation with old d3drm.dll)
+    static IDirect3DRM* SafeCreateD3DRM()
+    {
+        IDirect3DRM* pd3drm = NULL;
+        __try {
+            Direct3DRMCreate(&pd3drm);
+        } __except(EXCEPTION_EXECUTE_HANDLER) {
+            pd3drm = NULL;
+        }
+        return pd3drm;
+    }
+
     EngineImpl() :
         m_psurfaceList(NULL)
     {
@@ -1153,10 +1166,10 @@ public:
         m_iidD3D = m_iidD3DSW;
 
         //
-        // create a d3drm device for loading xfiles
+        // create a d3drm device for loading xfiles (optional)
         //
 
-        DDCall(Direct3DRMCreate(&m_pd3drm));
+        m_pd3drm = SafeCreateD3DRM();
 
         //
         // Get the primary surface
@@ -1261,7 +1274,9 @@ public:
 
     virtual TRef<Geometry> ImportXFile(const RelativePathString& str)
     {
-        return ::ImportXFile(m_pd3drm, str);
+        if (m_pd3drm)
+            return ::ImportXFile(m_pd3drm, str);
+        return NULL;
     }
 
     TRef<Surface> CreateImportSurface(const ZString& szname)

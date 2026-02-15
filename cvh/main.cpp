@@ -16,9 +16,33 @@ bool    x2pl(const char*     fileIn, const char* fileOut);
 bool    qh2cvh(const char*   file, FILE*    fOut, int  mode);
 bool    dat2cvh(const char*  file, FILE*    fOut);
 
+static char s_qhullPath[MAX_PATH] = "qhull";
+
+static void initQhullPath(const char* argv0)
+{
+    // Look for qhull in the same directory as cvh.exe
+    const char* lastSlash = strrchr(argv0, '\\');
+    const char* lastFwdSlash = strrchr(argv0, '/');
+    if (lastFwdSlash > lastSlash) lastSlash = lastFwdSlash;
+
+    if (lastSlash)
+    {
+        size_t dirLen = lastSlash - argv0 + 1;
+        if (dirLen + 10 < MAX_PATH)
+        {
+            strncpy(s_qhullPath, argv0, dirLen);
+            strcpy(s_qhullPath + dirLen, "qhull.exe");
+            return;
+        }
+    }
+    strcpy(s_qhullPath, "qhull");
+}
+
 int	main(int argc, char** argv)
 {
     bool    success = false;
+
+    initQhullPath(argv[0]);
 
     if (argc == 3)
     {
@@ -45,7 +69,7 @@ int	main(int argc, char** argv)
 
             char    bfrIn[c_cbBfr];
             strcpy(bfrIn, argv[2]);
-            strcat(bfrIn, "flat.x");
+            strcat(bfrIn, ".x");
 
             char    bfrOut[c_cbBfr];
             strcpy(bfrOut, argv[2]);
@@ -55,7 +79,8 @@ int	main(int argc, char** argv)
             if (success)
             {
                 char    bfrSystem[c_cbBfr];
-                strcpy(bfrSystem, "%fedroot%\\src\\bin\\qhull -o -Tv <");
+                strcpy(bfrSystem, s_qhullPath);
+                strcat(bfrSystem, " -o -Tv <");
                 strcat(bfrSystem, argv[2]);
                 strcat(bfrSystem, ".pl >");
                 strcat(bfrSystem, argv[2]);
@@ -95,7 +120,8 @@ int	main(int argc, char** argv)
                     sprintf(bfrHull, "%s_%d", argv[2], i);
 
                     char    bfrSystem[c_cbBfr];
-                    strcpy(bfrSystem, "%fedroot%\\src\\bin\\qhull -o -Tv <");
+                    strcpy(bfrSystem, s_qhullPath);
+                    strcat(bfrSystem, " -o -Tv <");
                     strcat(bfrSystem, bfrHull);
                     strcat(bfrSystem, ".pl >");
                     strcat(bfrSystem, bfrHull);
@@ -139,20 +165,40 @@ bool    x2pl(const char*   fileIn, const char* fileOut)
             char        line[c_cbLine];
 
             int nVertices = -2;
+            int totalVertices = 0;
+            long plStartPos = 0;
             while (fgets(line, c_cbLine, fIn) != NULL)
             {
                 if (nVertices == -2)
                 {
-                    if (strcmp(line, "Mesh {\n"/*}*/) == 0)
-                        nVertices = -1;
+                    // Match both anonymous "Mesh {" and named "Mesh name {"
+                    if (strncmp(line, "Mesh ", 5) == 0 || strncmp(line, "Mesh\t", 5) == 0)
+                    {
+                        // Skip MeshNormals, MeshTextureCoords, MeshMaterialList, etc.
+                        if (strncmp(line, "MeshN", 5) != 0 &&
+                            strncmp(line, "MeshT", 5) != 0 &&
+                            strncmp(line, "MeshM", 5) != 0)
+                        {
+                            nVertices = -1;
+                            if (totalVertices == 0)
+                                plStartPos = ftell(fOut);
+                        }
+                    }
                 }
                 else if (nVertices == -1)
                 {
                     nVertices = atoi(line);
-                    fprintf(fOut, "3 %d %s\n", nVertices, fileIn);
+                    totalVertices += nVertices;
+                    // Write placeholder header on first mesh, will be updated later
+                    if (totalVertices == nVertices)
+                        fprintf(fOut, "3 %10d %s\n", nVertices, fileIn);
                 }
                 else if (nVertices == 0)
-                    break;
+                {
+                    // Done with this mesh block, look for more
+                    nVertices = -2;
+                    continue;
+                }
                 else
                 {
                     //Write out the vertices, translating ';' to ' '
@@ -177,6 +223,13 @@ bool    x2pl(const char*   fileIn, const char* fileOut)
                     nVertices--;
                 }
             }
+            // Go back and fix the vertex count in the header if we had multiple meshes
+            if (totalVertices > 0 && plStartPos >= 0)
+            {
+                fseek(fOut, plStartPos, SEEK_SET);
+                fprintf(fOut, "3 %10d", totalVertices);
+            }
+
             fclose(fOut);
         }
         fclose(fIn);
@@ -466,16 +519,16 @@ bool    qh2cvh(const char*   file, FILE*    fOut, int mode)
             char    bfr[c_cbBfr];
             assert (strlen(file) < c_cbBfr - 10);
 
-            strcpy(bfr, "..\\artbuild\\");
-            strcat(bfr, file);
+            strcpy(bfr, file);
             strcat(bfr, "_m.x");
 
             fOutMesh = fopen(bfr, "w");
 
-            fprintf(fOutMesh, "xof 0302txt 0064\nHeader { 1; 0; 1; }\n");
+            if (fOutMesh)
+                fprintf(fOutMesh, "xof 0302txt 0064\nHeader { 1; 0; 1; }\n");
         }
 
-        if (mode & c_writeMesh)
+        if ((mode & c_writeMesh) && fOutMesh)
         {
 
             fprintf(fOutMesh, "Mesh\n{\n%d;\n", nUsedVertices); //}
@@ -759,8 +812,6 @@ bool    qh2cvh(const char*   file, FILE*    fOut, int mode)
 
 bool    dat2cvh(const char*  file, FILE*    fOut)
 {
-    bool    success = false;
-
     char    bfr[c_cbBfr];
     strcpy(bfr, file);
     strcat(bfr, ".dat");
@@ -768,8 +819,6 @@ bool    dat2cvh(const char*  file, FILE*    fOut)
     FILE*   fIn = fopen(bfr, "r");
     if (fIn)
     {
-        success = true;
-
         char    line[c_cbBfr];
         while (fgets(line, c_cbBfr, fIn) != NULL)
         {
@@ -778,5 +827,6 @@ bool    dat2cvh(const char*  file, FILE*    fOut)
 
         fclose(fIn);
     }
-    return success;
+    // Succeed even if .dat file is missing (no weapon frame data available)
+    return true;
 }

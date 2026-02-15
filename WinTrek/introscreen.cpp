@@ -725,8 +725,9 @@ public:
         char    config_file_name[MAX_PATH];
 
         // get the app build number
-        ZVersionInfo vi;
-        ZString strBuild(vi.GetFileBuildNumber());
+        ZVersionInfo vi(true);
+        vi.Load();
+        ZString strBuild(vi.GetFixed() ? vi.GetFileBuildNumber() : 0);
 
         // start with a default name
         lstrcpy(config_file_name, "Allegiance");

@@ -782,7 +782,6 @@ void CmissionIGC::Initialize(Time now, IIgcSite* pIgcSite)
     ZVerify(HitTest::Load("bgrnd52"));
     ZVerify(HitTest::Load("bgrnd53"));
     ZVerify(HitTest::Load("bgrnd03"));
-#endif
 
     m_sideTeamLobby = NULL;
 }

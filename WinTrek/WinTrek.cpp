@@ -2344,7 +2344,7 @@ public:
         TrekWindow(
             papp,
             strCommandLine,
-            true,
+            false,
             WinRect(0, 0, 800, 600),
             WinPoint(640, 480)
         ),
@@ -7352,7 +7352,14 @@ public:
         m_phelp = CreateHelpPane(GetModeler(), "hlpblank", new PagePaneIncluderImpl());
 
         m_phelp->SetString("pid", GetProductID());
-        m_phelp->SetString("ver", ZVersionInfo().GetProductVersionString());
+        {
+            ZVersionInfo vi(true);
+            if (vi.Load()) {
+                m_phelp->SetString("ver", vi.GetProductVersionString());
+            } else {
+                m_phelp->SetString("ver", ZString("unknown"));
+            }
+        }
 
         m_phelpPosition = new HelpPosition(GetTime(), m_phelp->GetEventSourceClose());
 

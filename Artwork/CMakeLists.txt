@@ -2,7 +2,8 @@
 # CMake build configuration
 #
 # This creates custom targets for processing game artwork assets.
-# The artwork build requires mdlc to be built first.
+# Geo models (.x files) are loaded directly by the engine at runtime.
+# Only cvh/qhull are needed at build time for collision hull generation.
 
 # Output directory for artwork
 set(ARTWORK_OUTPUT_DIR "${CMAKE_BINARY_DIR}/bin/$<CONFIG>/artwork")

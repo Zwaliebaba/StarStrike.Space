@@ -3,10 +3,10 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// 
+// Parse .x file and return the geometry tree
 //
 //////////////////////////////////////////////////////////////////////////////
 
-TRef<NameSpace> ImportXFile(Modeler* pmodeler, ZFile* pfile, Number* pnumberFrame, bool& bAnimation);
+TRef<Geo> ImportXFile(Modeler* pmodeler, ZFile* pfile, Number* pnumberFrame, bool& bAnimation);
 
 #endif
