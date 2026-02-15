@@ -328,6 +328,8 @@ void EngineWindow::UpdateSurfacePointer()
         || (!m_pengine->GetUsing3DAcceleration())
     ) {
         WinPoint size = GetClientRect().Size();
+        retailf("UpdateSurfacePointer: client size=(%d,%d) fullscreen=%d 3daccel=%d\n",
+            size.X(), size.Y(), m_pengine->IsFullscreen(), m_pengine->GetUsing3DAcceleration());
 
         if (size.X() == 0) {
             size.SetX(1);
@@ -349,8 +351,10 @@ void EngineWindow::UpdateSurfacePointer()
                 );
 
             if (m_psurface != NULL && m_psurface->IsValid()) {
+                retailf("UpdateSurfacePointer: created 3D+Video surface OK\n");
                 return;
             }
+            retailf("UpdateSurfacePointer: 3D+Video surface failed, falling back\n");
         }
 
         m_psurface =
@@ -359,6 +363,10 @@ void EngineWindow::UpdateSurfacePointer()
                 SurfaceType2D() | SurfaceType3D() | SurfaceTypeZBuffer(),
                 NULL
             );
+        retailf("UpdateSurfacePointer: fallback surface %s\n",
+            (m_psurface != NULL && m_psurface->IsValid()) ? "OK" : "FAILED");
+    } else {
+        retailf("UpdateSurfacePointer: fullscreen with 3D, using back buffer\n");
     }
 }
 
@@ -985,6 +993,20 @@ bool EngineWindow::RenderFrame()
             psurface->ReleaseContext(pcontext);
             RenderPerformanceCounters(psurface);
             return true;
+        } else {
+            static int s_cCtxErrors = 0;
+            if (s_cCtxErrors < 10) {
+                retailf("RenderFrame: GetContext returned NULL\n");
+                s_cCtxErrors++;
+            }
+        }
+    } else {
+        static int s_cSurfErrors = 0;
+        if (s_cSurfErrors < 10) {
+            retailf("RenderFrame: no surface available (m_psurface=%d backbuf=%d fullscreen=%d)\n",
+                m_psurface != NULL, pengine->GetBackBuffer() != NULL,
+                m_pengine->IsFullscreen());
+            s_cSurfErrors++;
         }
     }
 
@@ -1033,7 +1055,7 @@ void EngineWindow::DoIdle()
         m_bRestore = false;
         SetFullscreen(false);
     }
-    
+
     //
     // Is the device ready
     //
@@ -1041,6 +1063,7 @@ void EngineWindow::DoIdle()
     bool bChanges;
     if (m_pengine->IsDeviceReady(bChanges)) {
         if (bChanges || m_bInvalid) {
+            retailf("DoIdle: device changes detected, reinitializing (bChanges=%d bInvalid=%d)\n", bChanges, m_bInvalid);
             m_bInvalid = false;
 
             UpdateWindowStyle();

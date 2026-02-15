@@ -892,7 +892,7 @@ public:
     ~SoftwareRasterizer()
     {
         if (m_pbZBuffer) {
-            delete m_pbZBuffer;
+            delete[] m_pbZBuffer;
         }
     }
 
@@ -2239,7 +2239,7 @@ public:
                 m_pitchZBuffer = m_pitchSurface;
 
                 if (m_pbZBuffer) {
-                    delete m_pbZBuffer;
+                    delete[] m_pbZBuffer;
                 }
 
                 m_pbZBuffer = 
@@ -2250,7 +2250,7 @@ public:
             }
         } else {
             if (m_pbZBuffer) {
-                delete m_pbZBuffer;
+                delete[] m_pbZBuffer;
             }
 
             m_pbZBuffer = NULL;

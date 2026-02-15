@@ -36,12 +36,12 @@ set(ART256_SRCDIR "${CMAKE_CURRENT_SOURCE_DIR}")
 function(add_bitmap_conversion BITMAP_NAME)
     set(INPUT_BMP "${ART256_SRCDIR}/${BITMAP_NAME}.bmp")
     set(OUTPUT_MDL "${ARTWORK_DESTDIR}/${BITMAP_NAME}bmp.mdl")
-    
+
     if(EXISTS "${INPUT_BMP}")
         add_custom_command(
             OUTPUT "${OUTPUT_MDL}"
             COMMAND ${MDLC_EXE} -convert "${INPUT_BMP}" "${OUTPUT_MDL}"
-            DEPENDS mdlc "${INPUT_BMP}"
+            DEPENDS "${INPUT_BMP}"
             WORKING_DIRECTORY "${ART256_SRCDIR}"
             COMMENT "Converting ${BITMAP_NAME}.bmp to MDL"
             VERBATIM
@@ -238,7 +238,7 @@ if(ALLEGIANCE_BUILD_BITMAPS)
         add_custom_command(
             OUTPUT "${OUTPUT_MDL}"
             COMMAND ${MDLC_EXE} -compressanim ${COMP_X} ${COMP_Y} anim${NAME}bmp anim${NAME}.mdl
-            DEPENDS mdlc "${INPUT_MDL}"
+            DEPENDS "${INPUT_MDL}"
             WORKING_DIRECTORY "${ARTWORK_DESTDIR}"
             COMMENT "Compressing anim${NAME}.mdl"
             VERBATIM
@@ -277,7 +277,7 @@ elseif(EXISTS "${ART256_SRCDIR}/fontsource.mdl")
     add_custom_command(
         OUTPUT "${FONT_OUTPUT}"
         COMMAND ${MDLC_EXE} "${ART256_SRCDIR}/fontsource" "${FONT_OUTPUT}"
-        DEPENDS mdlc "${ART256_SRCDIR}/fontsource.mdl" "${ARTWORK_DESTDIR}/.created"
+        DEPENDS "${ART256_SRCDIR}/fontsource.mdl" "${ARTWORK_DESTDIR}/.created"
         COMMENT "Building font.mdl"
         VERBATIM
     )
@@ -293,6 +293,9 @@ if(ALLEGIANCE_BUILD_BITMAPS AND BITMAP_OUTPUTS)
         DEPENDS ${BITMAP_OUTPUTS}
         COMMENT "Converting all bitmaps to MDL"
     )
+    if(TARGET mdlc)
+        add_dependencies(Artwork256_Bitmaps mdlc)
+    endif()
 else()
     add_custom_target(Artwork256_Bitmaps
         COMMENT "Bitmap conversion disabled (use -DALLEGIANCE_BUILD_BITMAPS=ON)"
@@ -318,6 +321,9 @@ if(ALLEGIANCE_BUILD_BITMAPS AND ANIM_OUTPUTS)
         COMMENT "Building animation MDLs"
     )
     add_dependencies(Artwork256_Animations Artwork256_Bitmaps)
+    if(TARGET mdlc)
+        add_dependencies(Artwork256_Animations mdlc)
+    endif()
 else()
     add_custom_target(Artwork256_Animations
         COMMENT "Animation compression disabled (requires bitmap conversion)"
@@ -329,6 +335,9 @@ add_custom_target(Artwork256_Fonts
     DEPENDS "${FONT_OUTPUT}"
     COMMENT "Building fonts"
 )
+if(TARGET mdlc)
+    add_dependencies(Artwork256_Fonts mdlc)
+endif()
 
 # Quick build (everything except Geos)
 add_custom_target(Artwork256_Quick

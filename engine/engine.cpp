@@ -408,11 +408,14 @@ private:
         ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE;
 
         m_pdds = NULL;
-        DDCall(m_pdddevice->GetDD()->CreateSurface(&ddsd, &m_pdds, NULL));
+        HRESULT hrCreate = m_pdddevice->GetDD()->CreateSurface(&ddsd, &m_pdds, NULL);
+        DDCall(hrCreate);
 
         if (m_pdds == NULL) {
+            retailf("CreatePrimarySurface: CreateSurface failed hr=0x%08X\n", hrCreate);
             return false;
         }
+        retailf("CreatePrimarySurface: OK\n");
 
         //
         // Update the gamma ramp
@@ -445,9 +448,7 @@ private:
 
     bool InitializeWindowed()
     {
-        if (g_bWindowLog) {
-            ZDebugOutput("InitializeWindowed\n");
-        }
+        retailf("InitializeWindowed\n");
 
         //
         // If we were fullscreen go back to windowed mode
@@ -483,12 +484,15 @@ private:
         }
 
         //
-        // If the primary surface isn't 16bpp go to fullscreen automatically
+        // The software rasterizer only supports 16bpp (555/565) surfaces.
+        // Override the internal rendering pixel format to RGB565 regardless
+        // of the desktop depth. DirectDraw's Blt handles the conversion
+        // from 16bpp offscreen surfaces to the 32bpp primary in BltToWindow.
         //
 
         if (m_ppf->PixelBits() != 16) {
-            m_bFullscreen = true;
-            return false;
+            retailf("InitializeWindowed: desktop is %d bpp, using RGB565 for internal rendering\n", m_ppf->PixelBits());
+            m_ppf = GetPixelFormat(16, 0xf800, 0x07e0, 0x001f, 0x0000);
         }
 
         //
@@ -497,9 +501,7 @@ private:
 
         UpdateSurfacesPixelFormat();
 
-        if (g_bWindowLog) {
-            ZDebugOutput("InitializeWindowed exiting\n");
-        }
+        retailf("InitializeWindowed: success, pixel format=%d bpp\n", m_ppf->PixelBits());
 
         return true;
     }
@@ -961,7 +963,17 @@ private:
 
         if (m_pointFullscreen != point) {
             m_pointFullscreen = point;
-            m_bValid          = false;
+
+            // Only invalidate when actually in fullscreen mode. In windowed
+            // mode the fullscreen size is irrelevant to the current device;
+            // the new value will be picked up when SetFullscreen(true) is
+            // called (which itself sets m_bValid = false). Without this
+            // guard, any code that sets the fullscreen size while windowed
+            // (e.g. during a message box pump) triggers a spurious
+            // InitializeWindowed that tears down the live rendering pipeline.
+            if (m_bFullscreen) {
+                m_bValid = false;
+            }
         }
 
         if (g_bWindowLog) {
@@ -1045,12 +1057,15 @@ private:
     {
         if (!m_bValid) {
             if (m_bFullscreen) {
+                retailf("DeviceOK: initializing fullscreen\n");
                 m_bValid = InitializeFullscreen(bChanges);
             } else {
+                retailf("DeviceOK: initializing windowed\n");
                 bChanges = true;
                 m_bValid = InitializeWindowed();
             }
 
+            retailf("DeviceOK: result=%d fullscreen=%d\n", m_bValid, m_bFullscreen);
             m_bValidDevice = m_bValid;
         }
 
@@ -1073,6 +1088,7 @@ private:
                     // fullscreen but not active
                     //
 
+                    retailf("IsDeviceReady: DDERR_NOEXCLUSIVEMODE\n");
                     m_bValidDevice = false;
                     m_bValid       = false;
                     break;
@@ -1082,6 +1098,7 @@ private:
                     // windowed somebody else is fullscreen
                     //
 
+                    retailf("IsDeviceReady: DDERR_EXCLUSIVEMODEALREADYSET\n");
                     m_bValidDevice = false;
                     m_bValid       = false;
                     break;
@@ -1090,16 +1107,44 @@ private:
                     //
                     // windowed the pixel depth has changed
                     //
+                    // Don't call Reset/Terminate/FreeEverything here. Transient
+                    // events (e.g. a message box) can trigger DDERR_WRONGMODE
+                    // during the message pump. Tearing down D3D objects while
+                    // the rendering pipeline is still alive leaves rasterizers
+                    // with NULL D3D interfaces, causing heap corruption when
+                    // they are later used or destroyed.
+                    //
+                    // The engine always uses 16bpp internally regardless of
+                    // desktop depth, so the existing device remains usable.
+                    // Just recreate the primary surface and re-establish the
+                    // cooperative level to clear the WRONGMODE state.
+                    //
 
-                    m_pdddevicePrimary->Reset(NULL);
-                    m_bValidDevice = false;
-                    m_bValid       = false;
+                    retailf("IsDeviceReady: DDERR_WRONGMODE - recreating primary surface\n");
+                    {
+                        m_pddClipper = NULL;
+                        m_pdds       = NULL;
+                        DDCall(m_pdddevice->GetDD()->SetCooperativeLevel(NULL, DDSCL_NORMAL));
 
-                    return DeviceOK(bChanges);
+                        TRef<PixelFormat> ppfSaved = m_ppf;
+                        if (CreatePrimarySurface()) {
+                            // Restore the internal 16bpp pixel format; CreatePrimarySurface
+                            // sets m_ppf to the desktop depth which we don't want.
+                            m_ppf = ppfSaved;
+                            return DeviceOK(bChanges);
+                        }
+                        m_ppf          = ppfSaved;
+                        m_bValid       = false;
+                        m_bValidDevice = false;
+                    }
+                    break;
 
                 default:
+                    retailf("IsDeviceReady: unexpected hr=0x%08X\n", hr);
                     ZError("Unexpected result\n");
             }
+        } else {
+            retailf("IsDeviceReady: m_pdddevice is NULL\n");
         }
 
         return false;
@@ -1156,6 +1201,17 @@ private:
                     DDBLT_WAIT,
                     NULL
                 );
+
+            if (FAILED(hr)) {
+                static int s_cBltErrors = 0;
+                if (s_cBltErrors < 10) {
+                    retailf("BltToWindow: Blt failed hr=0x%08X target=(%d,%d,%d,%d) source=(%d,%d,%d,%d)\n",
+                        hr,
+                        rectTarget.XMin(), rectTarget.YMin(), rectTarget.XMax(), rectTarget.YMax(),
+                        rectSource.XMin(), rectSource.YMin(), rectSource.XMax(), rectSource.YMax());
+                    s_cBltErrors++;
+                }
+            }
         }
     }
 
