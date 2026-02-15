@@ -942,7 +942,16 @@ private:
     {
         if (m_b3DAccelerationImportant != b3DAccelerationImportant) {
             m_b3DAccelerationImportant = b3DAccelerationImportant;
-            m_bValid = false;
+
+            // Only invalidate when in fullscreen mode. This flag only
+            // affects device selection in InitializeFullscreen (choosing
+            // between primary and secondary 3D-accelerated devices). In
+            // windowed mode the value is simply stored; SetFullscreen(true)
+            // already sets m_bValid = false, triggering InitializeFullscreen
+            // with the updated flag.
+            if (m_bFullscreen) {
+                m_bValid = false;
+            }
         }
     }
 

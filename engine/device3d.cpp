@@ -1,10 +1,5 @@
 #include "pch.h"
 
-// compile this file for speed
-
-#pragma optimize("t", on)
-// #pragma optimize("s", on)
-
 //////////////////////////////////////////////////////////////////////////////
 //
 // Clipping Planes
