@@ -52,9 +52,9 @@ add_custom_target(Artwork
 set_property(TARGET Artwork PROPERTY FOLDER "Assets/Artwork")
 
 # Note: The full artwork pipeline includes:
-# - Bitmap conversion (BMP -> MDL via mdlc -convert)
+# - Bitmap copying (BMP files loaded directly by engine)
 # - MDL file copying
-# - Animation compression (mdlc -compressanim)  
+# - Animation compression (mdlc -compressanim, optional)
 # - Media file copying (wav, rtf, avi, igc, mml)
 # - Font processing
 # - Simple geo model processing (X file -> MDL via mdlc -optimize)

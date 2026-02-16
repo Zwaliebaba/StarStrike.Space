@@ -8,16 +8,12 @@
 #   - Run cvh to generate collision hull data (.cvh)
 #   - Copy text .mdl files for utility geos (globe, pointer, etc.)
 #
-# Optional features (disabled by default, require mdlc):
-#   - BMP to MDL bitmap conversion (mdlc -convert)
-#   - Animation MDL compression (mdlc -compressanim)
+# Bitmap files (.bmp) are copied directly to the output directory.
+# The engine loads them at runtime via LoadImage's BMP fallback, bypassing
+# the legacy mdlc -convert wrapping into MDL.
 #
-# NOTE: Bitmap conversion requires mdlc which uses DirectDraw for image processing.
-# This may fail in automated build environments without a graphics context.
-# Set ALLEGIANCE_BUILD_BITMAPS=ON to enable bitmap conversion (requires GUI).
-
-# Option to enable/disable bitmap conversion (requires DirectDraw)
-option(ALLEGIANCE_BUILD_BITMAPS "Build bitmap MDLs using mdlc (requires DirectDraw)" OFF)
+# Optional features (disabled by default, require mdlc):
+#   - Animation MDL compression (mdlc -compressanim)
 
 # Output directory
 set(ARTWORK_DESTDIR "${ARTWORK_OUTPUT_DIR}")
@@ -31,22 +27,21 @@ endif()
 set(ART256_SRCDIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
 # ============================================================================
-# Helper function to add bitmap conversion commands
+# Helper function to copy BMP files directly to the output directory
 # ============================================================================
-function(add_bitmap_conversion BITMAP_NAME)
+function(add_bitmap_copy BITMAP_NAME)
     set(INPUT_BMP "${ART256_SRCDIR}/${BITMAP_NAME}.bmp")
-    set(OUTPUT_MDL "${ARTWORK_DESTDIR}/${BITMAP_NAME}bmp.mdl")
+    set(OUTPUT_BMP "${ARTWORK_DESTDIR}/${BITMAP_NAME}.bmp")
 
     if(EXISTS "${INPUT_BMP}")
         add_custom_command(
-            OUTPUT "${OUTPUT_MDL}"
-            COMMAND ${MDLC_EXE} -convert "${INPUT_BMP}" "${OUTPUT_MDL}"
-            DEPENDS "${INPUT_BMP}"
-            WORKING_DIRECTORY "${ART256_SRCDIR}"
-            COMMENT "Converting ${BITMAP_NAME}.bmp to MDL"
+            OUTPUT "${OUTPUT_BMP}"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different "${INPUT_BMP}" "${OUTPUT_BMP}"
+            DEPENDS "${INPUT_BMP}" "${ARTWORK_DESTDIR}/.created"
+            COMMENT "Copying ${BITMAP_NAME}.bmp"
             VERBATIM
         )
-        list(APPEND BITMAP_OUTPUTS "${OUTPUT_MDL}")
+        list(APPEND BITMAP_OUTPUTS "${OUTPUT_BMP}")
         set(BITMAP_OUTPUTS "${BITMAP_OUTPUTS}" PARENT_SCOPE)
     endif()
 endfunction()
@@ -145,24 +140,19 @@ function(add_geo_from_xfiles NAME TEXTMDL)
 endfunction()
 
 # ============================================================================
-# Read bitmap.txt and generate conversion commands (optional)
+# Read bitmap.txt and generate copy commands
 # ============================================================================
 set(BITMAP_OUTPUTS "")
 
-if(ALLEGIANCE_BUILD_BITMAPS)
-    message(STATUS "Bitmap conversion ENABLED - requires DirectDraw/GUI context")
-    if(EXISTS "${ART256_SRCDIR}/bitmap.txt")
-        file(STRINGS "${ART256_SRCDIR}/bitmap.txt" BITMAP_LIST)
-        foreach(BITMAP_NAME ${BITMAP_LIST})
-            # Skip empty lines
-            string(STRIP "${BITMAP_NAME}" BITMAP_NAME)
-            if(NOT "${BITMAP_NAME}" STREQUAL "")
-                add_bitmap_conversion(${BITMAP_NAME})
-            endif()
-        endforeach()
-    endif()
-else()
-    message(STATUS "Bitmap conversion DISABLED - use -DALLEGIANCE_BUILD_BITMAPS=ON to enable")
+if(EXISTS "${ART256_SRCDIR}/bitmap.txt")
+    file(STRINGS "${ART256_SRCDIR}/bitmap.txt" BITMAP_LIST)
+    foreach(BITMAP_NAME ${BITMAP_LIST})
+        # Skip empty lines
+        string(STRIP "${BITMAP_NAME}" BITMAP_NAME)
+        if(NOT "${BITMAP_NAME}" STREQUAL "")
+            add_bitmap_copy(${BITMAP_NAME})
+        endif()
+    endforeach()
 endif()
 
 # ============================================================================
@@ -225,20 +215,23 @@ add_custom_command(
 set(MEDIA_OUTPUTS "${MEDIA_STAMP}")
 
 # ============================================================================
-# Animation MDL compression (requires bitmap outputs)
+# Animation MDL compression (optional, requires mdlc)
 # ============================================================================
 set(ANIM_OUTPUTS "")
 
-if(ALLEGIANCE_BUILD_BITMAPS)
+option(ALLEGIANCE_BUILD_ANIMATIONS "Build animation MDLs using mdlc -compressanim (requires DirectDraw)" OFF)
+
+if(ALLEGIANCE_BUILD_ANIMATIONS)
     # Animation compression helper
     function(add_anim_compression NAME COMP_X COMP_Y)
-        set(INPUT_MDL "${ARTWORK_DESTDIR}/anim${NAME}bmp.mdl")
+        # Animation compression reads the BMP from the output directory
+        set(INPUT_BMP "${ARTWORK_DESTDIR}/anim${NAME}.bmp")
         set(OUTPUT_MDL "${ARTWORK_DESTDIR}/anim${NAME}.mdl")
-        
+
         add_custom_command(
             OUTPUT "${OUTPUT_MDL}"
             COMMAND ${MDLC_EXE} -compressanim ${COMP_X} ${COMP_Y} anim${NAME}bmp anim${NAME}.mdl
-            DEPENDS "${INPUT_MDL}"
+            DEPENDS "${INPUT_BMP}"
             WORKING_DIRECTORY "${ARTWORK_DESTDIR}"
             COMMENT "Compressing anim${NAME}.mdl"
             VERBATIM
@@ -287,18 +280,15 @@ endif()
 # Main targets
 # ============================================================================
 
-# Target for bitmap conversion only (when enabled)
-if(ALLEGIANCE_BUILD_BITMAPS AND BITMAP_OUTPUTS)
+# Target for bitmap copying
+if(BITMAP_OUTPUTS)
     add_custom_target(Artwork256_Bitmaps
         DEPENDS ${BITMAP_OUTPUTS}
-        COMMENT "Converting all bitmaps to MDL"
+        COMMENT "Copying all bitmap files"
     )
-    if(TARGET mdlc)
-        add_dependencies(Artwork256_Bitmaps mdlc)
-    endif()
 else()
     add_custom_target(Artwork256_Bitmaps
-        COMMENT "Bitmap conversion disabled (use -DALLEGIANCE_BUILD_BITMAPS=ON)"
+        COMMENT "No bitmap files to copy"
     )
 endif()
 
@@ -314,8 +304,8 @@ add_custom_target(Artwork256_Media
     COMMENT "Copying media files"
 )
 
-# Target for animations (depends on bitmaps since anim*bmp.mdl are needed)
-if(ALLEGIANCE_BUILD_BITMAPS AND ANIM_OUTPUTS)
+# Target for animations (depends on bitmaps since anim*.bmp are needed)
+if(ALLEGIANCE_BUILD_ANIMATIONS AND ANIM_OUTPUTS)
     add_custom_target(Artwork256_Animations
         DEPENDS ${ANIM_OUTPUTS}
         COMMENT "Building animation MDLs"
@@ -326,7 +316,7 @@ if(ALLEGIANCE_BUILD_BITMAPS AND ANIM_OUTPUTS)
     endif()
 else()
     add_custom_target(Artwork256_Animations
-        COMMENT "Animation compression disabled (requires bitmap conversion)"
+        COMMENT "Animation compression disabled (use -DALLEGIANCE_BUILD_ANIMATIONS=ON)"
     )
 endif()
 
