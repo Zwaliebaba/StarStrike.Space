@@ -255,7 +255,6 @@ public:
 };
 
 TRef<D3DRasterizer> CreateD3DRasterizer(PrivateSurface* psurface);
-TRef<Rasterizer>    CreateSoftwareRasterizer(PrivateSurface* psurface);
 
 //////////////////////////////////////////////////////////////////////////////
 //

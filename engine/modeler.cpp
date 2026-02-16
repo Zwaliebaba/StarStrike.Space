@@ -817,7 +817,7 @@ public:
 #ifdef DREAMCAST
     StaticType value; StaticType *pvalue = &value; psite->CopyStructure(pvalue);
 #else
-    StaticType *pvalue = static_cast<StaticType *>(psite->GetPointer());
+    StaticType *pvalue = reinterpret_cast<StaticType *>(psite->GetPointer());
     psite->MovePointer(sizeof(StaticType));
 #endif
 

@@ -13,7 +13,6 @@ set(ENGINE_SOURCES
     ddsurface.cpp
     font.cpp
     raster.cpp
-    softraster.cpp
     device3d.cpp      # Non-Dreamcast version (not dcdevice3d.cpp)
     context.cpp
     d3ddevice.cpp

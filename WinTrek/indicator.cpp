@@ -132,7 +132,14 @@ public:
 
     void RenderDirectionIndicator(Context* pcontext)
     {
-        const Vector& myVelocity = trekClient.GetShip()->GetSourceShip()->GetVelocity();
+        IshipIGC* pshipSource = trekClient.GetShip()->GetSourceShip();
+        if (!pshipSource)
+            return;
+
+        if (!pshipSource->GetCluster())
+            return;
+
+        auto myVelocity = pshipSource->GetVelocity();
         int speed = (int)(myVelocity.Length() + 0.5f);
 
         if (GetWindow()->GetCameraMode() == TrekWindow::cmCockpit)

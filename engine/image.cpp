@@ -578,8 +578,8 @@ AnimatedImage::AnimatedImage(Number* ptime, Surface* psurfaceSource, int nRows, 
         nCols = size.X() / size.Y();
     }
 
-    int h = psurfaceSource->GetSize().X() / nCols;
-    int w = psurfaceSource->GetSize().Y() / nRows;
+    int w = psurfaceSource->GetSize().X() / nCols;
+    int h = psurfaceSource->GetSize().Y() / nRows;
 
     m_psurfaces.SetCount(nRows * nCols);
 

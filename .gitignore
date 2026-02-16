@@ -33,8 +33,9 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
-# CMake build directory
+# CMake build directories
 build/
+build_test/
 
 # Legacy build output directory (objs/<config>)
 objs/

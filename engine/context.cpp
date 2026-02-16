@@ -424,11 +424,7 @@ public:
     {
       TRef<Engine> pengine = psurface->GetEngine();
 
-      TRef<Rasterizer> prasterizer;
-      bool bAlwaysUseD3D = false;
-
-      if (bAlwaysUseD3D || (pengine->GetUsing3DAcceleration() && psurface->GetSurfaceType().Test(SurfaceTypeVideo()))) prasterizer = CreateD3DRasterizer(m_psurface);
-      else prasterizer = CreateSoftwareRasterizer(m_psurface);
+      TRef<Rasterizer> prasterizer = CreateD3DRasterizer(m_psurface);
 
       if (prasterizer == nullptr) return;
 

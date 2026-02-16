@@ -12,15 +12,30 @@ PixelFormat::PixelFormat(
     DWORD greenMask,
     DWORD blueMask,
     DWORD alphaMask
-) {
-    m_ddpf.dwSize            = sizeof(DDPIXELFORMAT);
-    m_ddpf.dwFlags           = DDPF_RGB;
-    m_ddpf.dwFourCC          = 0;
-    m_ddpf.dwRGBBitCount     = bits;
-    m_ddpf.dwRBitMask        = redMask;
-    m_ddpf.dwGBitMask        = greenMask;
-    m_ddpf.dwBBitMask        = blueMask;
-    m_ddpf.dwRGBAlphaBitMask = alphaMask;
+) :
+    m_bits(bits),
+    m_redMask(redMask),
+    m_greenMask(greenMask),
+    m_blueMask(blueMask),
+    m_alphaMask(alphaMask),
+    m_flags(DDPF_RGB),
+    m_bSoftwareTexture(false)
+{
+}
+
+DDPIXELFORMAT PixelFormat::GetDDPF() const
+{
+    DDPIXELFORMAT ddpf;
+    memset(&ddpf, 0, sizeof(ddpf));
+    ddpf.dwSize            = sizeof(DDPIXELFORMAT);
+    ddpf.dwFlags           = m_flags;
+    ddpf.dwFourCC          = 0;
+    ddpf.dwRGBBitCount     = m_bits;
+    ddpf.dwRBitMask        = m_redMask;
+    ddpf.dwGBitMask        = m_greenMask;
+    ddpf.dwBBitMask        = m_blueMask;
+    ddpf.dwRGBAlphaBitMask = m_alphaMask;
+    return ddpf;
 }
 
 DWORD PixelFormat::RedSize()    const { return RedMask()   >> RedShift();   }
@@ -117,7 +132,7 @@ Color PixelFormat::GetColor(const BYTE* pb) const
 
 bool PixelFormat::ValidGDIFormat() const
 {
-    BitMask mask(m_ddpf.dwFlags);
+    BitMask mask(m_flags);
 
     //
     // gdi doesn't support alpha
@@ -127,13 +142,13 @@ bool PixelFormat::ValidGDIFormat() const
         return false;
     }
 
-    if (m_ddpf.dwRGBBitCount == 8) {
+    if (m_bits == 8) {
         //
         // 8 bpp must be palettized
         //
 
         return mask.Test(BitMask(DDPF_PALETTEINDEXED8));
-    } else if (m_ddpf.dwRGBBitCount > 8) {
+    } else if (m_bits > 8) {
         //
         // 16 bpp must be RGB
         //
@@ -148,15 +163,67 @@ bool PixelFormat::ValidGDIFormat() const
     return false;
 }
 
-bool PixelFormat::Equivalent(const DDPIXELFORMAT& ddpf)
+bool PixelFormat::Equivalent(const DDPIXELFORMAT& ddpf) const
+{
+    return Equivalent(
+        ddpf.dwRGBBitCount,
+        ddpf.dwFlags,
+        ddpf.dwRBitMask,
+        ddpf.dwGBitMask,
+        ddpf.dwBBitMask,
+        ddpf.dwRGBAlphaBitMask
+    );
+}
+
+bool PixelFormat::Equivalent(DWORD bits, DWORD flags, DWORD redMask, DWORD greenMask, DWORD blueMask, DWORD alphaMask) const
 {
     return
-           m_ddpf.dwFlags           == ddpf.dwFlags
-        && m_ddpf.dwRGBBitCount     == ddpf.dwRGBBitCount
-        && m_ddpf.dwRBitMask        == ddpf.dwRBitMask
-        && m_ddpf.dwGBitMask        == ddpf.dwGBitMask
-        && m_ddpf.dwGBitMask        == ddpf.dwGBitMask
-        && m_ddpf.dwRGBAlphaBitMask == ddpf.dwRGBAlphaBitMask;
+           m_flags     == flags
+        && m_bits      == bits
+        && m_redMask   == redMask
+        && m_greenMask == greenMask
+        && m_blueMask  == blueMask
+        && m_alphaMask == alphaMask;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// DX9 format conversion
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// D3DFORMAT values from d3d9types.h — duplicated here so we don't
+// require the DX9 SDK headers in every translation unit.
+static const int D3DFMT_R5G6B5_VALUE   = 23;
+static const int D3DFMT_X1R5G5B5_VALUE = 24;
+static const int D3DFMT_A1R5G5B5_VALUE = 25;
+static const int D3DFMT_R8G8B8_VALUE   = 20;
+static const int D3DFMT_A8R8G8B8_VALUE = 21;
+static const int D3DFMT_X8R8G8B8_VALUE = 22;
+static const int D3DFMT_UNKNOWN_VALUE  = 0;
+
+int PixelFormat::ToD3D9Format() const
+{
+    if (m_bits == 16) {
+        if (m_redMask == 0xF800 && m_greenMask == 0x07E0 && m_blueMask == 0x001F)
+            return D3DFMT_R5G6B5_VALUE;
+        if (m_redMask == 0x7C00 && m_greenMask == 0x03E0 && m_blueMask == 0x001F) {
+            if (m_alphaMask == 0x8000)
+                return D3DFMT_A1R5G5B5_VALUE;
+            return D3DFMT_X1R5G5B5_VALUE;
+        }
+    } else if (m_bits == 24) {
+        if (m_redMask == 0xFF0000 && m_greenMask == 0x00FF00 && m_blueMask == 0x0000FF)
+            return D3DFMT_R8G8B8_VALUE;
+    } else if (m_bits == 32) {
+        if (m_redMask == 0x00FF0000 && m_greenMask == 0x0000FF00 && m_blueMask == 0x000000FF) {
+            if (m_alphaMask == 0xFF000000)
+                return D3DFMT_A8R8G8B8_VALUE;
+            return D3DFMT_X8R8G8B8_VALUE;
+        }
+    }
+
+    return D3DFMT_UNKNOWN_VALUE;
 }
 
 //////////////////////////////////////////////////////////////////////////////
